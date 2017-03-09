@@ -1,13 +1,13 @@
 package eg.edu.alexu.csd.datastructure.calculator.cs29;
 
-class test{
+class TestCalculator{
 	
 public static void main(String[] args) {
 	
-   Mycalculator xy = new Mycalculator();
- 
+   calculator xy = new calculator();
    
-   System.out.println(xy.divide(4,2));
+   
+   System.out.println( xy.divide(1,3) );
 	
 }
 }
