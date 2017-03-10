@@ -7,21 +7,30 @@ import java.util.Date;
 
 public class hangman implements IHangman {
 	
-	/*public String[] readFromFile(){
-		
-	File dictionary = new File ("Dictionary.txt");	
-	dictionary.createNewFile();
-	FileReader fr = new FileReader (dictionary);
-
-	
-         
-      return ListOfWords;     
-	}*/
+	public String[] readFromFile() throws FileNotFoundException{
+		List<String> LinesInTheFile = new ArrayList<String>();
+		BufferedReader ReadFromFile = new BufferedReader(new FileReader("Dictionary.txt"));
+		String str;
+		try {
+			while((str = ReadFromFile.readLine()) != null){
+				LinesInTheFile.add(str);
+			}
+			ReadFromFile.close();
+			String[] ListOfWords = LinesInTheFile.toArray(new String[LinesInTheFile.size()]);
+			
+			return ListOfWords;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}     
+	}
 	
 	private int WrongGuessesLeft=0;
 	private String SecretWord;
 	private String StringDisplayed; 
 	private String[] words;
+	HashSet<Character> WrongGuessList = new HashSet <Character>();
 	
 	@Override
 	public void setDictionary(String[] words) {
@@ -31,7 +40,7 @@ public class hangman implements IHangman {
 	@Override
 	public String selectRandomSecretWord() {
 		
-		if (words == null) {
+		if (words == null || words.length==0) {
 			  return null;	
 		}
 		Date date = new Date();
@@ -54,7 +63,6 @@ public class hangman implements IHangman {
 	@Override
 	public String guess(Character c) {
 		
-		//loop for wrong guesses to check letters repeated should be implemented here 
 		if(c == null){
 			return StringDisplayed;
 		}
@@ -63,17 +71,19 @@ public class hangman implements IHangman {
 			c = Character.toUpperCase(c);
 		}
 		int i,found=0;
-		char tempStringDisplayed[]=StringDisplayed.toCharArray();
-		
-		for(i = 0; i < StringDisplayed.length(); i++){
-		      if(SecretWord.charAt(i)==c){
-		    	  tempStringDisplayed[i] =c;
-		    	  found=1;
-		      }
+		if(StringDisplayed!=null){
+			char tempStringDisplayed[]=StringDisplayed.toCharArray();
+			for(i = 0; i < StringDisplayed.length(); i++){
+				if(SecretWord.charAt(i)==c){
+					tempStringDisplayed[i] =c;
+					found=1;
+				}
+			}
+			StringDisplayed=String.valueOf(tempStringDisplayed);
 		}
-		StringDisplayed=String.valueOf(tempStringDisplayed);
-		if(found==0){
+		if(found==0 && !WrongGuessList.contains(c)){
 			WrongGuessesLeft--;
+			WrongGuessList.add(c);
 		}
 		if( WrongGuessesLeft <=0){
 			return null;
