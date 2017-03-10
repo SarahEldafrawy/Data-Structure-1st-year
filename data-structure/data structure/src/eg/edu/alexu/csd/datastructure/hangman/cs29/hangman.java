@@ -43,6 +43,8 @@ public class hangman implements IHangman {
 		if (words == null || words.length==0) {
 			  return null;	
 		}
+		WrongGuessList.clear();
+		
 		Date date = new Date();
 		long diff = date.getTime();
 		
