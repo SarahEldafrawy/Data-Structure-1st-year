@@ -3,6 +3,8 @@ package eg.edu.alexu.csd.datastructure.hangman.cs29;
 import java.io.*;
 import java.util.Scanner;
 
+import org.junit.Assert;
+
 class TestHangman{
 	
 	public static void main(String[] args) throws FileNotFoundException {
@@ -23,7 +25,7 @@ class TestHangman{
 			System.out.println(StringDisplayed);
 			ch = in.next().charAt(0);
 			StringDisplayed= x.guess(ch);
-			if(StringDisplayed !=null && StringDisplayed.indexOf('_')==-1){
+			if(StringDisplayed !=null && StringDisplayed.indexOf('-')==-1){
 				winner=1;
 				break;
 			}
