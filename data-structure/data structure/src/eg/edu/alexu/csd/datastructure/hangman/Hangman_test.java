@@ -95,7 +95,7 @@ public class Hangman_test {
 		hangman.setMaxWrongGuesses(max);
 		for(int i=0; i<max; i++){
 			String result = hangman.guess('X');
-			if(i<max)
+			if(i<max-1)
 				Assert.assertEquals("Invalid Showing of Characters", "-----", result);
 			else
 				Assert.assertNull("Game must end!", result);

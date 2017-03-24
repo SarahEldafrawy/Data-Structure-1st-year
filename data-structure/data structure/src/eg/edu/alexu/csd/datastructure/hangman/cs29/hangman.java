@@ -30,7 +30,7 @@ public class hangman implements IHangman {
 	private String SecretWord;
 	private String StringDisplayed; 
 	private String[] words;
-	HashSet<Character> WrongGuessList = new HashSet <Character>();
+	//HashSet<Character> WrongGuessList = new HashSet <Character>();
 	
 	@Override
 	public void setDictionary(String[] words) {
@@ -43,7 +43,7 @@ public class hangman implements IHangman {
 		if (words == null || words.length==0) {
 			  return null;	
 		}
-		WrongGuessList.clear();
+	//	WrongGuessList.clear();
 		
 		Date date = new Date();
 		long diff = date.getTime();
@@ -83,11 +83,11 @@ public class hangman implements IHangman {
 			}
 			StringDisplayed=String.valueOf(tempStringDisplayed);
 		}
-		if(found==0 && !WrongGuessList.contains(c)){
+		if(found==0 /*&& !WrongGuessList.contains(c)*/){
 			WrongGuessesLeft--;
-			WrongGuessList.add(c);
+			//WrongGuessList.add(c);
 		}
-		if( WrongGuessesLeft <=0){
+		if( WrongGuessesLeft<=0){
 			return null;
 		}else{
 			return StringDisplayed;
