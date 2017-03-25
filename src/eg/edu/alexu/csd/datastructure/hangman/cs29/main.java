@@ -22,7 +22,7 @@ class main {
 			System.out.println(StringDisplayed);
 			ch = in.next().charAt(0);
 			StringDisplayed = x.guess(ch);
-			if(StringDisplayed != null && StringDisplayed.indexOf('-') == -1){
+			if (StringDisplayed != null && StringDisplayed.indexOf('-') == -1){
 				winner = 1;
 				break;
 			}

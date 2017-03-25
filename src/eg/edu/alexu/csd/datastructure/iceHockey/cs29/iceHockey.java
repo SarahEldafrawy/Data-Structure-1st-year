@@ -11,11 +11,11 @@ public class iceHockey implements IPlayersFinder {
 	private int teamGlobal, count = 0, m, n;
 	Point CoordinatesMax = new Point(0, 0), CoordinatesMin = new Point(0, 0);
 
-	private boolean maskGlobal[][];
+	private boolean[][] maskGlobal;
 
 	int SettingLocations(int row,int col) {
 		for (int i = -1; i <= 1; i++) {
-			for (int j = -1 ;j <= 1; j++) {
+			for (int j = -1; j <= 1; j++) {
 				if ((row+i) >= 0 && (row+i) < m && (col+j) >= 0 && (col+j) < n && i != j && (i+j) != 0){
 					if (photoGlobal[row+i].charAt(col+j) == (char) (teamGlobal+'0') && !maskGlobal[row+i][col+j]) {
 						maskGlobal[row+i][col+j] = true;
@@ -43,7 +43,7 @@ public class iceHockey implements IPlayersFinder {
 	@Override
 	public Point[] findPlayers(String[] photo, int team, int threshold) {
 
-		if(photo == null || photo.length == 0) {
+		if (photo == null || photo.length == 0) {
 			return null;
 		}
 		teamGlobal = team;
@@ -52,7 +52,7 @@ public class iceHockey implements IPlayersFinder {
 		n = photo[0].length();
 		List<Point> PlayersLocationsList = new ArrayList<Point>();
 
-		boolean mask[][] = new boolean[m][n];
+		boolean[][] mask = new boolean[m][n];
 
 		maskGlobal = mask;
 		for (int i = 0; i < photo.length; i++) {
@@ -76,7 +76,7 @@ public class iceHockey implements IPlayersFinder {
 		Point[] PlayersLocations = PlayersLocationsList.toArray(new Point[PlayersLocationsList.size()]);
 
 		Arrays.sort(PlayersLocations, new Comparator<Point>() {
-		      public int compare (Point a, Point b) {
+		      public int compare(Point a, Point b) {
 		       int xComp = Integer.compare(a.x, b.x);
 		        if (xComp == 0){
 		            return Integer.compare(a.y, b.y);
@@ -86,8 +86,6 @@ public class iceHockey implements IPlayersFinder {
 		    }
 		});
 
-
 		return PlayersLocations;
 	}
-
 }

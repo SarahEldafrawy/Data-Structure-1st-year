@@ -17,7 +17,7 @@ public class hangman implements IHangman {
 			}
 			ReadFromFile.close();
 			String[] ListOfWords = LinesInTheFile.toArray(new String[LinesInTheFile.size()]);
-			
+
 			return ListOfWords;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

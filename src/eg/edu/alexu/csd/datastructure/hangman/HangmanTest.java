@@ -12,7 +12,7 @@ public class HangmanTest {
 		IHangman hangman = (IHangman) test;
 		String secret = hangman.selectRandomSecretWord();
 		Assert.assertNull("Random word returned", secret);
-		String[] dictionary = new String[]{"XXX","YYYY"};
+		String[] dictionary = new String[]{"XXX", "YYYY"};
 		hangman.setDictionary(dictionary);
 		secret = hangman.selectRandomSecretWord();
 		Assert.assertNotNull("Null random word", secret);
@@ -28,7 +28,7 @@ public class HangmanTest {
 	@Test
 	public void testWrongGuess() {
 		IHangman hangman = (IHangman) test;
-		String[] dictionary = new String[] { "EGYPT" };
+		String[] dictionary = new String[] {"EGYPT"};
 		hangman.setDictionary(dictionary);
 		hangman.selectRandomSecretWord();
 		hangman.setMaxWrongGuesses(2);
@@ -38,7 +38,7 @@ public class HangmanTest {
 	@Test
 	public void testCorrectGuess() {
 		IHangman hangman = (IHangman) test;
-		String[] dictionary = new String[] { "EGYPT" };
+		String[] dictionary = new String[] {"EGYPT"};
 		hangman.setDictionary(dictionary);
 		hangman.selectRandomSecretWord();
 		hangman.setMaxWrongGuesses(2);
@@ -48,7 +48,7 @@ public class HangmanTest {
 	@Test
 	public void testCorrectGuessFirstChar() {
 		IHangman hangman = (IHangman) test;
-		String[] dictionary = new String[] { "EGYPT" };
+		String[] dictionary = new String[] {"EGYPT"};
 		hangman.setDictionary(dictionary);
 		hangman.selectRandomSecretWord();
 		hangman.setMaxWrongGuesses(2);
@@ -58,7 +58,7 @@ public class HangmanTest {
 	@Test
 	public void testCorrectGuessLastChar() {
 		IHangman hangman = (IHangman) test;
-		String[] dictionary = new String[] { "EGYPT" };
+		String[] dictionary = new String[] {"EGYPT"};
 		hangman.setDictionary(dictionary);
 		hangman.selectRandomSecretWord();
 		hangman.setMaxWrongGuesses(2);
@@ -68,7 +68,7 @@ public class HangmanTest {
 	@Test
 	public void testCaseSensitiveLower() {
 		IHangman hangman = (IHangman) test;
-		String[] dictionary = new String[] { "EGYPT" };
+		String[] dictionary = new String[] {"EGYPT"};
 		hangman.setDictionary(dictionary);
 		hangman.selectRandomSecretWord();
 		hangman.setMaxWrongGuesses(2);
@@ -78,7 +78,7 @@ public class HangmanTest {
 	@Test
 	public void testCaseSensitiveUpper() {
 		IHangman hangman = (IHangman) test;
-		String[] dictionary = new String[] { "egypt" };
+		String[] dictionary = new String[] {"egypt"};
 		hangman.setDictionary(dictionary);
 		hangman.selectRandomSecretWord();
 		hangman.setMaxWrongGuesses(2);
@@ -88,7 +88,7 @@ public class HangmanTest {
 	@Test
 	public void testFailCount() {
 		IHangman hangman = (IHangman) test;
-		String[] dictionary = new String[] { "EGYPT" };
+		String[] dictionary = new String[] {"EGYPT"};
 		hangman.setDictionary(dictionary);
 		hangman.selectRandomSecretWord();
 		int max = 5;
