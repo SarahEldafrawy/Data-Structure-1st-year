@@ -1,10 +1,10 @@
 package eg.edu.alexu.csd.datastructure.hangman.cs29;
 
-import java.io.*;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 class main {
-	public static void maintest(String[] args) throws FileNotFoundException {
+	public static void main(final String[] args) throws FileNotFoundException {
 
 		Scanner in = new Scanner(System.in);
 		hangman x = new hangman();

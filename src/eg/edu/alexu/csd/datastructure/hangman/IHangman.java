@@ -2,7 +2,7 @@ package eg.edu.alexu.csd.datastructure.hangman;
 
 public interface IHangman {
 	/**
-	* Set dictinary words to pick secret words from
+	* Set dictionary words to pick secret words from
 	* @param words an array of words
 	*/
 	void setDictionary(String[] words);

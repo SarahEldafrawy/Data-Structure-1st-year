@@ -23,7 +23,7 @@ public class hangman implements IHangman {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
-		}     
+		}
 	}
 
 	private int WrongGuessesLeft = 0;
@@ -34,14 +34,14 @@ public class hangman implements IHangman {
 
 	@Override
 	public void setDictionary(String[] words) {
-	    this.words = words;  
+	    this.words = words;
 	}
 
 	@Override
 	public String selectRandomSecretWord() {
 
 		if (words == null || words.length == 0) {
-			  return null;	
+			  return null;
 		}
 	//	WrongGuessList.clear();
 
@@ -55,7 +55,7 @@ public class hangman implements IHangman {
 		StringDisplayed = SecretWord;
 
 		char[] tempStringDisplayed = StringDisplayed.toCharArray();
-		for(int i = 0; i < StringDisplayed.length(); i++) {
+		for (int i = 0; i < StringDisplayed.length(); i++) {
 			tempStringDisplayed[i] = '-'; 
 		}
 		StringDisplayed = String.valueOf(tempStringDisplayed);

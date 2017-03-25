@@ -12,7 +12,7 @@ public class HangmanTest {
 		IHangman hangman = (IHangman) test;
 		String secret = hangman.selectRandomSecretWord();
 		Assert.assertNull("Random word returned", secret);
-		String[] dictionary = new String[]{"XXX", "YYYY"};
+		String[] dictionary = new String[] {"XXX", "YYYY"};
 		hangman.setDictionary(dictionary);
 		secret = hangman.selectRandomSecretWord();
 		Assert.assertNotNull("Null random word", secret);
@@ -93,9 +93,9 @@ public class HangmanTest {
 		hangman.selectRandomSecretWord();
 		int max = 5;
 		hangman.setMaxWrongGuesses(max);
-		for (int i=0; i<max; i++) {
+		for (int i = 0; i < max; i++) {
 			String result = hangman.guess('X');
-			if (i<max-1) {
+			if (i < max-1) {
 				Assert.assertEquals("Invalid Showing of Characters", "-----", result);
 			}else {
 				Assert.assertNull("Game must end!", result);

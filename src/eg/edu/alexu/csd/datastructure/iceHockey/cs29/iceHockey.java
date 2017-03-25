@@ -13,10 +13,10 @@ public class iceHockey implements IPlayersFinder {
 
 	private boolean[][] maskGlobal;
 
-	int SettingLocations(int row,int col) {
+	int SettingLocations(int row, int col) {
 		for (int i = -1; i <= 1; i++) {
 			for (int j = -1; j <= 1; j++) {
-				if ((row+i) >= 0 && (row+i) < m && (col+j) >= 0 && (col+j) < n && i != j && (i+j) != 0){
+				if ((row+i) >= 0 && (row+i) < m && (col+j) >= 0 && (col+j) < n && i != j && (i+j) != 0) {
 					if (photoGlobal[row+i].charAt(col+j) == (char) (teamGlobal+'0') && !maskGlobal[row+i][col+j]) {
 						maskGlobal[row+i][col+j] = true;
 						count++;
@@ -32,7 +32,7 @@ public class iceHockey implements IPlayersFinder {
 						if (CoordinatesMin.y > (col+j)) {
 							CoordinatesMin.y = col+j;
 						}
-						SettingLocations(row+i, col+j);			
+						SettingLocations(row+i, col+j);
 					}
 				}
 			}
@@ -78,7 +78,7 @@ public class iceHockey implements IPlayersFinder {
 		Arrays.sort(PlayersLocations, new Comparator<Point>() {
 		      public int compare(Point a, Point b) {
 		       int xComp = Integer.compare(a.x, b.x);
-		        if (xComp == 0){
+		        if (xComp == 0) {
 		            return Integer.compare(a.y, b.y);
 		        }else {
 		            return xComp;

@@ -3,7 +3,7 @@ package eg.edu.alexu.csd.datastructure.iceHockey.cs29;
 import java.awt.Point;
 
 class main {
-public static void maintest(String[] args) {
+public static void main(final String[] args) {
 
 	iceHockey icehockey = new iceHockey();
 	Point[] Coordinates = new Point[100];
