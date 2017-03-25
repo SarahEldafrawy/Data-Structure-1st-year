@@ -25,7 +25,7 @@ public class iceHockey_test {
 				"4BR4Y4A444",
 				"4G4V4T4444"};
 		int team=4,threshold=16;
-		Point[] Locations = {new Point(3,8),new Point(4,16), new Point(5,4),new Point(16,3), new Point (16,17), new Point (17,9)};
+		Point[] Locations = {new Point(3,8),new Point(4,16), new Point(5,4),new Point(16,3), new Point(16,17), new Point(17,9)};
 		assertArrayEquals(Locations, icehockey.findPlayers(Photo,team,threshold));
 	}
 	

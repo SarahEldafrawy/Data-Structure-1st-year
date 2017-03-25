@@ -18,15 +18,18 @@ public class iceHockey implements IPlayersFinder {
 			for(int j=-1;j<=1;j++){
 				if((row+i)>=0 && (row+i)<m && (col+j)>=0 && (col+j)<n && i!=j && (i+j)!=0){
 					if(photoGlobal[row+i].charAt(col+j)==(char)(teamGlobal+'0')&&!maskGlobal[row+i][col+j]){
-						maskGlobal[row+i][col+j]=true ;
+						maskGlobal[row+i][col+j]=true;
 						count++;
 						if(CoordinatesMax.x<(row+i)){
 							CoordinatesMax.x=row+i;
-						}if(CoordinatesMin.x>(row+i)){
+						}
+						if(CoordinatesMin.x>(row+i)){
 							CoordinatesMin.x=row+i;
-						}if(CoordinatesMax.y<(col+j)){
+						}
+						if(CoordinatesMax.y<(col+j)){
 							CoordinatesMax.y=col+j;
-						}if(CoordinatesMin.y>(col+j)){
+						}
+						if(CoordinatesMin.y>(col+j)){
 							CoordinatesMin.y=col+j;
 						}
 						SettingLocations(row+i,col+j);			

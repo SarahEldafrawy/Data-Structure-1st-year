@@ -87,7 +87,7 @@ public class hangman implements IHangman {
 			WrongGuessesLeft--;
 			//WrongGuessList.add(c);
 		}
-		if( WrongGuessesLeft<=0){
+		if(WrongGuessesLeft<=0){
 			return null;
 		}else{
 			return StringDisplayed;

@@ -3,11 +3,9 @@ package eg.edu.alexu.csd.datastructure.hangman.cs29;
 import java.io.*;
 import java.util.Scanner;
 
-import org.junit.Assert;
-
 class main{
 	
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void maintest(String[] args) throws FileNotFoundException {
 	
 		Scanner in = new Scanner(System.in);
 		hangman x= new hangman();

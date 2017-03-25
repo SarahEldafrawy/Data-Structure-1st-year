@@ -4,24 +4,24 @@ import org.junit.Assert;
 import org.junit.Test;
 import eg.edu.alexu.csd.datastructure.hangman.cs29.hangman;
 
-public class Hangman_test {
+public class HangmanTest{
 
 	hangman test = new hangman();
-	
 	@Test
 	public void testRandomWord() {
 		IHangman hangman = (IHangman)test;
 		String secret = hangman.selectRandomSecretWord();
 		Assert.assertNull("Random word returned", secret);
-		String dictionary[] = new String[] { "XXX", "YYYY" };
+		String[] dictionary = new String[]{"XXX","YYYY"};
 		hangman.setDictionary(dictionary);
 		secret = hangman.selectRandomSecretWord();
 		Assert.assertNotNull("Null random word", secret);
 		boolean found = false;
-		for(int i=0; i<dictionary.length; i++)
+		for (int i=0; i<dictionary.length; i++){
 			if(dictionary[i].equals(secret)){
 				found = true;
 			}
+		}
 		Assert.assertTrue("Message not found", found);
 	}
 
