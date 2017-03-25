@@ -7,7 +7,7 @@ class main {
 	public static void maintest(String[] args) throws FileNotFoundException {
 
 		Scanner in = new Scanner(System.in);
-		hangman x= new hangman();
+		hangman x = new hangman();
 		String[] words;
 		words = x.readFromFile();
 		x.setDictionary(words);
@@ -15,20 +15,20 @@ class main {
 		System.out.println("Enter Max Wrong Guesses");
 		int MaxTries = in.nextInt();
 		x.setMaxWrongGuesses(MaxTries);
-		int winner=0;
+		int winner = 0;
 		char ch;
-		String StringDisplayed= x.guess(null);
-		while(StringDisplayed!=null) {
+		String StringDisplayed = x.guess(null);
+		while(StringDisplayed != null) {
 			System.out.println(StringDisplayed);
 			ch = in.next().charAt(0);
-			StringDisplayed= x.guess(ch);
-			if(StringDisplayed !=null && StringDisplayed.indexOf('-')==-1){
-				winner=1;
+			StringDisplayed = x.guess(ch);
+			if(StringDisplayed != null && StringDisplayed.indexOf('-') == -1){
+				winner = 1;
 				break;
 			}
 		}
 		in.close();
-		if(winner==1) {
+		if(winner == 1) {
 			System.out.println(StringDisplayed);
 			System.out.println("You Won!!");
 		}else {

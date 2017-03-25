@@ -7,12 +7,12 @@ import java.util.Date;
 
 public class hangman implements IHangman {
 
-	public String[] readFromFile() throws FileNotFoundException{
+	public String[] readFromFile() throws FileNotFoundException {
 		List<String> LinesInTheFile = new ArrayList<String>();
 		BufferedReader ReadFromFile = new BufferedReader(new FileReader("Dictionary.txt"));
 		String str;
 		try {
-			while((str = ReadFromFile.readLine()) != null){
+			while((str = ReadFromFile.readLine()) != null) {
 				LinesInTheFile.add(str);
 			}
 			ReadFromFile.close();
@@ -26,7 +26,7 @@ public class hangman implements IHangman {
 		}     
 	}
 
-	private int WrongGuessesLeft=0;
+	private int WrongGuessesLeft = 0;
 	private String SecretWord;
 	private String StringDisplayed; 
 	private String[] words;
@@ -34,13 +34,13 @@ public class hangman implements IHangman {
 
 	@Override
 	public void setDictionary(String[] words) {
-	    this.words=words;  
+	    this.words = words;  
 	}
 
 	@Override
 	public String selectRandomSecretWord() {
 
-		if (words == null || words.length==0) {
+		if (words == null || words.length == 0) {
 			  return null;	
 		}
 	//	WrongGuessList.clear();
@@ -52,54 +52,54 @@ public class hangman implements IHangman {
 		RandomNo.setSeed((diff%5+13)%7-3);
 		int value = RandomNo.nextInt(words.length);
 		SecretWord = words [value].toUpperCase();
-		StringDisplayed=SecretWord;
+		StringDisplayed = SecretWord;
 
-		char[] tempStringDisplayed=StringDisplayed.toCharArray();
+		char[] tempStringDisplayed = StringDisplayed.toCharArray();
 		for(int i = 0; i < StringDisplayed.length(); i++){
-			tempStringDisplayed[i]='-'; 
+			tempStringDisplayed[i] = '-'; 
 		}
-		StringDisplayed=String.valueOf(tempStringDisplayed);
+		StringDisplayed = String.valueOf(tempStringDisplayed);
 		return SecretWord;
 	}
 
 	@Override
 	public String guess(Character c) {
 
-		if(c == null){
+		if(c == null) {
 			return StringDisplayed;
 		}
 
-		if(c >='a' && c <= 'z'){
+		if(c >= 'a' && c <= 'z') {
 			c = Character.toUpperCase(c);
 		}
-		int i,found=0;
-		if(StringDisplayed!=null){
-			char[] tempStringDisplayed=StringDisplayed.toCharArray();
-			for(i = 0; i < StringDisplayed.length(); i++){
-				if(SecretWord.charAt(i)==c){
-					tempStringDisplayed[i] =c;
-					found=1;
+		int found = 0;
+		if(StringDisplayed != null) {
+			char[] tempStringDisplayed = StringDisplayed.toCharArray();
+			for(int i = 0; i < StringDisplayed.length(); i++) {
+				if(SecretWord.charAt(i) == c) {
+					tempStringDisplayed[i] = c;
+					found = 1;
 				}
 			}
-			StringDisplayed=String.valueOf(tempStringDisplayed);
+			StringDisplayed = String.valueOf(tempStringDisplayed);
 		}
-		if(found==0 /*&& !WrongGuessList.contains(c)*/){
+		if(found == 0 /*&& !WrongGuessList.contains(c)*/) {
 			WrongGuessesLeft--;
 			//WrongGuessList.add(c);
 		}
-		if(WrongGuessesLeft<=0){
+		if(WrongGuessesLeft <= 0) {
 			return null;
-		}else{
+		}else {
 			return StringDisplayed;
 		}
 	}
 
 	@Override
 	public void setMaxWrongGuesses(Integer max) {
-		if(max==null){
-			WrongGuessesLeft=0;
-		}else{
-			WrongGuessesLeft=max;
+		if(max == null) {
+			WrongGuessesLeft = 0;
+		}else {
+			WrongGuessesLeft = max;
 		}
 	}
 }
