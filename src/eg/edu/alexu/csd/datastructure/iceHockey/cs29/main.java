@@ -2,7 +2,7 @@ package eg.edu.alexu.csd.datastructure.iceHockey.cs29;
 
 import java.awt.Point;
 
-class TestIceHockey{
+class main{
 public static void main(String[] args) {
 
 	iceHockey icehockey=new iceHockey();

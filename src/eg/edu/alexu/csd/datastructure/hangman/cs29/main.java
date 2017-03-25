@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import org.junit.Assert;
 
-class TestHangman{
+class main{
 	
 	public static void main(String[] args) throws FileNotFoundException {
 	
