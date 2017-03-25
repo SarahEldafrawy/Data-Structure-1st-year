@@ -12,7 +12,7 @@ public class hangman implements IHangman {
 		BufferedReader ReadFromFile = new BufferedReader(new FileReader("Dictionary.txt"));
 		String str;
 		try {
-			while((str = ReadFromFile.readLine()) != null) {
+			while ((str = ReadFromFile.readLine()) != null) {
 				LinesInTheFile.add(str);
 			}
 			ReadFromFile.close();
@@ -55,7 +55,7 @@ public class hangman implements IHangman {
 		StringDisplayed = SecretWord;
 
 		char[] tempStringDisplayed = StringDisplayed.toCharArray();
-		for(int i = 0; i < StringDisplayed.length(); i++){
+		for(int i = 0; i < StringDisplayed.length(); i++) {
 			tempStringDisplayed[i] = '-'; 
 		}
 		StringDisplayed = String.valueOf(tempStringDisplayed);
@@ -65,29 +65,29 @@ public class hangman implements IHangman {
 	@Override
 	public String guess(Character c) {
 
-		if(c == null) {
+		if (c == null) {
 			return StringDisplayed;
 		}
 
-		if(c >= 'a' && c <= 'z') {
+		if (c >= 'a' && c <= 'z') {
 			c = Character.toUpperCase(c);
 		}
 		int found = 0;
-		if(StringDisplayed != null) {
+		if (StringDisplayed != null) {
 			char[] tempStringDisplayed = StringDisplayed.toCharArray();
-			for(int i = 0; i < StringDisplayed.length(); i++) {
-				if(SecretWord.charAt(i) == c) {
+			for (int i = 0; i < StringDisplayed.length(); i++) {
+				if (SecretWord.charAt(i) == c) {
 					tempStringDisplayed[i] = c;
 					found = 1;
 				}
 			}
 			StringDisplayed = String.valueOf(tempStringDisplayed);
 		}
-		if(found == 0 /*&& !WrongGuessList.contains(c)*/) {
+		if (found == 0 /*&& !WrongGuessList.contains(c)*/) {
 			WrongGuessesLeft--;
 			//WrongGuessList.add(c);
 		}
-		if(WrongGuessesLeft <= 0) {
+		if (WrongGuessesLeft <= 0) {
 			return null;
 		}else {
 			return StringDisplayed;
@@ -96,7 +96,7 @@ public class hangman implements IHangman {
 
 	@Override
 	public void setMaxWrongGuesses(Integer max) {
-		if(max == null) {
+		if (max == null) {
 			WrongGuessesLeft = 0;
 		}else {
 			WrongGuessesLeft = max;

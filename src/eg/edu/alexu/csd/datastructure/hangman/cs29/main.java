@@ -18,7 +18,7 @@ class main {
 		int winner = 0;
 		char ch;
 		String StringDisplayed = x.guess(null);
-		while(StringDisplayed != null) {
+		while (StringDisplayed != null) {
 			System.out.println(StringDisplayed);
 			ch = in.next().charAt(0);
 			StringDisplayed = x.guess(ch);
@@ -28,14 +28,12 @@ class main {
 			}
 		}
 		in.close();
-		if(winner == 1) {
+		if (winner == 1) {
 			System.out.println(StringDisplayed);
 			System.out.println("You Won!!");
 		}else {
 			System.out.println("Try Again");
 		}
 	}
-	
+
  }
-
-

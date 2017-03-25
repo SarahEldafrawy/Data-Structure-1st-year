@@ -13,8 +13,7 @@ public class calculator implements ICalculator{
 
 	@Override
 	public float divide(int x, int y) {
-		 
+
 		return (float)x/(float)y;
 	}
-
 }
