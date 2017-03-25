@@ -1,12 +1,12 @@
 package eg.edu.alexu.csd.datastructure.hangman.cs29;
 
-import java.io.*; // for files to make the function
+import java.io.*;
 import java.util.*;
 import eg.edu.alexu.csd.datastructure.hangman.IHangman;
 import java.util.Date;
 
 public class hangman implements IHangman {
-	
+
 	public String[] readFromFile() throws FileNotFoundException{
 		List<String> LinesInTheFile = new ArrayList<String>();
 		BufferedReader ReadFromFile = new BufferedReader(new FileReader("Dictionary.txt"));
@@ -25,36 +25,36 @@ public class hangman implements IHangman {
 			return null;
 		}     
 	}
-	
+
 	private int WrongGuessesLeft=0;
 	private String SecretWord;
 	private String StringDisplayed; 
 	private String[] words;
 	//HashSet<Character> WrongGuessList = new HashSet <Character>();
-	
+
 	@Override
 	public void setDictionary(String[] words) {
 	    this.words=words;  
 	}
-	
+
 	@Override
 	public String selectRandomSecretWord() {
-		
+
 		if (words == null || words.length==0) {
 			  return null;	
 		}
 	//	WrongGuessList.clear();
-		
+
 		Date date = new Date();
 		long diff = date.getTime();
-		
+
 		Random RandomNo = new Random();
 		RandomNo.setSeed((diff%5+13)%7-3);
 		int value = RandomNo.nextInt(words.length);
 		SecretWord = words [value].toUpperCase();
 		StringDisplayed=SecretWord;
-		
-		char tempStringDisplayed[]=StringDisplayed.toCharArray();
+
+		char[] tempStringDisplayed=StringDisplayed.toCharArray();
 		for(int i = 0; i < StringDisplayed.length(); i++){
 			tempStringDisplayed[i]='-'; 
 		}
@@ -64,17 +64,17 @@ public class hangman implements IHangman {
 
 	@Override
 	public String guess(Character c) {
-		
+
 		if(c == null){
 			return StringDisplayed;
 		}
-		
+
 		if(c >='a' && c <= 'z'){
 			c = Character.toUpperCase(c);
 		}
 		int i,found=0;
 		if(StringDisplayed!=null){
-			char tempStringDisplayed[]=StringDisplayed.toCharArray();
+			char[] tempStringDisplayed=StringDisplayed.toCharArray();
 			for(i = 0; i < StringDisplayed.length(); i++){
 				if(SecretWord.charAt(i)==c){
 					tempStringDisplayed[i] =c;
@@ -102,5 +102,4 @@ public class hangman implements IHangman {
 			WrongGuessesLeft=max;
 		}
 	}
-	
 }

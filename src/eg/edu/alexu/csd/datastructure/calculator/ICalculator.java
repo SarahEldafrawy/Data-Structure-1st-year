@@ -7,6 +7,7 @@ public interface ICalculator {
 * @param y second number
 * @return the sum of the two numbers
 */
+
 int add(int x, int y);
 /**
 * Divids two numbers

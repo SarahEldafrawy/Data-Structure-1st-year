@@ -2,7 +2,6 @@ package eg.edu.alexu.csd.datastructure.iceHockey;
 
 import static org.junit.Assert.*;
 import java.awt.Point;
-import org.junit.Assert;
 import org.junit.Test;
 
 import eg.edu.alexu.csd.datastructure.iceHockey.cs29.iceHockey;
@@ -10,7 +9,7 @@ import eg.edu.alexu.csd.datastructure.iceHockey.cs29.iceHockey;
 public class iceHockey_test {
 
 	iceHockey test = new iceHockey();
-	
+
 	@Test
 	public void test1() {
 		IPlayersFinder icehockey = (IPlayersFinder)test;
@@ -24,11 +23,11 @@ public class iceHockey_test {
 				"4444ZDQ4S4",
 				"4BR4Y4A444",
 				"4G4V4T4444"};
-		int team=4,threshold=16;
-		Point[] Locations = {new Point(3,8),new Point(4,16), new Point(5,4),new Point(16,3), new Point(16,17), new Point(17,9)};
-		assertArrayEquals(Locations, icehockey.findPlayers(Photo,team,threshold));
+		int team=4, threshold=16;
+		Point[] Locations = {new Point(3,8), new Point(4,16), new Point(5,4), new Point(16,3), new Point(16,17), new Point(17,9)};
+		assertArrayEquals(Locations, icehockey.findPlayers(Photo, team, threshold));
 	}
-	
+
 	@Test
 	public void test2() {
 		IPlayersFinder icehockey = (IPlayersFinder)test;
@@ -38,11 +37,11 @@ public class iceHockey_test {
 				"PO3NSDP3",
 				"VNDSD333",
 				"OINFD33X"};
-		int team=3,threshold=16;
+		int team=3, threshold=16;
 		Point[] Locations = {new Point(4,5), new Point(13,9), new Point(14,2)};
-		assertArrayEquals(Locations, icehockey.findPlayers(Photo,team,threshold));
+		assertArrayEquals(Locations, icehockey.findPlayers(Photo, team, threshold));
 	}
-	
+
 	@Test
 	public void test3() {
 		IPlayersFinder icehockey = (IPlayersFinder)test;
@@ -61,12 +60,12 @@ public class iceHockey_test {
 				"88SQGB8I8J88W88",
 				"U88H8NI8CZB88B8",
 				"8PK8H8T8888TQR8"};
-		int team=8,threshold=9;
-		Point[] Locations = {new Point(1, 17), new Point (3, 3), new Point(3, 10), new Point(3, 25), new Point(5, 21), new Point(8, 17), new Point(9, 2), new Point(10,9), new Point(12,23), new Point(17,16), new Point(18,3),
+		int team=8, threshold=9;
+		Point[] Locations = {new Point(1,17), new Point (3,3), new Point(3,10), new Point(3,25), new Point(5,21), new Point(8,17), new Point(9,2), new Point(10,9), new Point(12,23), new Point(17,16), new Point(18,3),
 				new Point(18,11), new Point(18,28), new Point(22,20), new Point(23,26), new Point(24,15), new Point(27,2), new Point(28,26), new Point(29,16)};
-		assertArrayEquals(Locations, icehockey.findPlayers(Photo,team,threshold));
+		assertArrayEquals(Locations, icehockey.findPlayers(Photo, team, threshold));
 	}
-	
+
 	@Test
 	public void test4() {
 		IPlayersFinder icehockey = (IPlayersFinder)test;
@@ -75,11 +74,11 @@ public class iceHockey_test {
 				"1A1A1",
 				"1AAA1",
 				"11111"};
-		int team=1,threshold=3;
-		Point[] Locations = {new Point(5,5),new Point(5,5)};
-		assertArrayEquals(Locations, icehockey.findPlayers(Photo,team,threshold));
+		int team=1, threshold=3;
+		Point[] Locations = {new Point(5,5), new Point(5,5)};
+		assertArrayEquals(Locations, icehockey.findPlayers(Photo, team, threshold));
 	}
-	
+
 	@Test
 	public void test5() {
 		IPlayersFinder icehockey = (IPlayersFinder)test;
@@ -88,11 +87,11 @@ public class iceHockey_test {
 						"VA2AF",
 						"UHYAN",
 						"O2BLP"};
-		int team=2,threshold=9;
+		int team=2, threshold=9;
 		Point[] Locations = {new Point(2,2)};
-		assertArrayEquals(Locations, icehockey.findPlayers(Photo,team,threshold));
+		assertArrayEquals(Locations, icehockey.findPlayers(Photo, team, threshold));
 	}
-	
+
 	@Test
 	public void test6() {
 		IPlayersFinder icehockey = (IPlayersFinder)test;
@@ -101,27 +100,27 @@ public class iceHockey_test {
 						"1A1A1",
 						"A1A1A",
 						"1A1A1"};
-		int team=1,threshold=7;
+		int team=1, threshold=7;
 		Point[] Locations={};
-		assertArrayEquals(Locations, icehockey.findPlayers(Photo,team,threshold));
+		assertArrayEquals(Locations, icehockey.findPlayers(Photo, team, threshold));
 	}
-	
+
 	@Test
 	public void test7() {
 		IPlayersFinder icehockey = (IPlayersFinder)test;
 		String[] Photo={};
-		int team=1,threshold=3;
-		assertNull("No photo is found", icehockey.findPlayers(Photo,team,threshold));
+		int team=1, threshold=3;
+		assertNull("No photo is found", icehockey.findPlayers(Photo, team, threshold));
 	}
-	
+
 	@Test
 	public void test8() {
 		IPlayersFinder icehockey = (IPlayersFinder)test;
 		String[] Photo=null;
-		int team=1,threshold=3;
-		assertNull("No photo is found", icehockey.findPlayers(Photo,team,threshold));
+		int team=1, threshold=3;
+		assertNull("No photo is found", icehockey.findPlayers(Photo, team, threshold));
 	}
-	
+
 	@Test
 	public void test9() {
 		IPlayersFinder icehockey = (IPlayersFinder)test;
@@ -136,11 +135,11 @@ public class iceHockey_test {
 						"4444444444",
 						"4444444444",
 						};
-		int team=4,threshold=9;
+		int team=4, threshold=9;
 		Point[] Locations = {new Point(10,10)};
-		assertArrayEquals(Locations, icehockey.findPlayers(Photo,team,threshold));
+		assertArrayEquals(Locations, icehockey.findPlayers(Photo, team, threshold));
 	}
-	
+
 	@Test
 	public void test10() {
 		IPlayersFinder icehockey = (IPlayersFinder)test;
@@ -150,7 +149,7 @@ public class iceHockey_test {
 						"KB6D6vJ6C66A6H66JK6",
 						};
 		int team=6,threshold=16;
-		Point[] Locations = {new Point(7,5),new Point(14,3),new Point(20,4)};
+		Point[] Locations = {new Point(7,5), new Point(14,3), new Point(20,4)};
 		assertArrayEquals(Locations, icehockey.findPlayers(Photo,team,threshold));
 	}
 
@@ -158,20 +157,19 @@ public class iceHockey_test {
 	public void test11() {
 		IPlayersFinder icehockey = (IPlayersFinder)test;
 		String[] Photo={""};
-		int team=1,threshold=3;
+		int team=1, threshold=3;
 		Point[] Locations = {};
-		assertArrayEquals(Locations, icehockey.findPlayers(Photo,team,threshold));
+		assertArrayEquals(Locations, icehockey.findPlayers(Photo, team, threshold));
 	}
-	
+
 	@Test
 	public void test12() {
 		IPlayersFinder icehockey = (IPlayersFinder)test;
 		String[] Photo={"2BK",
 						"22K",
 						};
-		int team=3,threshold=9;
+		int team=3, threshold=9;
 		Point[] Locations = {};
-		assertArrayEquals(Locations, icehockey.findPlayers(Photo,team,threshold));
+		assertArrayEquals(Locations, icehockey.findPlayers(Photo, team, threshold));
 	}
-
 }

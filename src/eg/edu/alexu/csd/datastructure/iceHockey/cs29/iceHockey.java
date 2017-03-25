@@ -42,8 +42,8 @@ public class iceHockey implements IPlayersFinder {
 	
 	@Override
 	public Point[] findPlayers(String[] photo, int team, int threshold) {
-		
-		if(photo==null || photo.length==0 ){
+
+		if(photo==null || photo.length==0){
 			return null;
 		}
 		teamGlobal=team;
@@ -51,9 +51,9 @@ public class iceHockey implements IPlayersFinder {
 		m=photo.length;
 		n=photo[0].length();
 		List<Point> PlayersLocationsList = new ArrayList<Point>();
-		
+
 		boolean mask[][] = new boolean[m][n];
-		
+
 		maskGlobal = mask;
 		for(int i=0;i<photo.length;i++){
 			for(int j=0;j<photo[0].length();j++){
@@ -85,9 +85,9 @@ public class iceHockey implements IPlayersFinder {
 		        }    
 		    }
 		});
-		
-		
+
+
 		return PlayersLocations;
 	}
-	
+
 }
