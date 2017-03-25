@@ -9,7 +9,7 @@ public class HangmanTest {
 	hangman test = new hangman();
 	@Test
 	public void testRandomWord() {
-		IHangman hangman = (IHangman)test;
+		IHangman hangman = (IHangman) test;
 		String secret = hangman.selectRandomSecretWord();
 		Assert.assertNull("Random word returned", secret);
 		String[] dictionary = new String[]{"XXX","YYYY"};
@@ -27,7 +27,7 @@ public class HangmanTest {
 
 	@Test
 	public void testWrongGuess() {
-		IHangman hangman = (IHangman)test;
+		IHangman hangman = (IHangman) test;
 		String[] dictionary = new String[] { "EGYPT" };
 		hangman.setDictionary(dictionary);
 		hangman.selectRandomSecretWord();
@@ -37,7 +37,7 @@ public class HangmanTest {
 
 	@Test
 	public void testCorrectGuess() {
-		IHangman hangman = (IHangman)test;
+		IHangman hangman = (IHangman) test;
 		String[] dictionary = new String[] { "EGYPT" };
 		hangman.setDictionary(dictionary);
 		hangman.selectRandomSecretWord();
@@ -47,7 +47,7 @@ public class HangmanTest {
 
 	@Test
 	public void testCorrectGuessFirstChar() {
-		IHangman hangman = (IHangman)test;
+		IHangman hangman = (IHangman) test;
 		String[] dictionary = new String[] { "EGYPT" };
 		hangman.setDictionary(dictionary);
 		hangman.selectRandomSecretWord();
@@ -57,7 +57,7 @@ public class HangmanTest {
 
 	@Test
 	public void testCorrectGuessLastChar() {
-		IHangman hangman = (IHangman)test;
+		IHangman hangman = (IHangman) test;
 		String[] dictionary = new String[] { "EGYPT" };
 		hangman.setDictionary(dictionary);
 		hangman.selectRandomSecretWord();
@@ -67,7 +67,7 @@ public class HangmanTest {
 
 	@Test
 	public void testCaseSensitiveLower() {
-		IHangman hangman = (IHangman)test;
+		IHangman hangman = (IHangman) test;
 		String[] dictionary = new String[] { "EGYPT" };
 		hangman.setDictionary(dictionary);
 		hangman.selectRandomSecretWord();
@@ -77,7 +77,7 @@ public class HangmanTest {
 
 	@Test
 	public void testCaseSensitiveUpper() {
-		IHangman hangman = (IHangman)test;
+		IHangman hangman = (IHangman) test;
 		String[] dictionary = new String[] { "egypt" };
 		hangman.setDictionary(dictionary);
 		hangman.selectRandomSecretWord();
@@ -87,7 +87,7 @@ public class HangmanTest {
 
 	@Test
 	public void testFailCount() {
-		IHangman hangman = (IHangman)test;
+		IHangman hangman = (IHangman) test;
 		String[] dictionary = new String[] { "EGYPT" };
 		hangman.setDictionary(dictionary);
 		hangman.selectRandomSecretWord();
