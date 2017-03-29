@@ -3,7 +3,7 @@ package eg.edu.alexu.csd.datastructure.hangman.cs29;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-class main {
+class Main {
 	public static void main(final String[] args) throws FileNotFoundException {
 
 		Scanner in = new Scanner(System.in);
@@ -22,7 +22,7 @@ class main {
 			System.out.println(StringDisplayed);
 			ch = in.next().charAt(0);
 			StringDisplayed = x.guess(ch);
-			if (StringDisplayed != null && StringDisplayed.indexOf('-') == -1){
+			if (StringDisplayed != null && StringDisplayed.indexOf('-') == -1) {
 				winner = 1;
 				break;
 			}
@@ -31,9 +31,9 @@ class main {
 		if (winner == 1) {
 			System.out.println(StringDisplayed);
 			System.out.println("You Won!!");
-		}else {
+		} else {
 			System.out.println("Try Again");
 		}
 	}
 
- }
+}

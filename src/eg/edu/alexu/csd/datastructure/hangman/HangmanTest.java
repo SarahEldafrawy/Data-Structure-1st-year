@@ -17,7 +17,7 @@ public class HangmanTest {
 		secret = hangman.selectRandomSecretWord();
 		Assert.assertNotNull("Null random word", secret);
 		boolean found = false;
-		for (int i=0; i<dictionary.length; i++) {
+		for (int i = 0; i < dictionary.length; i++) {
 			if (dictionary[i].equals(secret)) {
 				found = true;
 			}
@@ -95,9 +95,9 @@ public class HangmanTest {
 		hangman.setMaxWrongGuesses(max);
 		for (int i = 0; i < max; i++) {
 			String result = hangman.guess('X');
-			if (i < max-1) {
+			if (i < max - 1) {
 				Assert.assertEquals("Invalid Showing of Characters", "-----", result);
-			}else {
+			} else {
 				Assert.assertNull("Game must end!", result);
 			}
 		}

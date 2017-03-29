@@ -1,9 +1,14 @@
 package eg.edu.alexu.csd.datastructure.hangman.cs29;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import eg.edu.alexu.csd.datastructure.hangman.IHangman;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 public class hangman implements IHangman {
 
@@ -49,14 +54,14 @@ public class hangman implements IHangman {
 		long diff = date.getTime();
 
 		Random RandomNo = new Random();
-		RandomNo.setSeed((diff%5+13)%7-3);
+		RandomNo.setSeed((diff % 5 + 13) % 7 - 3);
 		int value = RandomNo.nextInt(words.length);
-		SecretWord = words [value].toUpperCase();
+		SecretWord = words[value].toUpperCase();
 		StringDisplayed = SecretWord;
 
 		char[] tempStringDisplayed = StringDisplayed.toCharArray();
 		for (int i = 0; i < StringDisplayed.length(); i++) {
-			tempStringDisplayed[i] = '-'; 
+			tempStringDisplayed[i] = '-';
 		}
 		StringDisplayed = String.valueOf(tempStringDisplayed);
 		return SecretWord;
@@ -89,7 +94,7 @@ public class hangman implements IHangman {
 		}
 		if (WrongGuessesLeft <= 0) {
 			return null;
-		}else {
+		} else {
 			return StringDisplayed;
 		}
 	}
@@ -98,7 +103,7 @@ public class hangman implements IHangman {
 	public void setMaxWrongGuesses(Integer max) {
 		if (max == null) {
 			WrongGuessesLeft = 0;
-		}else {
+		} else {
 			WrongGuessesLeft = max;
 		}
 	}
