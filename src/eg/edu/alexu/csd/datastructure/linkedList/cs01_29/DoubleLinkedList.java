@@ -87,9 +87,12 @@ public class DoubleLinkedList implements ILinkedList {
 
 	/**
 	* Inserts a specified element at the specified position in the list.
-	*/  //done
+	*/
 	@Override
 	public void add(final int index, final Object element) {
+		if (index > size || index < 0) {
+			throw null;
+		}
 		Node prevnode = head;
 		Node nodetoadd = new Node(null, element, null);
 		if (size == 0) {
