@@ -91,13 +91,17 @@ public class DoubleLinkedList implements ILinkedList {
 	@Override
 	public void add(final int index, final Object element) {
 		if (index > size || index < 0) {
-			return;
+			throw null;
 		}
 		Node prevnode = head;
 		Node nodetoadd = new Node(null, element, null);
 		if (size == 0) {
 			head = nodetoadd;
 			size++;
+		} else if (index == 0) {
+			nodetoadd.setnext(head);
+			head.setprev(nodetoadd);
+			head = nodetoadd;
 		} else {
 			for (int i = 0; i < size; i++) {
 				if (i == index - 1) {
