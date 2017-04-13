@@ -57,6 +57,8 @@ public class Polynomial implements IPolynomialSolver {
 			setPoly(B, terms);
 		} else if (poly == 'C') {
 			setPoly(C, terms);
+		} else {
+			throw new RuntimeException();
 		}
 	}
 	/**.
@@ -72,6 +74,8 @@ public class Polynomial implements IPolynomialSolver {
 			X = B;
 		} else if (poly == 'C') {
 			X = C;
+		} else {
+			throw new RuntimeException();
 		}
 		int size = X.size();
 		if (X.size() == 0) {
@@ -117,6 +121,8 @@ public class Polynomial implements IPolynomialSolver {
 			X = B;
 		} else if (poly == 'C') {
 			X = C;
+		} else {
+			throw new RuntimeException();
 		}
 
 		X.clear();
@@ -135,6 +141,8 @@ public class Polynomial implements IPolynomialSolver {
 			X = B;
 		} else if (poly == 'C') {
 			X = C;
+		} else {
+			throw new RuntimeException();
 		}
 		float result = 0;
 		int size = X.size();
@@ -160,6 +168,8 @@ public class Polynomial implements IPolynomialSolver {
 			X = B;
 		} else if (poly1 == 'C') {
 			X = C;
+		} else {
+			throw new RuntimeException();
 		}
 		if (poly2 == 'A') {
 			Y = A;
@@ -167,6 +177,8 @@ public class Polynomial implements IPolynomialSolver {
 			Y = B;
 		} else if (poly2 == 'C') {
 			Y = C;
+		} else {
+			throw new RuntimeException();
 		}
 
 		int size1 = X.size(), size2 = Y.size(), size;
@@ -220,6 +232,8 @@ public class Polynomial implements IPolynomialSolver {
 			X = B;
 		} else if (poly1 == 'C') {
 			X = C;
+		} else {
+			throw new RuntimeException();
 		}
 		if (poly2 == 'A') {
 			Y = A;
@@ -227,6 +241,8 @@ public class Polynomial implements IPolynomialSolver {
 			Y = B;
 		} else if (poly2 == 'C') {
 			Y = C;
+		} else {
+			throw new RuntimeException();
 		}
 
 		int size1 = X.size(), size2 = Y.size(), size;
@@ -281,6 +297,8 @@ public class Polynomial implements IPolynomialSolver {
 			X = B;
 		} else if (poly1 == 'C') {
 			X = C;
+		} else {
+			throw new RuntimeException();
 		}
 		if (poly2 == 'A') {
 			Y = A;
@@ -288,6 +306,8 @@ public class Polynomial implements IPolynomialSolver {
 			Y = B;
 		} else if (poly2 == 'C') {
 			Y = C;
+		} else {
+			throw new RuntimeException();
 		}
 
 		if (Y.size() == 0 && X.size() == 0) {

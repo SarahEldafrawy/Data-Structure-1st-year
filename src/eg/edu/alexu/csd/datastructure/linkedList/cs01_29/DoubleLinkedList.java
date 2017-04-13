@@ -71,7 +71,6 @@ public class DoubleLinkedList implements ILinkedList {
 				nodetoadd.setnext(head);
 				head.setprev(nodetoadd);
 				head = nodetoadd;
-				tail = nodetoadd;
 				size++;
 			}
 			else {
