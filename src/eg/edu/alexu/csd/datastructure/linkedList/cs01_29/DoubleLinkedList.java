@@ -91,7 +91,7 @@ public class DoubleLinkedList implements ILinkedList {
 	@Override
 	public void add(final int index, final Object element) {
 		if (index > size || index < 0) {
-			int x=5;
+			throw null;
 		} else {
 			Node prevnode = head;
 			Node nodetoadd = new Node(null, element, null);
@@ -227,7 +227,7 @@ public class DoubleLinkedList implements ILinkedList {
 		Node prevnode = head;
 		if (index >= size || index < 0) {
 			throw null;
-		} else {
+		}
 			if (index == 0) {
 				Node nextnode = prevnode.getnext();
 				prevnode.setnext(null);
@@ -259,7 +259,7 @@ public class DoubleLinkedList implements ILinkedList {
 					}
 					prevnode = prevnode.getnext();
 				}
-			}
+		
 		}
 	}
 	/** Returns the number of elements in this list. */
