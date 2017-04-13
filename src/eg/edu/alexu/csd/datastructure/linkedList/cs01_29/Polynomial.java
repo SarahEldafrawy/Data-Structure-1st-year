@@ -75,7 +75,7 @@ public class Polynomial implements IPolynomialSolver {
 		} else if (poly == 'C') {
 			X = C;
 		} else {
-			throw null;
+			return null;
 		}
 		int size = X.size();
 		if (X.size() == 0) {
@@ -142,7 +142,7 @@ public class Polynomial implements IPolynomialSolver {
 		} else if (poly == 'C') {
 			X = C;
 		} else {
-			throw null;
+			return null;
 		}
 		float result = 0;
 		int size = X.size();
@@ -169,7 +169,7 @@ public class Polynomial implements IPolynomialSolver {
 		} else if (poly1 == 'C') {
 			X = C;
 		} else {
-			throw null;
+			return null;
 		}
 		if (poly2 == 'A') {
 			Y = A;
@@ -178,7 +178,7 @@ public class Polynomial implements IPolynomialSolver {
 		} else if (poly2 == 'C') {
 			Y = C;
 		} else {
-			throw null;
+			return null;
 		}
 
 		int size1 = X.size(), size2 = Y.size(), size;
@@ -233,7 +233,7 @@ public class Polynomial implements IPolynomialSolver {
 		} else if (poly1 == 'C') {
 			X = C;
 		} else {
-			throw null;
+			return null;
 		}
 		if (poly2 == 'A') {
 			Y = A;
@@ -242,7 +242,7 @@ public class Polynomial implements IPolynomialSolver {
 		} else if (poly2 == 'C') {
 			Y = C;
 		} else {
-			throw null;
+			return null;
 		}
 
 		int size1 = X.size(), size2 = Y.size(), size;
@@ -298,7 +298,7 @@ public class Polynomial implements IPolynomialSolver {
 		} else if (poly1 == 'C') {
 			X = C;
 		} else {
-			throw null;
+			return null;
 		}
 		if (poly2 == 'A') {
 			Y = A;
@@ -307,7 +307,7 @@ public class Polynomial implements IPolynomialSolver {
 		} else if (poly2 == 'C') {
 			Y = C;
 		} else {
-			throw null;
+			return null;
 		}
 
 		if (Y.size() == 0 && X.size() == 0) {
