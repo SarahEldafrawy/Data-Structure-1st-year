@@ -91,7 +91,7 @@ public class DoubleLinkedList implements ILinkedList {
 	@Override
 	public void add(final int index, final Object element) {
 		if (index > size || index < 0) {
-			throw null;
+			return;
 		}
 		Node prevnode = head;
 		Node nodetoadd = new Node(null, element, null);
