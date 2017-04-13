@@ -170,23 +170,27 @@ public class DoubleLinkedList implements ILinkedList {
 		if (index > size || index < 0) {
 			throw null;
 		} else {
-			if (index <= (size / 2)) {
-				Node nodeselected = head;
-				for (int i = 0; i < size; i++) {
-					if (i == index) {
-						nodeselected.setdata(element);
-						break;
-					}
-					nodeselected = nodeselected.getnext();
-				}
+			if (head == null){
+				throw null;
 			} else {
-				Node nodeselected = tail;
-				for (int i = size - 1; i > 0; i--) {
-					if (i == index) {
-						nodeselected.setdata(element);
-						break;
+				if (index <= (size / 2)) {
+					Node nodeselected = head;
+					for (int i = 0; i < size; i++) {
+						if (i == index) {
+							nodeselected.setdata(element);
+							break;
+						}
+						nodeselected = nodeselected.getnext();
 					}
-					nodeselected = nodeselected.getprev();
+				} else {
+					Node nodeselected = tail;
+					for (int i = size - 1; i > 0; i--) {
+						if (i == index) {
+							nodeselected.setdata(element);
+							break;
+						}
+						nodeselected = nodeselected.getprev();
+					}
 				}
 			}
 		}
