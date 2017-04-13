@@ -92,27 +92,28 @@ public class DoubleLinkedList implements ILinkedList {
 	public void add(final int index, final Object element) {
 		if (index > size || index < 0) {
 			throw null;
-		}
-		Node prevnode = head;
-		Node nodetoadd = new Node(null, element, null);
-		if (size == 0) {
-			head = nodetoadd;
-			size++;
 		} else {
-			for (int i = 0; i < size; i++) {
-				if (i == index - 1) {
-					Node temp = prevnode.getnext();
-					prevnode.setnext(nodetoadd);
-					nodetoadd.setprev(prevnode);
-					nodetoadd.setnext(temp);
-					size++;
-					break;
+			Node prevnode = head;
+			Node nodetoadd = new Node(null, element, null);
+			if (size == 0) {
+				head = nodetoadd;
+				size++;
+			} else {
+				for (int i = 0; i < size; i++) {
+					if (i == index - 1) {
+						Node temp = prevnode.getnext();
+						prevnode.setnext(nodetoadd);
+						nodetoadd.setprev(prevnode);
+						nodetoadd.setnext(temp);
+						size++;
+						break;
+					}
+					prevnode = prevnode.getnext();
 				}
-				prevnode = prevnode.getnext();
 			}
-		}
-		if (nodetoadd.getnext() == null) {
-			tail = nodetoadd;
+			if (nodetoadd.getnext() == null) {
+				tail = nodetoadd;
+			}
 		}
 	}
 	/** Inserts the specified element at the end of the list. */ //done
@@ -132,7 +133,6 @@ public class DoubleLinkedList implements ILinkedList {
 			tail.setprev(prevnode);
 			size++;
 		}
-		return;
 	}
 /** Returns the element at the specified position in this list. */
 	@Override
@@ -205,7 +205,6 @@ public class DoubleLinkedList implements ILinkedList {
 			size--;
 		}
 		head = null;
-		return;
 	}
 
 /** Returns true if this list contains no elements. */
