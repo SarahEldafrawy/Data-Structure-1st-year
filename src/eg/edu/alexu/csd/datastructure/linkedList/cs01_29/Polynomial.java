@@ -141,6 +141,8 @@ public class Polynomial implements IPolynomialSolver {
 			X = B;
 		} else if (poly == 'C') {
 			X = C;
+		} else if (poly == 'R') {
+			X = R;
 		} else {
 			return 0;
 		}
@@ -151,7 +153,6 @@ public class Polynomial implements IPolynomialSolver {
 				result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			}
 		}
-		//if null return 0 wala null??
 		return result;
 	}
 	/**.
