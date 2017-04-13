@@ -137,7 +137,7 @@ public class DoubleLinkedList implements ILinkedList {
 	@Override
 	public Object get(final int index) {
 		if (index >= size || index < 0) {
-			throw null;
+			return;
 		} else {
 			Node nodeselected;
 			if (index < (size / 2)) {
@@ -225,7 +225,7 @@ public class DoubleLinkedList implements ILinkedList {
 	public void remove(final int index) {
 		Node prevnode = head;
 		if (index >= size || index < 0) {
-			throw null;
+			return;
 		}
 		if (index == 0) {
 			Node nextnode = prevnode.getnext();
