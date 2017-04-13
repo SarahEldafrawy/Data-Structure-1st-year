@@ -18,6 +18,7 @@ public class Polynomial implements IPolynomialSolver {
 	private DoubleLinkedList X = new DoubleLinkedList();
 	private DoubleLinkedList Y = new DoubleLinkedList();
 
+
 	/**
 	 *
 	 * @param X
@@ -31,6 +32,9 @@ public class Polynomial implements IPolynomialSolver {
 		for (int i = 0; i < terms.length; i++) {
 			if (max < terms[i][1]) {
 				max = terms[i][1];
+			}
+			if ((terms[i][1]) < 0 || max != terms[0][1]){
+					throw null;
 			}
 		}
 		int i = 0;
@@ -153,7 +157,6 @@ public class Polynomial implements IPolynomialSolver {
 				result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			}
 		}
-		R.clear();
 		return result;
 	}
 	/**.
