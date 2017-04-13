@@ -116,7 +116,7 @@ public class DoubleLinkedList implements ILinkedList {
 			}
 		}
 	}
-	/** Inserts the specified element at the end of the list. */ //done
+	/** Inserts the specified element at the end of the list. */
 
 	@Override
 	public void add(final Object element) {
@@ -170,26 +170,26 @@ public class DoubleLinkedList implements ILinkedList {
 		if (index > size || index < 0) {
 			throw null;
 		} else {
-			if (head == null){
+			if (head == null) {
 				throw null;
 			} else {
 				if (index <= (size / 2)) {
 					Node nodeselected = head;
 					for (int i = 0; i < size; i++) {
 						if (i == index) {
-							nodeselected.setdata(element);
-							break;
+						nodeselected.setdata(element);
+						break;
 						}
-						nodeselected = nodeselected.getnext();
+					nodeselected = nodeselected.getnext();
 					}
 				} else {
 					Node nodeselected = tail;
 					for (int i = size - 1; i > 0; i--) {
 						if (i == index) {
-							nodeselected.setdata(element);
-							break;
+						nodeselected.setdata(element);
+						break;
 						}
-						nodeselected = nodeselected.getprev();
+					nodeselected = nodeselected.getprev();
 					}
 				}
 			}
@@ -223,7 +223,7 @@ public class DoubleLinkedList implements ILinkedList {
 /** Removes the element at the specified position in this list. */
 
 	@Override
-	public void remove(final int index) { // optimize how??
+	public void remove(final int index) {
 		Node prevnode = head;
 		if (index > size || index < 0) {
 			throw null;
@@ -247,7 +247,7 @@ public class DoubleLinkedList implements ILinkedList {
 					if (i == index) {
 						Node nodetoremove = prevnode;
 						prevnode = prevnode.getprev();
-						Node nextnode = nodetoremove.getnext();
+					Node nextnode = nodetoremove.getnext();
 						prevnode.setnext(nextnode);
 						if (nextnode != null) {
 						nextnode.setprev(prevnode);
