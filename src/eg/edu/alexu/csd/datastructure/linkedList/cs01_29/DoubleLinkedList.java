@@ -76,10 +76,11 @@ public class DoubleLinkedList implements ILinkedList {
 			else {
 				for (int i = 0; i < size; i++) {
 					if (i == index - 1) {
-						Node temp = prevnode.getnext();
+						Node nextnode = prevnode.getnext();
 						prevnode.setnext(nodetoadd);
 						nodetoadd.setprev(prevnode);
-						nodetoadd.setnext(temp);
+						nodetoadd.setnext(nextnode);
+						nextnode.setprev(nodetoadd);
 						size++;
 						break;
 					}
