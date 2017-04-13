@@ -75,6 +75,7 @@ public class DoubleLinkedList implements ILinkedList {
 		if (nodetoadd.getnext() == null) {
 			tail = nodetoadd;
 		}
+		return;
 	}
 	/** Inserts the specified element at the end of the list. */ //done
 
@@ -82,7 +83,6 @@ public class DoubleLinkedList implements ILinkedList {
 	public void add(Object element) {
 		Node nodetoadd = new Node(null, element, null);
 		Node prevnode = head;
-		int i = 0;
 		if (size == 0){
 			head = nodetoadd;
 			tail = nodetoadd;
@@ -94,11 +94,12 @@ public class DoubleLinkedList implements ILinkedList {
 			tail.setprev(prevnode);
 			size++;
 		}
+		return;
 	}
 /** Returns the element at the specified position in this list. */
 	@Override
 	public Object get(int index) {
-		if (index >= size) {
+		if (index >= size || index < 0) {
 			return null;
 		}
 		Node nodeselected;
@@ -112,7 +113,7 @@ public class DoubleLinkedList implements ILinkedList {
 			}
 		} else {
 			nodeselected = tail;
-			for (int i = size-1; i > 0; i--) {
+			for (int i = size - 1; i >= 0; i--) {
 				if (i == index) {
 					break;
 				}
@@ -138,7 +139,7 @@ public class DoubleLinkedList implements ILinkedList {
 			}
 		} else {
 			Node nodeselected = tail;
-			for (int i = size-1; i > 0; i--) {
+			for (int i = size - 1; i > 0; i--) {
 				if (i == index) {
 					nodeselected.setdata(element);
 					break;
@@ -146,6 +147,7 @@ public class DoubleLinkedList implements ILinkedList {
 				nodeselected = nodeselected.getprev();
 			}
 		}
+		return;
 	}
 
 /** Removes all of the elements from this list. */
@@ -157,6 +159,7 @@ public class DoubleLinkedList implements ILinkedList {
 		while (size != 0) {
 			temp = node.getnext();
 			node.setnext(null);
+			node = temp;
 			size--;
 		}
 		head = null;
@@ -184,12 +187,17 @@ public class DoubleLinkedList implements ILinkedList {
 			}
 			head = nextnode;
 			size--;
+		} else if (index == (size - 1)) {
+			prevnode = tail.getprev();
+			prevnode.setnext(null);
+			tail.setprev(null);
+			tail = prevnode;
+			size--;
 		} else {
 			for (int i = 0; i < size; i++) {
 				if (i == index) {
 					Node nodetoremove = prevnode;
 					prevnode = prevnode.getprev();
-					tail = prevnode;
 					Node nextnode = nodetoremove.getnext();
 					prevnode.setnext(nextnode);
 					if (nextnode != null) {
@@ -203,6 +211,7 @@ public class DoubleLinkedList implements ILinkedList {
 				prevnode = prevnode.getnext();
 			}
 		}
+		return;
 	}
 	/** Returns the number of elements in this list. */
 
