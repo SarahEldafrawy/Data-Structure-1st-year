@@ -92,28 +92,27 @@ public class DoubleLinkedList implements ILinkedList {
 	public void add(final int index, final Object element) {
 		if (index > size || index < 0) {
 			throw null;
+		}
+		Node prevnode = head;
+		Node nodetoadd = new Node(null, element, null);
+		if (size == 0) {
+			head = nodetoadd;
+			size++;
 		} else {
-			Node prevnode = head;
-			Node nodetoadd = new Node(null, element, null);
-			if (size == 0) {
-				head = nodetoadd;
-				size++;
-			} else {
-				for (int i = 0; i < size; i++) {
-					if (i == index - 1) {
-						Node temp = prevnode.getnext();
-						prevnode.setnext(nodetoadd);
-						nodetoadd.setprev(prevnode);
-						nodetoadd.setnext(temp);
-						size++;
-						break;
-					}
-					prevnode = prevnode.getnext();
+			for (int i = 0; i < size; i++) {
+				if (i == index - 1) {
+					Node temp = prevnode.getnext();
+					prevnode.setnext(nodetoadd);
+					nodetoadd.setprev(prevnode);
+					nodetoadd.setnext(temp);
+					size++;
+					break;
 				}
+				prevnode = prevnode.getnext();
 			}
-			if (nodetoadd.getnext() == null) {
-				tail = nodetoadd;
-			}
+		}
+		if (nodetoadd.getnext() == null) {
+			tail = nodetoadd;
 		}
 	}
 	/** Inserts the specified element at the end of the list. */
@@ -228,38 +227,37 @@ public class DoubleLinkedList implements ILinkedList {
 		if (index >= size || index < 0) {
 			throw null;
 		}
-			if (index == 0) {
-				Node nextnode = prevnode.getnext();
-				prevnode.setnext(null);
-				if (nextnode != null) {
-					nextnode.setprev(null);
-				}
-				head = nextnode;
-				size--;
-			} else if (index == (size - 1)) {
-				prevnode = tail.getprev();
-				prevnode.setnext(null);
-				tail.setprev(null);
-				tail = prevnode;
-				size--;
-			} else {
-				for (int i = 0; i < size; i++) {
-					if (i == index) {
-						Node nodetoremove = prevnode;
-						prevnode = prevnode.getprev();
+		if (index == 0) {
+			Node nextnode = prevnode.getnext();
+			prevnode.setnext(null);
+			if (nextnode != null) {
+				nextnode.setprev(null);
+			}
+			head = nextnode;
+			size--;
+		} else if (index == (size - 1)) {
+			prevnode = tail.getprev();
+			prevnode.setnext(null);
+			tail.setprev(null);
+			tail = prevnode;
+			size--;
+		} else {
+			for (int i = 0; i < size; i++) {
+				if (i == index) {
+					Node nodetoremove = prevnode;
+					prevnode = prevnode.getprev();
 					Node nextnode = nodetoremove.getnext();
-						prevnode.setnext(nextnode);
-						if (nextnode != null) {
+					prevnode.setnext(nextnode);
+					if (nextnode != null) {
 						nextnode.setprev(prevnode);
-						}
-						nodetoremove.setnext(null);
-						nodetoremove.setprev(null);
-						size--;
-						break;
 					}
-					prevnode = prevnode.getnext();
+					nodetoremove.setnext(null);
+					nodetoremove.setprev(null);
+					size--;
+					break;
 				}
-		
+				prevnode = prevnode.getnext();
+				}
 		}
 	}
 	/** Returns the number of elements in this list. */
