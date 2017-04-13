@@ -298,7 +298,7 @@ public class Polynomial implements IPolynomialSolver {
 		} else if (poly1 == 'C') {
 			X = C;
 		} else {
-			throw new RuntimeException();
+			throw null;
 		}
 		if (poly2 == 'A') {
 			Y = A;
@@ -307,7 +307,7 @@ public class Polynomial implements IPolynomialSolver {
 		} else if (poly2 == 'C') {
 			Y = C;
 		} else {
-			throw new RuntimeException();
+			throw null;
 		}
 
 		if (Y.size() == 0 && X.size() == 0) {
