@@ -142,7 +142,7 @@ public class Polynomial implements IPolynomialSolver {
 		} else if (poly == 'C') {
 			X = C;
 		} else {
-			return null;
+			return 0;
 		}
 		float result = 0;
 		int size = X.size();
