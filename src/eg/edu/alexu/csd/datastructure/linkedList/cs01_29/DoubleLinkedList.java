@@ -80,7 +80,9 @@ public class DoubleLinkedList implements ILinkedList {
 						prevnode.setnext(nodetoadd);
 						nodetoadd.setprev(prevnode);
 						nodetoadd.setnext(nextnode);
+						if (nextnode != null){
 						nextnode.setprev(nodetoadd);
+						}
 						size++;
 						break;
 					}
