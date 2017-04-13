@@ -229,7 +229,7 @@ public class DoubleLinkedList implements ILinkedList {
 	public void remove(final int index) {
 		Node prevnode = head;
 		if (index >= size || index < 0) {
-			return;
+			throw null;
 		}
 		if (index == 0) {
 			Node nextnode = prevnode.getnext();
