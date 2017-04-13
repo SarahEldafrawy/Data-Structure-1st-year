@@ -90,7 +90,7 @@ public class DoubleLinkedList implements ILinkedList {
 	*/
 	@Override
 	public void add(final int index, final Object element) {
-		if (index > size || index < 0) {
+		if (index >= size || index < 0) {
 			throw null;
 		} else {
 			Node prevnode = head;
@@ -137,7 +137,7 @@ public class DoubleLinkedList implements ILinkedList {
 /** Returns the element at the specified position in this list. */
 	@Override
 	public Object get(final int index) {
-		if (index > size || index < 0) {
+		if (index >= size || index < 0) {
 			throw null;
 		} else {
 			Node nodeselected;
@@ -167,7 +167,7 @@ public class DoubleLinkedList implements ILinkedList {
 	*/
 	@Override
 	public void set(final int index, final Object element) {
-		if (index > size || index < 0) {
+		if (index >= size || index < 0) {
 			throw null;
 		} else {
 			if (head == null) {
@@ -225,7 +225,7 @@ public class DoubleLinkedList implements ILinkedList {
 	@Override
 	public void remove(final int index) {
 		Node prevnode = head;
-		if (index > size || index < 0) {
+		if (index >= size || index < 0) {
 			throw null;
 		} else {
 			if (index == 0) {
