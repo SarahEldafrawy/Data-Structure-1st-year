@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 /**
  * @author welcome
@@ -8,60 +8,96 @@
 package eg.edu.alexu.csd.datastructure.linkedList.cs01_29;
 
 import eg.edu.alexu.csd.datastructure.linkedList.ILinkedList;
-
+/**
+ */
 public class DoubleLinkedList implements ILinkedList {
 
+	/**
+	 */
 	class Node {
+		/**
+		 */
 		private Object data;
+		/**
+		 */
 		private Node next;
+		/**
+		 */
 		private Node prev;
 
+		/**
+		*/
 		public Node() {
 			data = null;
 			next = null;
 			prev = null;
 		}
+		/**@param p for previous
+		 * @param d for data
+		 * @param n for next
+		*/
 		public Node(final Node p, final Object d, final Node n) {
 			data = d;
 			next = n;
 			prev = p;
 		}
+		/**
+		 * @param n for next
+		*/
 		public void setnext(final Node n) {
 			next = n;
 		};
+		/**
+		 * * @param n for next
+		*/
 		public void setprev(final Node n) {
 			prev = n;
 		};
+		/**
+		* @param d for data
+		*/
 		public void setdata(final Object d) {
 			data = d;
 		};
+		/**
+		 * @return next node
+		*/
 		public Node getnext() {
 			return next;
 		};
+		/**
+		 * @return previous node
+		*/
 		public Node getprev() {
 			return prev;
 		};
+		/**
+		 * @return data
+		*/
 		public Object getdata() {
 			return data;
 	}
 	}
-	private Node head;
-	private Node tail;
+	/**
+	 */
+	private Node head, tail;
+	/**
+	 */
 	private int size = 0;
 
 	/**
 	* Inserts a specified element at the specified position in the list.
 	*/  //done
 	@Override
-	public void add(int index, Object element) {//optimize how??
+	public void add(final int index, final Object element) {
 		Node prevnode = head;
 		Node nodetoadd = new Node(null, element, null);
-		if (size == 0){
+		if (size == 0) {
 			head = nodetoadd;
 			size++;
 		} else {
 			for (int i = 0; i < size; i++) {
-				if (i == index-1) {
+				if (i == index - 1) {
 					Node temp = prevnode.getnext();
 					prevnode.setnext(nodetoadd);
 					nodetoadd.setprev(prevnode);
@@ -80,10 +116,10 @@ public class DoubleLinkedList implements ILinkedList {
 	/** Inserts the specified element at the end of the list. */ //done
 
 	@Override
-	public void add(Object element) {
+	public void add(final Object element) {
 		Node nodetoadd = new Node(null, element, null);
 		Node prevnode = head;
-		if (size == 0){
+		if (size == 0) {
 			head = nodetoadd;
 			tail = nodetoadd;
 			size++;
@@ -98,7 +134,7 @@ public class DoubleLinkedList implements ILinkedList {
 	}
 /** Returns the element at the specified position in this list. */
 	@Override
-	public Object get(int index) {
+	public Object get(final int index) {
 		if (index >= size || index < 0) {
 			return null;
 		}
@@ -127,7 +163,7 @@ public class DoubleLinkedList implements ILinkedList {
 	* the specified element.
 	*/
 	@Override
-	public void set(int index, Object element) {
+	public void set(final int index, final Object element) {
 		if (index <= (size / 2)) {
 			Node nodeselected = head;
 			for (int i = 0; i < size; i++) {
@@ -163,6 +199,7 @@ public class DoubleLinkedList implements ILinkedList {
 			size--;
 		}
 		head = null;
+		return;
 	}
 
 /** Returns true if this list contains no elements. */
@@ -177,7 +214,7 @@ public class DoubleLinkedList implements ILinkedList {
 /** Removes the element at the specified position in this list. */
 
 	@Override
-	public void remove(int index) { // optimize how??
+	public void remove(final int index) { // optimize how??
 		Node prevnode = head;
 		if (index == 0) {
 			Node nextnode = prevnode.getnext();
@@ -224,7 +261,7 @@ public class DoubleLinkedList implements ILinkedList {
 	* fromIndex and toIndex, inclusively.
 	*/
 	@Override
-	public ILinkedList sublist( int fromIndex, int toIndex) {
+	public ILinkedList sublist(final int fromIndex, final int toIndex) {
 		DoubleLinkedList list = new DoubleLinkedList();
 		Node pointNode = head;
 		int count = 0;
@@ -249,7 +286,7 @@ public class DoubleLinkedList implements ILinkedList {
 	* as the specified element.
 	*/
 	@Override
-	public boolean contains( Object o) {
+	public boolean contains(final Object o) {
 		Node nodeselected = head;
 		for (int i = 0; i < size; i++) {
 			if (nodeselected.getdata().equals(o)) {
