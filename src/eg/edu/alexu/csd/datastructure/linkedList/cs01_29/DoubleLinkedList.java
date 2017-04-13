@@ -136,7 +136,7 @@ public class DoubleLinkedList implements ILinkedList {
 	@Override
 	public Object get(final int index) {
 		if (index >= size || index < 0) {
-			return null;
+			throw null;
 		}
 		Node nodeselected;
 		if (index < (size / 2)) {
@@ -149,7 +149,7 @@ public class DoubleLinkedList implements ILinkedList {
 			}
 		} else {
 			nodeselected = tail;
-			for (int i = size - 1; i >= 0; i--) {
+			for (int i = size - 1; i >= (size / 2); i--) {
 				if (i == index) {
 					break;
 				}
