@@ -1,83 +1,51 @@
 /**
  *
  */
-/**
- * @author welcome
- *
- */
 package eg.edu.alexu.csd.datastructure.linkedList.cs01_29;
 
-import eg.edu.alexu.csd.datastructure.linkedList.ILinkedList;
 /**
+ * @author Personal
+ *
  */
+import eg.edu.alexu.csd.datastructure.linkedList.ILinkedList;
+
 public class DoubleLinkedList implements ILinkedList {
 
-	/**
-	 */
 	class Node {
-		/**
-		 */
 		private Object data;
-		/**
-		 */
 		private Node next;
-		/**
-		 */
 		private Node prev;
 
-		/**
-		*/
 		public Node() {
 			data = null;
 			next = null;
 			prev = null;
 		}
-		/**@param p for previous
-		 * @param d for data
-		 * @param n for next
-		*/
 		public Node(final Node p, final Object d, final Node n) {
 			data = d;
 			next = n;
 			prev = p;
 		}
-		/**
-		 * @param n for next
-		*/
 		public void setnext(final Node n) {
 			next = n;
 		};
-		/**
-		 * * @param n for next
-		*/
 		public void setprev(final Node n) {
 			prev = n;
 		};
-		/**
-		* @param d for data
-		*/
 		public void setdata(final Object d) {
 			data = d;
 		};
-		/**
-		 * @return next node
-		*/
 		public Node getnext() {
 			return next;
 		};
-		/**
-		 * @return previous node
-		*/
 		public Node getprev() {
 			return prev;
 		};
-		/**
-		 * @return data
-		*/
 		public Object getdata() {
 			return data;
+		}
 	}
-	}
+
 	/**
 	 */
 	private Node head, tail;
@@ -92,31 +60,35 @@ public class DoubleLinkedList implements ILinkedList {
 	public void add(final int index, final Object element) {
 		if (index > size || index < 0) {
 			throw null;
-		}
-		Node prevnode = head;
-		Node nodetoadd = new Node(null, element, null);
-		if (size == 0) {
-			head = nodetoadd;
-			size++;
-		} else if (index == 0) {
-			nodetoadd.setnext(head);
-			head.setprev(nodetoadd);
-			head = nodetoadd;
 		} else {
-			for (int i = 0; i < size; i++) {
-				if (i == index - 1) {
-					Node temp = prevnode.getnext();
-					prevnode.setnext(nodetoadd);
-					nodetoadd.setprev(prevnode);
-					nodetoadd.setnext(temp);
-					size++;
-					break;
-				}
-				prevnode = prevnode.getnext();
+			Node prevnode = head;
+			Node nodetoadd = new Node(null, element, null);
+			if (size == 0) {
+				head = nodetoadd;
+				size++;
 			}
-		}
-		if (nodetoadd.getnext() == null) {
-			tail = nodetoadd;
+			else if (index == 0) {
+				nodetoadd.setnext(head);
+				head.setprev(nodetoadd);
+				head = nodetoadd;
+				size++;
+			}
+			else {
+				for (int i = 0; i < size; i++) {
+					if (i == index - 1) {
+						Node temp = prevnode.getnext();
+						prevnode.setnext(nodetoadd);
+						nodetoadd.setprev(prevnode);
+						nodetoadd.setnext(temp);
+						size++;
+						break;
+					}
+					prevnode = prevnode.getnext();
+				}
+			}
+			if (nodetoadd.getnext() == null) {
+				tail = nodetoadd;
+			}
 		}
 	}
 	/** Inserts the specified element at the end of the list. */
@@ -141,7 +113,7 @@ public class DoubleLinkedList implements ILinkedList {
 	@Override
 	public Object get(final int index) {
 		if (index >= size || index < 0) {
-			 throw null;
+			throw null;
 		} else {
 			Node nodeselected;
 			if (index < (size / 2)) {
@@ -230,38 +202,39 @@ public class DoubleLinkedList implements ILinkedList {
 		Node prevnode = head;
 		if (index >= size || index < 0) {
 			throw null;
-		}
-		if (index == 0) {
-			Node nextnode = prevnode.getnext();
-			prevnode.setnext(null);
-			if (nextnode != null) {
-				nextnode.setprev(null);
-			}
-			head = nextnode;
-			size--;
-		} else if (index == (size - 1)) {
-			prevnode = tail.getprev();
-			prevnode.setnext(null);
-			tail.setprev(null);
-			tail = prevnode;
-			size--;
 		} else {
-			for (int i = 0; i < size; i++) {
-				if (i == index) {
-					Node nodetoremove = prevnode;
-					prevnode = prevnode.getprev();
+			if (index == 0) {
+				Node nextnode = prevnode.getnext();
+				prevnode.setnext(null);
+				if (nextnode != null) {
+					nextnode.setprev(null);
+				}
+				head = nextnode;
+				size--;
+			} else if (index == (size - 1)) {
+				prevnode = tail.getprev();
+				prevnode.setnext(null);
+				tail.setprev(null);
+				tail = prevnode;
+				size--;
+			} else {
+				for (int i = 0; i < size; i++) {
+					if (i == index) {
+						Node nodetoremove = prevnode;
+						prevnode = prevnode.getprev();
 					Node nextnode = nodetoremove.getnext();
-					prevnode.setnext(nextnode);
-					if (nextnode != null) {
+						prevnode.setnext(nextnode);
+						if (nextnode != null) {
 						nextnode.setprev(prevnode);
+						}
+						nodetoremove.setnext(null);
+						nodetoremove.setprev(null);
+						size--;
+						break;
 					}
-					nodetoremove.setnext(null);
-					nodetoremove.setprev(null);
-					size--;
-					break;
+					prevnode = prevnode.getnext();
 				}
-				prevnode = prevnode.getnext();
-				}
+			}
 		}
 	}
 	/** Returns the number of elements in this list. */
@@ -309,5 +282,12 @@ public class DoubleLinkedList implements ILinkedList {
 			nodeselected = nodeselected.getnext();
 		}
 		return false;
+	}
+	public void print() {
+		Node newNode = head;
+		while(newNode != null) {
+			System.out.print(newNode.getdata());
+				newNode = newNode.getnext();
+		}
 	}
 }
