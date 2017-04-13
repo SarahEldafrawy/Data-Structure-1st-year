@@ -137,7 +137,7 @@ public class DoubleLinkedList implements ILinkedList {
 /** Returns the element at the specified position in this list. */
 	@Override
 	public Object get(final int index) {
-		if (index >= size || index < 0) {
+		if (index > size || index < 0) {
 			throw null;
 		} else {
 			Node nodeselected;
