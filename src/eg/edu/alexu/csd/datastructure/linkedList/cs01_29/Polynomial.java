@@ -153,6 +153,7 @@ public class Polynomial implements IPolynomialSolver {
 				result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			}
 		}
+		R.clear();
 		return result;
 	}
 	/**.
