@@ -168,7 +168,7 @@ public class DoubleLinkedList implements ILinkedList {
 	@Override
 	public void set(final int index, final Object element) {
 		if (index >= size || index < 0) {
-			throw null;
+			return;
 		} else {
 			if (head == null) {
 				throw null;
