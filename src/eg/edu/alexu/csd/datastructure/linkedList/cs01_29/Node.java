@@ -15,9 +15,9 @@ public class Node {
 	 */
 	public Node next = null;
 	/**
-	 * @param value for data
+	 * @param values for data
 	 */
-	public Node(final Object value) {
-			this.value = value;
+	public Node(final Object values) {
+			this.value = values;
 	}
 }
