@@ -71,19 +71,19 @@ public class LinkedListTest {
 	/**
 	 * change a value of a node.
 	 */
-	@Test
+	@Test(expected = Exception.class)
 	public void changeNodeValue() {
 		ILinkedList list = new DoubleLinkedList();
 		list.add(0, 1);
 		list.add(1, 3);
 		list.add(2, 3);
 		list.add(3, 4);
-		list.add(4, 5);
+		list.add(4, 4);
 
 		list.set(1, 2);
 		Assert.assertEquals(2, list.get(1));
 
-		list.set(7, 2);
+		list.set(7, 5);
 		for (int i = 0; i < 5; i++) {
 			Assert.assertEquals(i + 1, list.get(i));
 		}
@@ -166,7 +166,7 @@ public class LinkedListTest {
 	/**
 	 * Remove a non-existing Node.
 	 */
-	@Test
+	@Test(expected = Exception.class)
 	public void removeNENode() { // NE = Non-Existing
 		ILinkedList list = new DoubleLinkedList();
 		list.add(0, 1);
@@ -216,7 +216,7 @@ public class LinkedListTest {
 	/**
 	 * Choosing sublist out of the boundaries of original list.
 	 */
-	@Test
+	@Test(expected = Exception.class)
 	public void getNode() { // OFB = Out of Boundaries
 		ILinkedList list = new DoubleLinkedList();
 		list.add(0, 1);
@@ -248,7 +248,7 @@ public class LinkedListTest {
 	/**
 	 * Clear the elements of the list Assure that the list is Empty.
 	 */
-	@Test
+	@Test(expected = Exception.class)
 	public void clearList() {
 		ILinkedList list = new DoubleLinkedList();
 		list.add(0, 1);
@@ -306,7 +306,7 @@ public class LinkedListTest {
 	/**
 	 * Choosing sublist out of the boundaries of original list.
 	 */
-	@Test
+	@Test(expected = Exception.class)
 	public void subListOFB() {
 		ILinkedList list = new DoubleLinkedList();
 		list.add(0, 1);
