@@ -5,7 +5,7 @@ import java.util.*;
 import eg.edu.alexu.csd.datastructure.hangman.IHangman;
 import java.util.Date;
 
-public class hangman implements IHangman {
+public class Hangman implements IHangman {
 	
 	public String[] readFromFile() throws FileNotFoundException{
 		List<String> LinesInTheFile = new ArrayList<String>();
