@@ -2,9 +2,15 @@ package eg.edu.alexu.csd.datastructure.hangman.cs29;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
+/**
+ */
 class Main {
-	public static void main(final String[] args) throws FileNotFoundException {
+	/**
+	 * @param args for arguments?!
+	 * @throws FileNotFoundException for empty file
+	 */
+	public static void main(final String[] args)
+			throws FileNotFoundException {
 
 		Scanner in = new Scanner(System.in);
 		Hangman x = new Hangman();
@@ -13,23 +19,23 @@ class Main {
 		x.setDictionary(words);
 		String secretword = x.selectRandomSecretWord();
 		System.out.println("Enter Max Wrong Guesses");
-		int MaxTries = in.nextInt();
-		x.setMaxWrongGuesses(MaxTries);
+		int maxTries = in.nextInt();
+		x.setMaxWrongGuesses(maxTries);
 		int winner = 0;
 		char ch;
-		String StringDisplayed = x.guess(null);
-		while (StringDisplayed != null) {
-			System.out.println(StringDisplayed);
+		String stringDisplayed = x.guess(null);
+		while (stringDisplayed != null) {
+			System.out.println(stringDisplayed);
 			ch = in.next().charAt(0);
-			StringDisplayed = x.guess(ch);
-			if (StringDisplayed != null && StringDisplayed.indexOf('-') == -1) {
+			stringDisplayed = x.guess(ch);
+	if (stringDisplayed != null && stringDisplayed.indexOf('-') == -1) {
 				winner = 1;
 				break;
 			}
 		}
 		in.close();
 		if (winner == 1) {
-			System.out.println(StringDisplayed);
+			System.out.println(stringDisplayed);
 			System.out.println("You Won!!");
 		} else {
 			System.out.println("Try Again");
