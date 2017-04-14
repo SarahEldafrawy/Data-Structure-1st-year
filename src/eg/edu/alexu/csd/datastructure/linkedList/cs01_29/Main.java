@@ -9,19 +9,12 @@ public class Main {
 
 	public static void main(final String[] args) {
 
-		DoubleLinkedList list = new DoubleLinkedList();
-		list.add(0, 1);
-		list.add(1, 2);
-		list.add(2, 3);
-		list.add(3, 4);
-		list.add(4, 5);
-
-		list.remove(4);
-		list.remove(3);
-		list.remove(2);
-		list.remove(1);
-		list.remove(0);
-		System.out.println(list.size());
-		System.out.println(list.get(0));
+		Polynomial poly = new Polynomial();
+		int [][]terms1 = {{2,2},{3,1},{-6,0}};
+		int [][]terms2 = {{4,1},{-5,0}};
+		poly.setPolynomial('A', terms2);
+		poly.setPolynomial('B', terms1);
+		int [][] Results = poly.subtract('A', 'B');
+		System.out.println(poly.print('B'));
 	}
 }

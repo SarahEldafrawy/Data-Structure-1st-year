@@ -68,7 +68,6 @@ public class DoubleLinkedList implements ILinkedList {
 			return data;
 		}
 	}
-
 	/**
 	 */
 	private Node head, tail;
@@ -89,21 +88,19 @@ public class DoubleLinkedList implements ILinkedList {
 			if (size == 0) {
 				head = nodetoadd;
 				size++;
-			}
-			else if (index == 0) {
+			} else if (index == 0) {
 				nodetoadd.setnext(head);
 				head.setprev(nodetoadd);
 				head = nodetoadd;
 				size++;
-			}
-			else {
+			} else {
 				for (int i = 0; i < size; i++) {
 					if (i == index - 1) {
 					Node nextnode = prevnode.getnext();
 						prevnode.setnext(nodetoadd);
 						nodetoadd.setprev(prevnode);
 						nodetoadd.setnext(nextnode);
-						if (nextnode != null){
+						if (nextnode != null) {
 						nextnode.setprev(nodetoadd);
 						}
 						size++;
