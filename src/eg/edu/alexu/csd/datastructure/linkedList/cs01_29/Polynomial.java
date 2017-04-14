@@ -192,6 +192,7 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 		} else {
 			throw null;
 		}
+		varR.clear();
 		int size1 = varX.size(), size2 = varY.size(), size;
 		int result;
 		if (size1 < size2) {
