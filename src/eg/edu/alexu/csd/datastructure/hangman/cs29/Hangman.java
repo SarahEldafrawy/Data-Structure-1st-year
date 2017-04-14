@@ -52,8 +52,8 @@ public class Hangman implements IHangman {
 	/**
 	 */
 	@Override
-	public void setDictionary(final String[] words) {
-	    this.words = words;
+	public void setDictionary(final String[] wordsdic) {
+	    this.words = wordsdic;
 	}
 	/**
 	 */
@@ -67,9 +67,10 @@ public class Hangman implements IHangman {
 
 		Date date = new Date();
 		long diff = date.getTime();
-
+		// constant for random function
+		final int q = 5, w = 13, z = 7, f = 3;
 		Random randomNo = new Random();
-		randomNo.setSeed((diff % 5 + 13) % 7 - 3);
+		randomNo.setSeed((diff % q + w) % z - f);
 		int value = randomNo.nextInt(words.length);
 		secretWord = words[value].toUpperCase();
 		stringDisplayed = secretWord;

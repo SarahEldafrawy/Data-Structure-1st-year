@@ -32,11 +32,11 @@ public class Polynomial implements IPolynomialSolver {
 	/**
 	 *
 	 * @param terms array of terms
-	 * @param varX is a double linked list
+	 * @param list is a double linked list
 	 */
-	public void setPoly(final DoubleLinkedList varX, final int[][]terms) {
-		if (!varX.isEmpty()) {
-			varX.clear();
+	public void setPoly(final DoubleLinkedList list, final int[][]terms) {
+		if (!list.isEmpty()) {
+			list.clear();
 		}
 		int max = 0;
 		for (int i = 0; i < terms.length; i++) {
@@ -49,12 +49,12 @@ public class Polynomial implements IPolynomialSolver {
 		}
 		int i = 0;
 		while (i <= max) {
-			varX.add(0);
+			list.add(0);
 			i++;
 		}
 		for (i = 0; i < terms.length; i++) {
 			int index = max - terms[i][1];
-			varX.set(index, (int) varX.get(index) + terms[i][0]);
+			list.set(index, (int) list.get(index) + terms[i][0]);
 		}
 	}
 	/**.
@@ -308,8 +308,6 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			varX = varB;
 		} else if (poly1 == 'C') {
 			varX = varC;
-		} else if (poly1 == 'R') {
-			varX = varR;
 		} else {
 			throw null;
 		}
@@ -319,8 +317,6 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			varY = varB;
 		} else if (poly2 == 'C') {
 			varY = varC;
-		} else if (poly1 == 'R') {
-			varX = varR;
 		} else {
 			throw null;
 		}
