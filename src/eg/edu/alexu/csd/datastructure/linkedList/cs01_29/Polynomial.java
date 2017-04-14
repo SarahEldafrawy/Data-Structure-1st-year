@@ -127,8 +127,6 @@ public class Polynomial implements IPolynomialSolver {
 			X = B;
 		} else if (poly == 'C') {
 			X = C;
-		} else {
-			throw new RuntimeException();
 		}
 
 		X.clear();
