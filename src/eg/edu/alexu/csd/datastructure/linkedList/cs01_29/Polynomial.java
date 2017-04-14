@@ -251,6 +251,10 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 	*/
 	@Override
 	public int[][] subtract(final char poly1, final char poly2) {
+		if (poly1 == poly2) {
+			int[][] arr = {{0, 0}};
+			return arr;
+		}
 		if (poly1 == 'A') {
 			varX = varA;
 		} else if (poly1 == 'B') {
