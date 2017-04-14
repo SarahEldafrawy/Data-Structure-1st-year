@@ -298,6 +298,8 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			X = B;
 		} else if (poly1 == 'C') {
 			X = C;
+		} else {
+			return null;
 		}
 		if (poly2 == 'A') {
 			Y = A;
@@ -305,6 +307,8 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			Y = B;
 		} else if (poly2 == 'C') {
 			Y = C;
+		} else {
+			return null;
 		}
 
 		if (Y.size() == 0 && X.size() == 0) {
