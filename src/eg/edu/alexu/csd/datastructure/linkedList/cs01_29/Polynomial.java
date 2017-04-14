@@ -81,7 +81,7 @@ public class Polynomial implements IPolynomialSolver {
 		} else if (poly == 'C') {
 			X = C;
 		} else {
-			throw null;
+			throw new RuntimeException();
 		}
 		int size = X.size();
 		if (X.size() == 0) {
