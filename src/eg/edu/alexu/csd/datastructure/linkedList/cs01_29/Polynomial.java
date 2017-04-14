@@ -33,7 +33,7 @@ public class Polynomial implements IPolynomialSolver {
 			if (max < terms[i][1]) {
 				max = terms[i][1];
 			}
-			if ((terms[i][1]) < 0 || max != terms[0][1]){
+			if ((terms[i][1]) < 0 || max != terms[0][1]) {
 					throw null;
 			}
 		}
@@ -92,10 +92,10 @@ public class Polynomial implements IPolynomialSolver {
 			size--;
 			if ((int) X.get(i) != 0) {
 				if (((int) X.get(i) != 1 || size == 0)
-						&& ((int) X.get(i) < 0 && size != 0)) {
-					result += (int) X.get(i) + "X^" + (X.size() - 1 - i);
+				&& ((int) X.get(i) < 0 && size != 0)) {
+			result += (int) X.get(i) + "X^" + (X.size() - 1 - i);
 				} else if ((int) X.get(i) > 1 && size != 0) {
-					result += "+" + (int) X.get(i) + "X^" + (X.size() - 1 - i);
+		result += "+" + (int) X.get(i) + "X^" + (X.size() - 1 - i);
 				} else if ((int) X.get(i) == 1 && size != 0) {
 					result += "+" + "X";
 				} else if (size == 0) {
@@ -154,7 +154,7 @@ public class Polynomial implements IPolynomialSolver {
 		int size = X.size();
 		if (size != 0) {
 			for (int i = 1; i <= size; i++) {
-				result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
+result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			}
 		}
 		return result;
@@ -320,6 +320,7 @@ public class Polynomial implements IPolynomialSolver {
 		}
 		int rsize = Y.size() + X.size() - 1;
 		int i = 0;
+		R.clear();
 		while (i <= rsize - 1) {
 			R.add(0);
 			i++;
@@ -338,19 +339,19 @@ public class Polynomial implements IPolynomialSolver {
 		for (i = 1; i <= maxSize; i++) {
 			for (int j = 1; j <= minSize; j++) {
 				if (xIsbigger) {
-					result = (int) X.get(i - 1) * (int) Y.get(j - 1);
-					int index = (i + j + R.size() - 2) - R.size();
-					if (result != 0 && (int) R.get(index) == 0) {
+			result = (int) X.get(i - 1) * (int) Y.get(j - 1);
+				int index = (i + j + R.size() - 2) - R.size();
+				if (result != 0 && (int) R.get(index) == 0) {
 						arrayLen++;
 					}
-					R.set(index, (int) R.get(index) + result);
+				R.set(index, (int) R.get(index) + result);
 				} else {
-					result = (int) Y.get(i - 1) * (int) X.get(j - 1);
-					int index = (i + j + R.size() - 2) - R.size();
-					if (result != 0 && (int) R.get(index) == 0) {
+			result = (int) Y.get(i - 1) * (int) X.get(j - 1);
+				int index = (i + j + R.size() - 2) - R.size();
+				if (result != 0 && (int) R.get(index) == 0) {
 						arrayLen++;
 					}
-					R.set(index, (int) R.get(index) + result);
+				R.set(index, (int) R.get(index) + result);
 				}
 			}
 		}
