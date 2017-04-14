@@ -97,8 +97,8 @@ public class Hangman implements IHangman {
 		if (stringDisplayed != null) {
 		char[] tempStringDisplayed = stringDisplayed.toCharArray();
 			for (int i = 0; i < stringDisplayed.length(); i++) {
-				if (secretWord.charAt(i) == c) {
-					tempStringDisplayed[i] = c;
+				if (secretWord.charAt(i) == ch) {
+					tempStringDisplayed[i] = ch;
 					found = 1;
 				}
 			}
