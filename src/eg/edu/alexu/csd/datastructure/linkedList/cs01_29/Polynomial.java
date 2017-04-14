@@ -80,8 +80,6 @@ public class Polynomial implements IPolynomialSolver {
 			X = B;
 		} else if (poly == 'C') {
 			X = C;
-		} else {
-			return null;
 		}
 		int size = X.size();
 		if (X.size() == 0) {
@@ -155,7 +153,6 @@ public class Polynomial implements IPolynomialSolver {
 result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			}
 		}
-		R.clear();
 		return result;
 	}
 	/**.
@@ -216,7 +213,6 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 				s++;
 			}
 		}
-		R.clear();
 		return results;
 	}
 	/**.
@@ -250,7 +246,7 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			int i = 0, t;
 			while (i < size) {
 				t = (int) Y.get(i);
-				R.add(-t);
+				R.add(-t);  //add a minus
 				i++;
 			}
 			for (i = 0; i < size1; i++) {
@@ -261,7 +257,7 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			size = size1 - size2;
 			int i = 0;
 			while (i < size) {
-				R.add(X.get(i)); //add a minus
+				R.add(X.get(i));
 				i++;
 			}
 			for (i = 0; i < size2; i++) {
@@ -278,7 +274,6 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 				s++;
 			}
 		}
-		R.clear();
 		return results;
 	}
 	/**.
