@@ -296,15 +296,20 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			}
 		}
 		int arrSize = varR.size(), s = 0;
-		int[][]results = new int[arrSize][2];
+		int[][]results1 = new int[arrSize][2];
 		for (int i = 0; i < arrSize; i++) {
 			if ((int) varR.get(i) != 0) {
-				results[s][0] = (int) varR.get(i);
-				results[s][1] = arrSize - i - 1;
+				results1[s][0] = (int) varR.get(i);
+				results1[s][1] = arrSize - i - 1;
 				s++;
 			}
 		}
-		return results;
+		int[][] results2 = new int[s][2];
+		for (int i = 0; i < s; i++) {
+			results2[i][0] = results1[i][0];
+			results2[i][1] = results1[i][1];
+		}
+		return results2;
 	}
 	/**.
 	* Multiply two polynomials
