@@ -84,20 +84,20 @@ public class Hangman implements IHangman {
 	/**
 	 */
 	@Override
-	public String guess(Character c) {
+	public String guess(final Character c) {
 		if (c == null) {
 			return stringDisplayed;
 		}
-
+		char ch = c;
 		if (c >= 'a' && c <= 'z') {
-			c = Character.toUpperCase(c);
+			ch = Character.toUpperCase(c);
 		}
 		int found = 0;
 		if (stringDisplayed != null) {
 		char[] tempStringDisplayed = stringDisplayed.toCharArray();
 			for (int i = 0; i < stringDisplayed.length(); i++) {
-				if (secretWord.charAt(i) == c) {
-					tempStringDisplayed[i] = c;
+				if (secretWord.charAt(i) == ch) {
+					tempStringDisplayed[i] = ch;
 					found = 1;
 				}
 			}
