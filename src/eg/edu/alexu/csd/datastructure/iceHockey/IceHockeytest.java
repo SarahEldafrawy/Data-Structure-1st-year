@@ -6,13 +6,13 @@ import static org.junit.Assert.*;
 import java.awt.Point;
 import org.junit.Test;
 
-import eg.edu.alexu.csd.datastructure.iceHockey.cs29.iceHockey;
+import eg.edu.alexu.csd.datastructure.iceHockey.cs29.IceHockey;
 /**
  */
 public class IceHockeytest {
 	/**
 	 */
-	private iceHockey test = new iceHockey();
+	private IceHockey test = new IceHockey();
 	/**
 	 */
 	@Test

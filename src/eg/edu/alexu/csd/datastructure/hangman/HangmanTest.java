@@ -2,13 +2,13 @@ package eg.edu.alexu.csd.datastructure.hangman;
 
 import org.junit.Assert;
 import org.junit.Test;
-import eg.edu.alexu.csd.datastructure.hangman.cs29.hangman;
+import eg.edu.alexu.csd.datastructure.hangman.cs29.Hangman;
 /**
  */
 public class HangmanTest {
 	/**
 	 */
-	private hangman test = new hangman();
+	private Hangman test = new Hangman();
 	/**
 	 */
 	@Test

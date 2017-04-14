@@ -7,7 +7,7 @@ class Main {
 	public static void main(final String[] args) throws FileNotFoundException {
 
 		Scanner in = new Scanner(System.in);
-		hangman x = new hangman();
+		Hangman x = new Hangman();
 		String[] words;
 		words = x.readFromFile();
 		x.setDictionary(words);
