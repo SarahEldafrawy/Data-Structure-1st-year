@@ -81,11 +81,11 @@ public class Polynomial implements IPolynomialSolver {
 		} else if (poly == 'C') {
 			X = C;
 		} else {
-			throw new RuntimeException();
+			return null;
 		}
 		int size = X.size();
 		if (X.size() == 0) {
-			throw new RuntimeException();
+			return null;
 		}
 		int i = 0;
 		String result = "";
