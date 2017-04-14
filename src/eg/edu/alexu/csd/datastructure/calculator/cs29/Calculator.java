@@ -2,7 +2,7 @@ package eg.edu.alexu.csd.datastructure.calculator.cs29;
 
 import eg.edu.alexu.csd.datastructure.calculator.ICalculator;
 
-public class calculator implements ICalculator {
+public class Calculator implements ICalculator {
 
 	@Override
 	public int add(int x, int y) {

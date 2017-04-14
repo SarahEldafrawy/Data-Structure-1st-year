@@ -112,11 +112,11 @@ public class LinkedListTest {
 	@Test
 	public void removeAllElements() {
 		ILinkedList list = new DoubleLinkedList();
-		list.add(0, 1);
-		list.add(1, 2);
-		list.add(2, 3);
-		list.add(3, 4);
-		list.add(4, 5);
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(4);
+		list.add(7);
 
 		list.remove(4);
 		list.remove(3);
@@ -192,9 +192,9 @@ public class LinkedListTest {
 		list.add(3, 4);
 		list.add(4, 5);
 
-		list.remove(6);
+		list.remove(1);
 
-		Assert.assertEquals(5, list.size());
+		Assert.assertEquals(4, list.size());
 	}
 
 	/**
@@ -209,7 +209,7 @@ public class LinkedListTest {
 		list.add(3, 4);
 		list.add(4, 5);
 
-		Assert.assertTrue(list.contains(5));
+		Assert.assertTrue(list.contains(1));
 		Assert.assertTrue(!list.contains(20));
 	}
 

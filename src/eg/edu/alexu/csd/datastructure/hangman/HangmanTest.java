@@ -3,10 +3,14 @@ package eg.edu.alexu.csd.datastructure.hangman;
 import org.junit.Assert;
 import org.junit.Test;
 import eg.edu.alexu.csd.datastructure.hangman.cs29.hangman;
-
+/**
+ */
 public class HangmanTest {
-
-	hangman test = new hangman();
+	/**
+	 */
+	private hangman test = new hangman();
+	/**
+	 */
 	@Test
 	public void testRandomWord() {
 		IHangman hangman = (IHangman) test;
@@ -24,7 +28,8 @@ public class HangmanTest {
 		}
 		Assert.assertTrue("Message not found", found);
 	}
-
+	/**
+	 */
 	@Test
 	public void testWrongGuess() {
 		IHangman hangman = (IHangman) test;
@@ -34,7 +39,8 @@ public class HangmanTest {
 		hangman.setMaxWrongGuesses(2);
 		Assert.assertEquals("-----", hangman.guess('X'));
 	}
-
+	/**
+	 */
 	@Test
 	public void testCorrectGuess() {
 		IHangman hangman = (IHangman) test;
@@ -44,7 +50,8 @@ public class HangmanTest {
 		hangman.setMaxWrongGuesses(2);
 		Assert.assertEquals("--Y--", hangman.guess('Y'));
 	}
-
+	/**
+	 */
 	@Test
 	public void testCorrectGuessFirstChar() {
 		IHangman hangman = (IHangman) test;
@@ -54,7 +61,8 @@ public class HangmanTest {
 		hangman.setMaxWrongGuesses(2);
 		Assert.assertEquals("E----", hangman.guess('E'));
 	}
-
+	/**
+	 */
 	@Test
 	public void testCorrectGuessLastChar() {
 		IHangman hangman = (IHangman) test;
@@ -64,7 +72,8 @@ public class HangmanTest {
 		hangman.setMaxWrongGuesses(2);
 		Assert.assertEquals("----T", hangman.guess('T'));
 	}
-
+	/**
+	 */
 	@Test
 	public void testCaseSensitiveLower() {
 		IHangman hangman = (IHangman) test;
@@ -74,7 +83,8 @@ public class HangmanTest {
 		hangman.setMaxWrongGuesses(2);
 		Assert.assertTrue("E----".equalsIgnoreCase(hangman.guess('e')));
 	}
-
+	/**
+	 */
 	@Test
 	public void testCaseSensitiveUpper() {
 		IHangman hangman = (IHangman) test;
@@ -84,7 +94,8 @@ public class HangmanTest {
 		hangman.setMaxWrongGuesses(2);
 		Assert.assertTrue("E----".equalsIgnoreCase(hangman.guess('E')));
 	}
-
+	/**
+	 */
 	@Test
 	public void testFailCount() {
 		IHangman hangman = (IHangman) test;
@@ -96,7 +107,7 @@ public class HangmanTest {
 		for (int i = 0; i < max; i++) {
 			String result = hangman.guess('X');
 			if (i < max - 1) {
-				Assert.assertEquals("Invalid Showing of Characters", "-----", result);
+	Assert.assertEquals("Invalid Showing of Characters", "-----", result);
 			} else {
 				Assert.assertNull("Game must end!", result);
 			}

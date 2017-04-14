@@ -1,5 +1,6 @@
 package eg.edu.alexu.csd.datastructure.hangman;
-
+/**
+ */
 public interface IHangman {
 	/**.
 	* Set dictionary words to pick secret words from
