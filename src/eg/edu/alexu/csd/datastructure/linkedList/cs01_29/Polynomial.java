@@ -3,8 +3,6 @@
  */
 package eg.edu.alexu.csd.datastructure.linkedList.cs01_29;
 
-import javax.management.RuntimeErrorException;
-
 import eg.edu.alexu.csd.datastructure.linkedList.IPolynomialSolver;
 
 /**
@@ -12,23 +10,33 @@ import eg.edu.alexu.csd.datastructure.linkedList.IPolynomialSolver;
  *
  */
 public class Polynomial implements IPolynomialSolver {
-
-	private DoubleLinkedList A = new DoubleLinkedList();
-	private DoubleLinkedList B = new DoubleLinkedList();
-	private DoubleLinkedList C = new DoubleLinkedList();
-	private DoubleLinkedList R = new DoubleLinkedList();
-	private DoubleLinkedList X = new DoubleLinkedList();
-	private DoubleLinkedList Y = new DoubleLinkedList();
-
-
+/**
+ *
+ */
+	private DoubleLinkedList varA = new DoubleLinkedList();
+	/**
+	 */
+	private DoubleLinkedList varB = new DoubleLinkedList();
+	/**
+	 */
+	private DoubleLinkedList varC = new DoubleLinkedList();
+	/**
+	 */
+	private DoubleLinkedList varR = new DoubleLinkedList();
+	/**
+	 */
+	private DoubleLinkedList varX = new DoubleLinkedList();
+	/**
+	 */
+	private DoubleLinkedList varY = new DoubleLinkedList();
 	/**
 	 *
-	 * @param X
-	 * @param terms
+	 * @param terms array of terms
+	 * @param varX is a double linked list
 	 */
-	public void setPoly(final DoubleLinkedList X, final int[][]terms) {
-		if (!X.isEmpty()) {
-			X.clear();
+	public void setPoly(final DoubleLinkedList varX, final int[][]terms) {
+		if (!varX.isEmpty()) {
+			varX.clear();
 		}
 		int max = 0;
 		for (int i = 0; i < terms.length; i++) {
@@ -41,15 +49,14 @@ public class Polynomial implements IPolynomialSolver {
 		}
 		int i = 0;
 		while (i <= max) {
-			X.add(0);
+			varX.add(0);
 			i++;
 		}
 		for (i = 0; i < terms.length; i++) {
 			int index = max - terms[i][1];
-			X.set(index, (int) X.get(index) + terms[i][0]);
+			varX.set(index, (int) varX.get(index) + terms[i][0]);
 		}
 	}
-
 	/**.
 	* Set polynomial terms (coefficients & exponents)
 	* @param poly name of the polynomial
@@ -58,11 +65,11 @@ public class Polynomial implements IPolynomialSolver {
 	@Override
 	public void setPolynomial(final char poly, final int[][] terms) {
 		if (poly == 'A') {
-			setPoly(A, terms);
+			setPoly(varA, terms);
 		} else if (poly == 'B') {
-			setPoly(B, terms);
+			setPoly(varB, terms);
 		} else if (poly == 'C') {
-			setPoly(C, terms);
+			setPoly(varC, terms);
 		} else {
 			throw new RuntimeException();
 		}
@@ -75,45 +82,42 @@ public class Polynomial implements IPolynomialSolver {
 	@Override
 	public String print(final char poly) {
 		if (poly == 'A') {
-			X = A;
+			varX = varA;
 		} else if (poly == 'B') {
-			X = B;
+			varX = varB;
 		} else if (poly == 'C') {
-			X = C;
+			varX = varC;
 		} else if (poly == 'R') {
-			X = R;
+			varX = varR;
 		} else {
 			throw null;
 		}
-		int size = X.size();
-		if (X.size() == 0) {
+		int size = varX.size();
+		if (varX.size() == 0) {
 			return null;
 		}
 		int i = 0;
 		String result = "";
-
 		while (size != 0) {
 			size--;
-			if ((int) X.get(i) != 0) {
-				if (((int) X.get(i) != 1 || size == 0)
-				&& ((int) X.get(i) < 0 && size != 0)) {
-			result += (int) X.get(i) + "X^" + (X.size() - 1 - i);
-				} else if ((int) X.get(i) > 1 && size != 0) {
-		result += "+" + (int) X.get(i) + "X^" + (X.size() - 1 - i);
-				} else if ((int) X.get(i) == 1 && size != 0) {
+			if ((int) varX.get(i) != 0) {
+				if (((int) varX.get(i) != 1 || size == 0)
+				&& ((int) varX.get(i) < 0 && size != 0)) {
+		result += (int) varX.get(i) + "X^" + (varX.size() - 1 - i);
+				} else if ((int) varX.get(i) > 1 && size != 0) {
+	result += "+" + (int) varX.get(i) + "X^" + (varX.size() - 1 - i);
+			} else if ((int) varX.get(i) == 1 && size != 0) {
 					result += "+" + "X";
 				} else if (size == 0) {
-					if ((int) X.get(i) > 0) {
-						result += "+" + (int) X.get(i);
+					if ((int) varX.get(i) > 0) {
+					result += "+" + (int) varX.get(i);
 					} else {
-						result += (int) X.get(i);
-
+						result += (int) varX.get(i);
 					}
 				}
 			}
 			i++;
 		}
-
 		return result;
 	}
 	/**.
@@ -122,18 +126,17 @@ public class Polynomial implements IPolynomialSolver {
 	*/
 	@Override
 	public void clearPolynomial(final char poly) {
-
 		if (poly == 'A') {
-			X = A;
+			varX = varA;
 		} else if (poly == 'B') {
-			X = B;
+			varX = varB;
 		} else if (poly == 'C') {
-			X = C;
+			varX = varC;
 		} else {
 			throw null;
 		}
 
-		X.clear();
+		varX.clear();
 	}
 	/**.
 	* Evaluate the polynomial
@@ -144,21 +147,21 @@ public class Polynomial implements IPolynomialSolver {
 	@Override
 	public float evaluatePolynomial(final char poly, final float value) {
 		if (poly == 'A') {
-			X = A;
+			varX = varA;
 		} else if (poly == 'B') {
-			X = B;
+			varX = varB;
 		} else if (poly == 'C') {
-			X = C;
+			varX = varC;
 		} else if (poly == 'R') {
-			X = R;
+			varX = varR;
 		} else {
 			throw null;
 		}
 		float result = 0;
-		int size = X.size();
+		int size = varX.size();
 		if (size != 0) {
 			for (int i = 1; i <= size; i++) {
-result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
+result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			}
 		}
 		return result;
@@ -172,55 +175,53 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 	@Override
 	public int[][] add(final char poly1, final char poly2) {
 		if (poly1 == 'A') {
-			X = A;
+			varX = varA;
 		} else if (poly1 == 'B') {
-			X = B;
+			varX = varB;
 		} else if (poly1 == 'C') {
-			X = C;
+			varX = varC;
 		} else {
 			throw null;
 		}
 		if (poly2 == 'A') {
-			Y = A;
+			varY = varA;
 		} else if (poly2 == 'B') {
-			Y = B;
+			varY = varB;
 		} else if (poly2 == 'C') {
-			Y = C;
+			varY = varC;
 		} else {
 			throw null;
 		}
-
-		int size1 = X.size(), size2 = Y.size(), size;
+		int size1 = varX.size(), size2 = varY.size(), size;
 		int result;
-
 		if (size1 < size2) {
 			size = size2 - size1;
 			int i = 0;
 			while (i < size) {
-				R.add(Y.get(i));
+				varR.add(varY.get(i));
 				i++;
 			}
 			for (i = 0; i < size1; i++) {
-				result = (int) X.get(i) + (int) Y.get(i + size);
-					R.add(result);
+			result = (int) varX.get(i) + (int) varY.get(i + size);
+					varR.add(result);
 			}
 		} else {
 			size = size1 - size2;
 			int i = 0;
 			while (i < size) {
-				R.add(X.get(i));
+				varR.add(varX.get(i));
 				i++;
 			}
 			for (i = 0; i < size2; i++) {
-				result = (int) X.get(i + size) + (int) Y.get(i);
-				R.add(result);
+			result = (int) varX.get(i + size) + (int) varY.get(i);
+				varR.add(result);
 			}
 		}
-		int arrSize = R.size(), s = 0;
+		int arrSize = varR.size(), s = 0;
 		int[][]results = new int[arrSize][2];
 		for (int i = 0; i < arrSize; i++) {
-			if ((int) R.get(i) != 0) {
-				results[s][0] = (int) R.get(i);
+			if ((int) varR.get(i) != 0) {
+				results[s][0] = (int) varR.get(i);
 				results[s][1] = arrSize - i - 1;
 				s++;
 			}
@@ -236,56 +237,55 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 	@Override
 	public int[][] subtract(final char poly1, final char poly2) {
 		if (poly1 == 'A') {
-			X = A;
+			varX = varA;
 		} else if (poly1 == 'B') {
-			X = B;
+			varX = varB;
 		} else if (poly1 == 'C') {
-			X = C;
+			varX = varC;
 		} else {
 			throw null;
 		}
 		if (poly2 == 'A') {
-			Y = A;
+			varY = varA;
 		} else if (poly2 == 'B') {
-			Y = B;
+			varY = varB;
 		} else if (poly2 == 'C') {
-			Y = C;
+			varY = varC;
 		} else {
 			throw null;
 		}
-
-		int size1 = X.size(), size2 = Y.size(), size;
+		int size1 = varX.size(), size2 = varY.size(), size;
 		int result;
 
 		if (size1 < size2) {
 			size = size2 - size1;
 			int i = 0, t;
 			while (i < size) {
-				t = (int) Y.get(i);
-				R.add(-t);  //add a minus
+				t = (int) varY.get(i);
+				varR.add(-t);  //add a minus
 				i++;
 			}
 			for (i = 0; i < size1; i++) {
-				result = (int) X.get(i) - (int) Y.get(i + size);
-					R.add(result);
+			result = (int) varX.get(i) - (int) varY.get(i + size);
+					varR.add(result);
 			}
 		} else {
 			size = size1 - size2;
 			int i = 0;
 			while (i < size) {
-				R.add(X.get(i));
+				varR.add(varX.get(i));
 				i++;
 			}
 			for (i = 0; i < size2; i++) {
-				result = (int) X.get(i + size) - (int) Y.get(i);
-				R.add(result);
+			result = (int) varX.get(i + size) - (int) varY.get(i);
+				varR.add(result);
 			}
 		}
-		int arrSize = R.size(), s = 0;
+		int arrSize = varR.size(), s = 0;
 		int[][]results = new int[arrSize][2];
 		for (int i = 0; i < arrSize; i++) {
-			if ((int) R.get(i) != 0) {
-				results[s][0] = (int) R.get(i);
+			if ((int) varR.get(i) != 0) {
+				results[s][0] = (int) varR.get(i);
 				results[s][1] = arrSize - i - 1;
 				s++;
 			}
@@ -301,41 +301,43 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 	@Override
 	public int[][] multiply(final char poly1, final char poly2) {
 		if (poly1 == 'A') {
-			X = A;
+			varX = varA;
 		} else if (poly1 == 'B') {
-			X = B;
+			varX = varB;
 		} else if (poly1 == 'C') {
-			X = C;
+			varX = varC;
+		} else if (poly1 == 'R') {
+			varX = varR;
 		} else {
 			throw null;
 		}
 		if (poly2 == 'A') {
-			Y = A;
+			varY = varA;
 		} else if (poly2 == 'B') {
-			Y = B;
+			varY = varB;
 		} else if (poly2 == 'C') {
-			Y = C;
+			varY = varC;
+		} else if (poly1 == 'R') {
+			varX = varR;
 		} else {
 			throw null;
 		}
-
-		if (Y.size() == 0 && X.size() == 0) {
+		if (varY.size() == 0 && varX.size() == 0) {
 			return null;
 		}
-		int rsize = Y.size() + X.size() - 1;
+		int rsize = varY.size() + varX.size() - 1;
 		int i = 0;
-		R.clear();
+		varR.clear();
 		while (i <= rsize - 1) {
-			R.add(0);
+			varR.add(0);
 			i++;
 		}
-
 		boolean xIsbigger = false;
-		int maxSize = Y.size();
-		int minSize = X.size();
-		if (X.size() > Y.size()) {
-			maxSize = X.size();
-			minSize = Y.size();
+		int maxSize = varY.size();
+		int minSize = varX.size();
+		if (varX.size() > varY.size()) {
+			maxSize = varX.size();
+			minSize = varY.size();
 			xIsbigger = true;
 		}
 		int arrayLen = 0;
@@ -343,31 +345,29 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 		for (i = 1; i <= maxSize; i++) {
 			for (int j = 1; j <= minSize; j++) {
 				if (xIsbigger) {
-			result = (int) X.get(i - 1) * (int) Y.get(j - 1);
-				int index = (i + j + R.size() - 2) - R.size();
-				if (result != 0 && (int) R.get(index) == 0) {
+			result = (int) varX.get(i - 1) * (int) varY.get(j - 1);
+			int index = (i + j + varR.size() - 2) - varR.size();
+				if (result != 0 && (int) varR.get(index) == 0) {
 						arrayLen++;
 					}
-				R.set(index, (int) R.get(index) + result);
+				varR.set(index, (int) varR.get(index) + result);
 				} else {
-			result = (int) Y.get(i - 1) * (int) X.get(j - 1);
-				int index = (i + j + R.size() - 2) - R.size();
-				if (result != 0 && (int) R.get(index) == 0) {
+			result = (int) varY.get(i - 1) * (int) varX.get(j - 1);
+			int index = (i + j + varR.size() - 2) - varR.size();
+				if (result != 0 && (int) varR.get(index) == 0) {
 						arrayLen++;
 					}
-				R.set(index, (int) R.get(index) + result);
+				varR.set(index, (int) varR.get(index) + result);
 				}
 			}
 		}
-
-
 		int[][] results = new int[arrayLen][2];
 		int j = 0;
-		int exp = R.size() - 1;
+		int exp = varR.size() - 1;
 		i = 0;
 		while (i < arrayLen) {
-			if ((int) R.get(j) != 0) {
-				results[i][0] = (int) R.get(j);
+			if ((int) varR.get(j) != 0) {
+				results[i][0] = (int) varR.get(j);
 				results[i][1] = exp;
 				i++;
 			}
