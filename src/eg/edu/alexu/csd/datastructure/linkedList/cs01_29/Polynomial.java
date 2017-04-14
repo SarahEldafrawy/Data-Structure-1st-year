@@ -31,12 +31,15 @@ public class Polynomial implements IPolynomialSolver {
 	private DoubleLinkedList varY = new DoubleLinkedList();
 	/**
 	 *
-	 * @param terms array of terms
-	 * @param list is a double linked list
+	 * @param terms array of terms.
+	 * @param list is a double linkedlist.
 	 */
 	public void setPoly(final DoubleLinkedList list, final int[][]terms) {
 		if (!list.isEmpty()) {
 			list.clear();
+		}
+		if (terms == null || terms.length == 0) {
+			throw null;
 		}
 		int max = 0;
 		for (int i = 0; i < terms.length; i++) {
@@ -135,7 +138,9 @@ public class Polynomial implements IPolynomialSolver {
 		} else {
 			throw null;
 		}
-
+		if (varX.isEmpty()) {
+			throw new RuntimeException();
+		}
 		varX.clear();
 	}
 	/**.
@@ -152,10 +157,11 @@ public class Polynomial implements IPolynomialSolver {
 			varX = varB;
 		} else if (poly == 'C') {
 			varX = varC;
-		} else if (poly == 'R') {
-			varX = varR;
 		} else {
 			throw null;
+		}
+		if (varX.isEmpty()) {
+			throw new RuntimeException();
 		}
 		float result = 0;
 		int size = varX.size();
@@ -190,6 +196,9 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 		} else if (poly2 == 'C') {
 			varY = varC;
 		} else {
+			throw null;
+		}
+		if (varX.isEmpty() || varY.isEmpty()) {
 			throw null;
 		}
 		varR.clear();
@@ -253,6 +262,9 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 		} else if (poly2 == 'C') {
 			varY = varC;
 		} else {
+			throw null;
+		}
+		if (varX.isEmpty() || varY.isEmpty()) {
 			throw null;
 		}
 		varR.clear();
@@ -320,9 +332,9 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 		} else {
 			throw null;
 		}
-//		if (varY.size() == 0 && varX.size() == 0) {
-//			return null;
-//		}
+		if (varX.isEmpty() || varY.isEmpty()) {
+			throw null;
+		}
 		int rsize = varY.size() + varX.size() - 1;
 		int i = 0;
 		varR.clear();
@@ -380,6 +392,7 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			exp--;
 			j++;
 		}
+
 		return results;
 	}
 }
