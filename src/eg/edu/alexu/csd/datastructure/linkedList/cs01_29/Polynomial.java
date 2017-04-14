@@ -80,8 +80,10 @@ public class Polynomial implements IPolynomialSolver {
 			X = B;
 		} else if (poly == 'C') {
 			X = C;
+		} else if (poly == 'R') {
+			X = R;
 		} else {
-			throw new RuntimeException();
+			return null;
 		}
 		int size = X.size();
 		if (X.size() == 0) {
