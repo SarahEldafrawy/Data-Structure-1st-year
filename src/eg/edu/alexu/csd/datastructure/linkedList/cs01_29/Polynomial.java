@@ -80,6 +80,8 @@ public class Polynomial implements IPolynomialSolver {
 			X = B;
 		} else if (poly == 'C') {
 			X = C;
+		} else {
+			throw null;
 		}
 		int size = X.size();
 		if (X.size() == 0) {
@@ -125,6 +127,8 @@ public class Polynomial implements IPolynomialSolver {
 			X = B;
 		} else if (poly == 'C') {
 			X = C;
+		} else {
+			throw null;
 		}
 
 		X.clear();
