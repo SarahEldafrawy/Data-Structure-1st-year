@@ -364,7 +364,7 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 		int j = 0;
 		int exp = varR.size() - 1;
 		i = 0;
-		while (i < arrayLen) {
+		while (j < arrayLen) {
 			if ((int) varR.get(j) != 0) {
 				results[i][0] = (int) varR.get(j);
 				results[i][1] = exp;
