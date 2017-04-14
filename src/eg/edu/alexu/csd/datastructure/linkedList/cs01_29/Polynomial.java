@@ -3,6 +3,8 @@
  */
 package eg.edu.alexu.csd.datastructure.linkedList.cs01_29;
 
+import javax.management.RuntimeErrorException;
+
 import eg.edu.alexu.csd.datastructure.linkedList.IPolynomialSolver;
 
 /**
@@ -34,7 +36,7 @@ public class Polynomial implements IPolynomialSolver {
 				max = terms[i][1];
 			}
 			if ((terms[i][1]) < 0 || max != terms[0][1]) {
-					throw null;
+					throw new RuntimeException();
 			}
 		}
 		int i = 0;
@@ -79,11 +81,11 @@ public class Polynomial implements IPolynomialSolver {
 		} else if (poly == 'C') {
 			X = C;
 		} else {
-			return null;
+			throw new RuntimeException();
 		}
 		int size = X.size();
 		if (X.size() == 0) {
-			return null;
+			throw new RuntimeException();
 		}
 		int i = 0;
 		String result = "";
@@ -126,7 +128,7 @@ public class Polynomial implements IPolynomialSolver {
 		} else if (poly == 'C') {
 			X = C;
 		} else {
-			throw null;
+			throw new RuntimeException();
 		}
 
 		X.clear();
@@ -148,7 +150,7 @@ public class Polynomial implements IPolynomialSolver {
 		} else if (poly == 'R') {
 			X = R;
 		} else {
-			return 0;
+			throw new RuntimeException();
 		}
 		float result = 0;
 		int size = X.size();
@@ -173,8 +175,6 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			X = B;
 		} else if (poly1 == 'C') {
 			X = C;
-		} else {
-			return null;
 		}
 		if (poly2 == 'A') {
 			Y = A;
@@ -182,8 +182,6 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			Y = B;
 		} else if (poly2 == 'C') {
 			Y = C;
-		} else {
-			return null;
 		}
 
 		int size1 = X.size(), size2 = Y.size(), size;
@@ -247,8 +245,6 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			Y = B;
 		} else if (poly2 == 'C') {
 			Y = C;
-		} else {
-			return null;
 		}
 
 		int size1 = X.size(), size2 = Y.size(), size;
@@ -304,8 +300,6 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			X = B;
 		} else if (poly1 == 'C') {
 			X = C;
-		} else {
-			return null;
 		}
 		if (poly2 == 'A') {
 			Y = A;
@@ -313,12 +307,10 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			Y = B;
 		} else if (poly2 == 'C') {
 			Y = C;
-		} else {
-			return null;
 		}
 
 		if (Y.size() == 0 && X.size() == 0) {
-			return null;
+			throw new RuntimeException();
 		}
 		int rsize = Y.size() + X.size() - 1;
 		int i = 0;
