@@ -302,7 +302,7 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 	*/
 	@Override
 	public int[][] multiply(final char poly1, final char poly2) {
-		if (poly1 == 'A') {
+	/**	if (poly1 == 'A') {
 			varX = varA;
 		} else if (poly1 == 'B') {
 			varX = varB;
@@ -354,7 +354,7 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			result = (int) varY.get(i - 1) * (int) varX.get(j - 1);
 			int index = (i + j + varR.size() - 2) - varR.size();
 				if (result != 0 && (int) varR.get(index) == 0) {
-						arrayLen++;
+						arrayLen--; //// kano++
 					}
 				varR.set(index, (int) varR.get(index) + result);
 				}
@@ -376,5 +376,88 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 		}
 
 		return results;
+		*/
+		
+		if (poly1 == 'A') {
+			varX = varA;
+		} else if (poly1 == 'B') {
+			varX = varB;
+		} else if (poly1 == 'C') {
+			varX = varC;
+		} else {
+			throw null;
+		}
+		if (poly2 == 'A') {
+			varY = varA;
+		} else if (poly2 == 'B') {
+			varY = varB;
+		} else if (poly2 == 'C') {
+			varY = varC;
+		} else {
+			throw null;
+		}
+//		if (varY.size() == 0 && varX.size() == 0) {
+//			return null;
+//		}
+		int rsize = varY.size() + varX.size() - 1;
+		int i = 0;
+		varR.clear();
+		while (i <= rsize - 1) {
+			varR.add(0);
+			i++;
+		}
+		boolean xIsbigger = false;
+		int maxSize = varY.size();
+		int minSize = varX.size();
+		if (varX.size() > varY.size()) {
+			maxSize = varX.size();
+			minSize = varY.size();
+			xIsbigger = true;
+		}
+		int arrayLen = 0;
+		int result = 0;
+		for (i = 1; i <= maxSize; i++) {
+			for (int j = 1; j <= minSize; j++) {
+				if (xIsbigger) {
+			result = (int) varX.get(i - 1) * (int) varY.get(j - 1);
+			int index = (i + j + varR.size() - 2) - varR.size();
+				if (result != 0 && (int) varR.get(index) == 0) {
+						arrayLen++;
+					}
+				int check = result + (int) varR.get(index);
+				if (check == 0 && (int) varR.get(index) != 0) {
+					arrayLen--;
+				}
+				varR.set(index, (int) varR.get(index) + result);
+				} else {
+			result = (int) varY.get(i - 1) * (int) varX.get(j - 1);
+			int index = (i + j + varR.size() - 2) - varR.size();
+				if (result != 0 && (int) varR.get(index) == 0) {
+						arrayLen++;
+					}
+				int check = result + (int) varR.get(index);
+				if (check == 0 && (int) varR.get(index) != 0) {
+					arrayLen--;
+				}
+				varR.set(index, (int) varR.get(index) + result);
+				}
+			}
+		}
+		int[][] results = new int[arrayLen][2];
+		int j = 0;
+		int exp = varR.size() - 1;
+		i = 0;
+		while (j < varR.size()) {
+			if ((int) varR.get(j) != 0) {
+				results[i][0] = (int) varR.get(j);
+				results[i][1] = exp;
+				i++;
+			}
+			exp--;
+			j++;
+		}
+
+		return results;
+		
 	}
 }
