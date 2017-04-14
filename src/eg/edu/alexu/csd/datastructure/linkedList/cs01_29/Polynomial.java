@@ -221,6 +221,7 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 				s++;
 			}
 		}
+		R.clear();
 		return results;
 	}
 	/**.
@@ -286,6 +287,7 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 				s++;
 			}
 		}
+		R.clear();
 		return results;
 	}
 	/**.
