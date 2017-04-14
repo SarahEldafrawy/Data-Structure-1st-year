@@ -1,7 +1,8 @@
 package eg.edu.alexu.csd.datastructure.iceHockey;
-
-public interface IPlayersFinder {
 /**
+ */
+public interface IPlayersFinder {
+/**.
 * Search for players locations at the given photo
 * @param photo
 * Two dimension array of photo contents

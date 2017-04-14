@@ -4,43 +4,66 @@
 package eg.edu.alexu.csd.datastructure.linkedList.cs01_29;
 
 /**
- * @author Personal
- *
  */
 import eg.edu.alexu.csd.datastructure.linkedList.ILinkedList;
-
+/**
+ */
 public class DoubleLinkedList implements ILinkedList {
-
+	/**
+	 */
 	class Node {
+		/**
+		 */
 		private Object data;
+		/**
+		 */
 		private Node next;
+		/**
+		 */
 		private Node prev;
-
+		/**
+		 */
 		public Node() {
 			data = null;
 			next = null;
 			prev = null;
 		}
+		/**@param p for next
+		 * @param d for next
+		 * @param n for next
+		 */
 		public Node(final Node p, final Object d, final Node n) {
 			data = d;
 			next = n;
 			prev = p;
 		}
+		/**@param n for next
+		 */
 		public void setnext(final Node n) {
 			next = n;
 		};
+		/**@param n for next
+		 */
 		public void setprev(final Node n) {
 			prev = n;
 		};
+		/**@param d for next
+		 */
 		public void setdata(final Object d) {
 			data = d;
 		};
+		/**@return next
+		 */
 		public Node getnext() {
 			return next;
 		};
+		/**@return previous
+		 */
 		public Node getprev() {
 			return prev;
 		};
+		/**@return data
+		 */
 		public Object getdata() {
 			return data;
 		}
@@ -76,7 +99,7 @@ public class DoubleLinkedList implements ILinkedList {
 			else {
 				for (int i = 0; i < size; i++) {
 					if (i == index - 1) {
-						Node nextnode = prevnode.getnext();
+					Node nextnode = prevnode.getnext();
 						prevnode.setnext(nodetoadd);
 						nodetoadd.setprev(prevnode);
 						nodetoadd.setnext(nextnode);
@@ -286,9 +309,11 @@ public class DoubleLinkedList implements ILinkedList {
 		}
 		return false;
 	}
+	/**
+	 */
 	public void print() {
 		Node newNode = head;
-		while(newNode != null) {
+		while (newNode != null) {
 			System.out.print(newNode.getdata());
 				newNode = newNode.getnext();
 		}

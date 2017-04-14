@@ -17,7 +17,7 @@ public class SingleLinkedList implements ILinkedList {
 	/**
 	 * list size counter.
 	 */
-	int length = 0;
+	private int length = 0;
 	/**
 	* @param index where to insert.
 	* @param element to insert.
@@ -160,7 +160,7 @@ public class SingleLinkedList implements ILinkedList {
 		return found;
 	}
 	/**
-	* @param formIndex of list.
+	* formIndex of list.
 	* @param toIndex of list.
 	* @return sublist of specified size.
 	*/
