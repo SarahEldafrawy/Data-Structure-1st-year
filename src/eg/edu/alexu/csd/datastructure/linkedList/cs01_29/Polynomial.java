@@ -3,6 +3,10 @@
  */
 package eg.edu.alexu.csd.datastructure.linkedList.cs01_29;
 
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
+
 import eg.edu.alexu.csd.datastructure.linkedList.IPolynomialSolver;
 
 /**
@@ -204,16 +208,23 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 		varR.clear();
 		int size1 = varX.size(), size2 = varY.size(), size;
 		int result;
+		int arrSize = 0;
 		if (size1 < size2) {
 			size = size2 - size1;
 			int i = 0;
 			while (i < size) {
 				varR.add(varY.get(i));
 				i++;
+				if ((int) varR.get(i) != 0) {
+					arrSize++;
+				}
 			}
 			for (i = 0; i < size1; i++) {
 			result = (int) varX.get(i) + (int) varY.get(i + size);
 					varR.add(result);
+					if ((int) varR.get(i) != 0) {
+						arrSize++;
+					}
 			}
 		} else {
 			size = size1 - size2;
@@ -221,18 +232,25 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			while (i < size) {
 				varR.add(varX.get(i));
 				i++;
+				if ((int) varR.get(i) != 0) {
+					arrSize++;
+				}
 			}
 			for (i = 0; i < size2; i++) {
 			result = (int) varX.get(i + size) + (int) varY.get(i);
 				varR.add(result);
+				if ((int) varR.get(i) != 0) {
+					arrSize++;
+				}
 			}
 		}
-		int arrSize = varR.size(), s = 0;
+		int s = 0;
+		int sizeR = varR.size();
 		int[][]results = new int[arrSize][2];
-		for (int i = 0; i < arrSize; i++) {
+		for (int i = 0; i < sizeR; i++) {
 			if ((int) varR.get(i) != 0) {
 				results[s][0] = (int) varR.get(i);
-				results[s][1] = arrSize - i - 1;
+				results[s][1] = arrSize - i;
 				s++;
 			}
 		}
@@ -270,7 +288,7 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 		varR.clear();
 		int size1 = varX.size(), size2 = varY.size(), size;
 		int result;
-
+		int arrSize = 0;
 		if (size1 < size2) {
 			size = size2 - size1;
 			int i = 0, t;
@@ -278,10 +296,16 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 				t = (int) varY.get(i);
 				varR.add(-t);  //add a minus
 				i++;
+				if ((int) varR.get(i) != 0) {
+					arrSize++;
+				}
 			}
 			for (i = 0; i < size1; i++) {
 			result = (int) varX.get(i) - (int) varY.get(i + size);
 					varR.add(result);
+					if ((int) varR.get(i) != 0) {
+						arrSize++;
+					}
 			}
 		} else {
 			size = size1 - size2;
@@ -289,13 +313,19 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			while (i < size) {
 				varR.add(varX.get(i));
 				i++;
+				if ((int) varR.get(i) != 0) {
+					arrSize++;
+				}
 			}
 			for (i = 0; i < size2; i++) {
 			result = (int) varX.get(i + size) - (int) varY.get(i);
 				varR.add(result);
+				if ((int) varR.get(i) != 0) {
+					arrSize++;
+				}
 			}
 		}
-		int arrSize = varR.size(), s = 0;
+		int s = 0;
 		int[][]results = new int[arrSize][2];
 		for (int i = 0; i < arrSize; i++) {
 			if ((int) varR.get(i) != 0) {
