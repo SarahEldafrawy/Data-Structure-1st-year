@@ -178,7 +178,7 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 		} else if (poly1 == 'C') {
 			X = C;
 		} else {
-			return null;
+			throw null;
 		}
 		if (poly2 == 'A') {
 			Y = A;
@@ -187,7 +187,7 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 		} else if (poly2 == 'C') {
 			Y = C;
 		} else {
-			return null;
+			throw null;
 		}
 
 		int size1 = X.size(), size2 = Y.size(), size;
@@ -242,7 +242,7 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 		} else if (poly1 == 'C') {
 			X = C;
 		} else {
-			return null;
+			throw null;
 		}
 		if (poly2 == 'A') {
 			Y = A;
@@ -251,7 +251,7 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 		} else if (poly2 == 'C') {
 			Y = C;
 		} else {
-			return null;
+			throw null;
 		}
 
 		int size1 = X.size(), size2 = Y.size(), size;
@@ -307,7 +307,7 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 		} else if (poly1 == 'C') {
 			X = C;
 		} else {
-			return null;
+			throw null;
 		}
 		if (poly2 == 'A') {
 			Y = A;
@@ -316,7 +316,7 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 		} else if (poly2 == 'C') {
 			Y = C;
 		} else {
-			return null;
+			throw null;
 		}
 
 		if (Y.size() == 0 && X.size() == 0) {
