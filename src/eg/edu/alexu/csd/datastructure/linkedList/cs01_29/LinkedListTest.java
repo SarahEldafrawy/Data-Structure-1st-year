@@ -20,14 +20,22 @@ public class LinkedListTest {
 	@Test
 	public void addNodes() {
 		ILinkedList list = new DoubleLinkedList();
-		list.add(1);
-		list.add(2);
-		list.add(3);
-		list.add(4);
-		list.add(5);
-		list.add(6);
-		for (int i = 0; i < 6; i++) {
-			Assert.assertEquals(i + 1, list.get(i));
+		final int zeroNum = 0;
+		final int fnum = 1;
+		final int snum = 2;
+		final int tnum = 3;
+		final int fonum = 4;
+		final int finum = 5;
+		final int sixnum = 6;
+		list.add(fnum);
+		list.add(snum);
+		list.add(tnum);
+		list.add(fonum);
+		list.add(finum);
+		list.add(sixnum);
+		for (int i = zeroNum; i < sixnum; i++) {
+			final int number = (int) list.get(i);
+			Assert.assertEquals(i + fnum, number);
 		}
 	}
 
@@ -37,15 +45,23 @@ public class LinkedListTest {
 	@Test
 	public void insertInMiddle() {
 		ILinkedList list = new DoubleLinkedList();
-		list.add(0, 1);
-		list.add(1, 3);
-		list.add(2, 4);
-		list.add(3, 5);
-		list.add(4, 6);
-		list.add(1, 2);
+		final int zeroNum = 0;
+		final int fnum = 1;
+		final int snum = 2;
+		final int tnum = 3;
+		final int fonum = 4;
+		final int finum = 5;
+		final int sixnum = 6;
+		list.add(zeroNum, fnum);
+		list.add(fnum, tnum);
+		list.add(snum, fonum);
+		list.add(tnum, finum);
+		list.add(fonum, sixnum);
+		list.add(fnum, snum);
 
-		for (int i = 0; i < 6; i++) {
-			Assert.assertEquals(i + 1, list.get(i));
+		for (int i = zeroNum; i < sixnum; i++) {
+			final int number = (int) list.get(i);
+			Assert.assertEquals(i + fnum, number);
 		}
 	}
 
@@ -55,16 +71,25 @@ public class LinkedListTest {
 	@Test
 	public void insertAtEnd() {
 		ILinkedList list = new DoubleLinkedList();
-		list.add(0, 1);
-		list.add(1, 2);
-		list.add(2, 3);
-		list.add(3, 4);
-		list.add(4, 5);
-		list.add(6);
-		list.add(7);
+		final int zeroNum = 0;
+		final int fnum = 1;
+		final int snum = 2;
+		final int tnum = 3;
+		final int fonum = 4;
+		final int finum = 5;
+		final int sixnum = 6;
+		final int sevnum = 7;
+		list.add(zeroNum, fnum);
+		list.add(fnum, snum);
+		list.add(snum, tnum);
+		list.add(tnum, fonum);
+		list.add(fonum, finum);
+		list.add(sixnum);
+		list.add(sevnum);
 
-		for (int i = 0; i < 7; i++) {
-			Assert.assertEquals(i + 1, list.get(i));
+		for (int i = zeroNum; i < sevnum; i++) {
+			final int number = (int) list.get(i);
+			Assert.assertEquals(i + fnum, number);
 		}
 	}
 
@@ -74,18 +99,27 @@ public class LinkedListTest {
 	@Test(expected = Exception.class)
 	public void changeNodeValue() {
 		ILinkedList list = new DoubleLinkedList();
-		list.add(0, 1);
-		list.add(1, 3);
-		list.add(2, 3);
-		list.add(3, 4);
-		list.add(4, 4);
+		final int zeroNum = 0;
+		final int fnum = 1;
+		final int snum = 2;
+		final int tnum = 3;
+		final int fonum = 4;
+		final int finum = 5;
+		final int sevnum = 7;
+		list.add(zeroNum, fnum);
+		list.add(fnum, tnum);
+		list.add(snum, tnum);
+		list.add(tnum, fonum);
+		list.add(fonum, fonum);
 
-		list.set(1, 2);
-		Assert.assertEquals(2, list.get(1));
+		list.set(fnum, snum);
+		final int num = (int) list.get(fnum);
+		Assert.assertEquals(snum, num);
 
-		list.set(7, 5);
-		for (int i = 0; i < 5; i++) {
-			Assert.assertEquals(i + 1, list.get(i));
+		list.set(sevnum, finum);
+		for (int i = zeroNum; i < finum; i++) {
+			final int number = (int) list.get(i);
+			Assert.assertEquals(i + fnum, number);
 		}
 	}
 
@@ -95,15 +129,22 @@ public class LinkedListTest {
 	@Test
 	public void removeAndCheckSize() {
 		ILinkedList list = new DoubleLinkedList();
-		list.add(0, 1);
-		list.add(1, 2);
-		list.add(2, 3);
-		list.add(3, 4);
-		list.add(4, 5);
-		list.remove(1);
-		list.remove(3);
+		final int zeroNum = 0;
+		final int fnum = 1;
+		final int snum = 2;
+		final int tnum = 3;
+		final int fonum = 4;
+		final int finum = 5;
 
-		Assert.assertEquals(3, list.size());
+		list.add(zeroNum, fnum);
+		list.add(fnum, snum);
+		list.add(snum, tnum);
+		list.add(tnum, fonum);
+		list.add(fonum, finum);
+		list.remove(fnum);
+		list.remove(tnum);
+		final int size = list.size();
+		Assert.assertEquals(tnum, size);
 	}
 
 	/**
@@ -112,19 +153,25 @@ public class LinkedListTest {
 	@Test
 	public void removeAllElements() {
 		ILinkedList list = new DoubleLinkedList();
-		list.add(1);
-		list.add(2);
-		list.add(3);
-		list.add(4);
-		list.add(7);
+		final int zeroNum = 0;
+		final int fnum = 1;
+		final int snum = 2;
+		final int tnum = 3;
+		final int fonum = 4;
+		final int sevnum = 7;
+		list.add(fnum);
+		list.add(snum);
+		list.add(tnum);
+		list.add(fonum);
+		list.add(sevnum);
 
-		list.remove(4);
-		list.remove(3);
-		list.remove(2);
-		list.remove(1);
-		list.remove(0);
-
-		Assert.assertEquals(0, list.size());
+		list.remove(fonum);
+		list.remove(tnum);
+		list.remove(snum);
+		list.remove(fnum);
+		list.remove(zeroNum);
+		final int size = list.size();
+		Assert.assertEquals(zeroNum, size);
 	}
 
 	/**
@@ -133,16 +180,24 @@ public class LinkedListTest {
 	@Test
 	public void removeFirst() {
 		ILinkedList list = new DoubleLinkedList();
-		list.add(0, 1);
-		list.add(1, 2);
-		list.add(2, 3);
-		list.add(3, 4);
-		list.add(4, 5);
+		final int zeroNum = 0;
+		final int fnum = 1;
+		final int snum = 2;
+		final int tnum = 3;
+		final int fonum = 4;
+		final int finum = 5;
+		list.add(zeroNum, fnum);
+		list.add(fnum, snum);
+		list.add(snum, tnum);
+		list.add(tnum, fonum);
+		list.add(fonum, finum);
 
-		list.remove(0);
+		list.remove(zeroNum);
+		final int size = list.size();
+		Assert.assertEquals(fonum, size);
 
-		Assert.assertEquals(4, list.size());
-		Assert.assertEquals(2, list.get(0));
+		final int numb = (int) list.get(zeroNum);
+		Assert.assertEquals(snum, numb);
 	}
 
 	/**
@@ -151,16 +206,22 @@ public class LinkedListTest {
 	@Test
 	public void removeLast() {
 		ILinkedList list = new DoubleLinkedList();
-		list.add(0, 1);
-		list.add(1, 2);
-		list.add(2, 3);
-		list.add(3, 4);
-		list.add(4, 5);
+		final int zeroNum = 0;
+		final int fnum = 1;
+		final int snum = 2;
+		final int tnum = 3;
+		final int fonum = 4;
+		final int finum = 5;
+		list.add(zeroNum, fnum);
+		list.add(fnum, snum);
+		list.add(snum, tnum);
+		list.add(tnum, fonum);
+		list.add(fonum, finum);
 
-		list.remove(4);
+		list.remove(fonum);
 
-		Assert.assertEquals(4, list.size());
-		Assert.assertEquals(4, list.get(3));
+		Assert.assertEquals(fonum, list.size());
+		Assert.assertEquals(fonum, list.get(tnum));
 	}
 
 	/**
@@ -169,15 +230,22 @@ public class LinkedListTest {
 	@Test(expected = Exception.class)
 	public void removeNENode() { // NE = Non-Existing
 		ILinkedList list = new DoubleLinkedList();
-		list.add(0, 1);
-		list.add(1, 2);
-		list.add(2, 3);
-		list.add(3, 4);
-		list.add(4, 5);
+		final int zeroNum = 0;
+		final int fnum = 1;
+		final int snum = 2;
+		final int tnum = 3;
+		final int fonum = 4;
+		final int finum = 5;
+		final int negNum = -1;
+		list.add(zeroNum, fnum);
+		list.add(fnum, snum);
+		list.add(snum, tnum);
+		list.add(tnum, fonum);
+		list.add(fonum, finum);
 
-		list.remove(-1);
+		list.remove(negNum);
 
-		Assert.assertEquals(5, list.size());
+		Assert.assertEquals(finum, list.size());
 	}
 
 	/**
@@ -186,15 +254,21 @@ public class LinkedListTest {
 	@Test
 	public void removeNodeOFB() { // OFB = Out of Boundaries
 		ILinkedList list = new DoubleLinkedList();
-		list.add(0, 1);
-		list.add(1, 2);
-		list.add(2, 3);
-		list.add(3, 4);
-		list.add(4, 5);
+		final int zeroNum = 0;
+		final int fnum = 1;
+		final int snum = 2;
+		final int tnum = 3;
+		final int fonum = 4;
+		final int finum = 5;
+		list.add(zeroNum, fnum);
+		list.add(fnum, snum);
+		list.add(snum, tnum);
+		list.add(tnum, fonum);
+		list.add(fonum, finum);
 
-		list.remove(1);
+		list.remove(fnum);
 
-		Assert.assertEquals(4, list.size());
+		Assert.assertEquals(fonum, list.size());
 	}
 
 	/**
@@ -203,14 +277,21 @@ public class LinkedListTest {
 	@Test
 	public void containFun() { // OFB = Out of Boundaries
 		ILinkedList list = new DoubleLinkedList();
-		list.add(0, 1);
-		list.add(1, 2);
-		list.add(2, 3);
-		list.add(3, 4);
-		list.add(4, 5);
+		final int zeroNum = 0;
+		final int fnum = 1;
+		final int snum = 2;
+		final int tnum = 3;
+		final int fonum = 4;
+		final int finum = 5;
+		final int tewNum = 20;
+		list.add(zeroNum, fnum);
+		list.add(fnum, snum);
+		list.add(snum, tnum);
+		list.add(tnum, fonum);
+		list.add(fonum, finum);
 
-		Assert.assertTrue(list.contains(1));
-		Assert.assertTrue(!list.contains(20));
+		Assert.assertTrue(list.contains(fnum));
+		Assert.assertTrue(!list.contains(tewNum));
 	}
 
 	/**
@@ -219,14 +300,21 @@ public class LinkedListTest {
 	@Test(expected = Exception.class)
 	public void getNode() { // OFB = Out of Boundaries
 		ILinkedList list = new DoubleLinkedList();
-		list.add(0, 1);
-		list.add(1, 2);
-		list.add(2, 3);
-		list.add(3, 4);
-		list.add(4, 5);
+		final int zeroNum = 0;
+		final int fnum = 1;
+		final int snum = 2;
+		final int tnum = 3;
+		final int fonum = 4;
+		final int finum = 5;
+		final int sevnum = 7;
+		list.add(zeroNum, fnum);
+		list.add(fnum, snum);
+		list.add(snum, tnum);
+		list.add(tnum, fonum);
+		list.add(fonum, finum);
 
-		Assert.assertEquals(4, list.get(3));
-		Assert.assertNull(list.get(7));
+		Assert.assertEquals(fonum, list.get(tnum));
+		Assert.assertNull(list.get(sevnum));
 	}
 
 	/**
@@ -235,14 +323,20 @@ public class LinkedListTest {
 	@Test
 	public void getNodeCheckSize() {
 		ILinkedList list = new DoubleLinkedList();
-		list.add(0, 1);
-		list.add(1, 2);
-		list.add(2, 3);
-		list.add(3, 4);
-		list.add(4, 5);
+		final int zeroNum = 0;
+		final int fnum = 1;
+		final int snum = 2;
+		final int tnum = 3;
+		final int fonum = 4;
+		final int finum = 5;
+		list.add(zeroNum, fnum);
+		list.add(fnum, snum);
+		list.add(snum, tnum);
+		list.add(tnum, fonum);
+		list.add(fonum, finum);
 
-		Assert.assertEquals(4, list.get(3));
-		Assert.assertEquals(5, list.size());
+		Assert.assertEquals(fonum, list.get(tnum));
+		Assert.assertEquals(finum, list.size());
 	}
 
 	/**
@@ -251,16 +345,22 @@ public class LinkedListTest {
 	@Test(expected = Exception.class)
 	public void clearList() {
 		ILinkedList list = new DoubleLinkedList();
-		list.add(0, 1);
-		list.add(1, 2);
-		list.add(2, 3);
-		list.add(3, 4);
-		list.add(4, 5);
+		final int zeroNum = 0;
+		final int fnum = 1;
+		final int snum = 2;
+		final int tnum = 3;
+		final int fonum = 4;
+		final int finum = 5;
+		list.add(zeroNum, fnum);
+		list.add(fnum, snum);
+		list.add(snum, tnum);
+		list.add(tnum, fonum);
+		list.add(fonum, finum);
 		list.clear();
 
-		Assert.assertEquals(0, list.size());
+		Assert.assertEquals(zeroNum, list.size());
 		Assert.assertTrue(list.isEmpty());
-		Assert.assertNull(list.get(2));
+		Assert.assertNull(list.get(snum));
 	}
 
 	/**
@@ -269,16 +369,22 @@ public class LinkedListTest {
 	@Test
 	public void chooseSubList() {
 		ILinkedList list = new DoubleLinkedList();
-		list.add(0, 1);
-		list.add(1, 2);
-		list.add(2, 3);
-		list.add(3, 4);
-		list.add(4, 5);
+		final int zeroNum = 0;
+		final int fnum = 1;
+		final int snum = 2;
+		final int tnum = 3;
+		final int fonum = 4;
+		final int finum = 5;
+		list.add(zeroNum, fnum);
+		list.add(fnum, snum);
+		list.add(snum, tnum);
+		list.add(tnum, fonum);
+		list.add(fonum, finum);
 
 		ILinkedList newList = new DoubleLinkedList();
-		newList = list.sublist(1, 3);
-		for (int i = 1; i < 4; i++) {
-			Assert.assertEquals(i + 1, newList.get(i - 1));
+		newList = list.sublist(fnum, tnum);
+		for (int i = fnum; i < fonum; i++) {
+	Assert.assertEquals(i + fnum, newList.get(i - fnum));
 		}
 
 	}
@@ -289,15 +395,21 @@ public class LinkedListTest {
 	@Test
 	public void subListAsOriginal() {
 		ILinkedList list = new DoubleLinkedList();
-		list.add(0, 1);
-		list.add(1, 2);
-		list.add(2, 3);
-		list.add(3, 4);
-		list.add(4, 5);
+		final int zeroNum = 0;
+		final int fnum = 1;
+		final int snum = 2;
+		final int tnum = 3;
+		final int fonum = 4;
+		final int finum = 5;
+		list.add(zeroNum, fnum);
+		list.add(fnum, snum);
+		list.add(snum, tnum);
+		list.add(tnum, fonum);
+		list.add(fonum, finum);
 
 		ILinkedList newList = new DoubleLinkedList();
-		newList = list.sublist(0, 4);
-		for (int i = 0; i < 5; i++) {
+		newList = list.sublist(zeroNum, fonum);
+		for (int i = zeroNum; i < finum; i++) {
 			Assert.assertEquals(list.get(i), newList.get(i));
 		}
 
@@ -309,14 +421,21 @@ public class LinkedListTest {
 	@Test(expected = Exception.class)
 	public void subListOFB() {
 		ILinkedList list = new DoubleLinkedList();
-		list.add(0, 1);
-		list.add(1, 2);
-		list.add(2, 3);
-		list.add(3, 4);
-		list.add(4, 5);
+		final int zeroNum = 0;
+		final int fnum = 1;
+		final int snum = 2;
+		final int tnum = 3;
+		final int fonum = 4;
+		final int finum = 5;
+		final int negNum = -1;
+		list.add(zeroNum, fnum);
+		list.add(fnum, snum);
+		list.add(snum, tnum);
+		list.add(tnum, fonum);
+		list.add(fonum, finum);
 
 		ILinkedList newList = new DoubleLinkedList();
-		newList = list.sublist(-1, 3);
+		newList = list.sublist(negNum, tnum);
 		Assert.assertNull(newList);
 
 	}
