@@ -102,7 +102,7 @@ public class HangmanTest {
 		String[] dictionary = new String[] {"EGYPT"};
 		hangman.setDictionary(dictionary);
 		hangman.selectRandomSecretWord();
-		int max = 5;
+		final int max = 5;
 		hangman.setMaxWrongGuesses(max);
 		for (int i = 0; i < max; i++) {
 			String result = hangman.guess('X');
