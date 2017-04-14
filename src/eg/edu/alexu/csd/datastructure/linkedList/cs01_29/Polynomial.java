@@ -145,6 +145,8 @@ public class Polynomial implements IPolynomialSolver {
 			X = C;
 		} else if (poly == 'R') {
 			X = R;
+		} else {
+			throw null;
 		}
 		float result = 0;
 		int size = X.size();
