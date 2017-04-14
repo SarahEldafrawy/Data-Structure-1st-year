@@ -326,11 +326,12 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			}
 		}
 		int s = 0;
+		int sizeR = varR.size();
 		int[][]results = new int[arrSize][2];
-		for (int i = 0; i < arrSize; i++) {
+		for (int i = 0; i < sizeR; i++) {
 			if ((int) varR.get(i) != 0) {
 				results[s][0] = (int) varR.get(i);
-				results[s][1] = arrSize - i - 1;
+				results[s][1] = arrSize - i;
 				s++;
 			}
 		}
