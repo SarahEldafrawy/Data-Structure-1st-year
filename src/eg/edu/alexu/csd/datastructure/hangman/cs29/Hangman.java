@@ -54,7 +54,7 @@ public class Hangman implements IHangman {
 		
 		char tempStringDisplayed[]=StringDisplayed.toCharArray();
 		for(int i = 0; i < StringDisplayed.length(); i++){
-			tempStringDisplayed[i]='_'; 
+			tempStringDisplayed[i]='-'; 
 		}
 		StringDisplayed=String.valueOf(tempStringDisplayed);
 		return SecretWord;
