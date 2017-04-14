@@ -85,7 +85,6 @@ public class Hangman implements IHangman {
 	 */
 	@Override
 	public String guess(Character c) {
-		//char ch = c;
 		if (c == null) {
 			return stringDisplayed;
 		}
