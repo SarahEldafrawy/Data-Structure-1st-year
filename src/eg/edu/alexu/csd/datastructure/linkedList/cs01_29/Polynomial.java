@@ -255,6 +255,7 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 		} else {
 			throw null;
 		}
+		varR.clear();
 		int size1 = varX.size(), size2 = varY.size(), size;
 		int result;
 
@@ -323,6 +324,7 @@ result += (Integer) (varX.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 		} else {
 			throw null;
 		}
+		varR.clear();
 		if (varY.size() == 0 && varX.size() == 0) {
 			return null;
 		}
