@@ -36,7 +36,7 @@ public class Polynomial implements IPolynomialSolver {
 				max = terms[i][1];
 			}
 			if ((terms[i][1]) < 0 || max != terms[0][1]) {
-					throw new RuntimeException();
+					throw null;
 			}
 		}
 		int i = 0;
@@ -234,8 +234,6 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 			X = B;
 		} else if (poly1 == 'C') {
 			X = C;
-		} else {
-			return null;
 		}
 		if (poly2 == 'A') {
 			Y = A;
@@ -308,7 +306,7 @@ result += (Integer) (X.get(i - 1)) * (float) (Math.pow(value, (size - i)));
 		}
 
 		if (Y.size() == 0 && X.size() == 0) {
-			throw new RuntimeException();
+			return null;
 		}
 		int rsize = Y.size() + X.size() - 1;
 		int i = 0;
