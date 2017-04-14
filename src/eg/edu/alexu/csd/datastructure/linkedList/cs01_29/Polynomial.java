@@ -83,7 +83,7 @@ public class Polynomial implements IPolynomialSolver {
 		} else if (poly == 'R') {
 			X = R;
 		} else {
-			return null;
+			throw null;
 		}
 		int size = X.size();
 		if (X.size() == 0) {
