@@ -13,10 +13,8 @@ public class Main {
  */
 	public static void main(final String[] args) {
 		Polynomial poly = new Polynomial();
-		boolean varAisSet = false;
-		boolean varBisSet = false;
-		boolean varCisSet = false;
-		boolean wrongInput = false;
+		boolean varAisSet = false, varBisSet = false;
+		boolean varCisSet = false, wrongInput = false;
 		boolean set = true;
 		char ch;
 		int x;
@@ -83,8 +81,6 @@ public class Main {
 					}
 					k++;
 				}
-				//tempScan2 = tempScan.replaceAll("\\(", "");
-				//tempScan = tempScan.replaceAll("\\)", "");
 				String str;
 				int j = 0, t = 0;
 			int[] splitTerms = new int[(tempScan2.length() / 2)];
@@ -110,18 +106,6 @@ public class Main {
 					terms[i][1] = splitTerms[j + 1];
 					j += 2;
 				}
-//				String[] tempTerms = tempScan.split(", ");
-//				int lenght = tempTerms.length;
-//				System.out.println(tempTerms[0]);
-//				lenght = tempTerms.length / 2;
-//				int[][] terms = new int[lenght][2];
-//				int strElem = 0;
-//				for (int i = 0; i < lenght; i++) {
-//					for (int j = 0; j < 2; j++) {
-//		terms[i][j] = Integer.parseInt(tempTerms[strElem]);
-//							strElem++;
-//					}
-//				}
 				try {
 					poly.setPolynomial(ch, terms);
 					set = true;
