@@ -82,6 +82,47 @@ public class Polynomial implements IPolynomialSolver {
 	* @param poly name of the polynomial
 	* @return polynomial in the form like 27x^2+x-1
 	*/
+//	@Override
+//	public String print(final char poly) {
+//		if (poly == 'A') {
+//			varX = varA;
+//		} else if (poly == 'B') {
+//			varX = varB;
+//		} else if (poly == 'C') {
+//			varX = varC;
+//		} else if (poly == 'R') {
+//			varX = varR;
+//		} else {
+//			throw null;
+//		}
+//		int size = varX.size();
+//		if (varX.size() == 0) {
+//			return null;
+//		}
+//		int i = 0;
+//		String result = "";
+//		while (size != 0) {
+//			size--;
+//			if ((int) varX.get(i) != 0) {
+//				if (((int) varX.get(i) != 1 || size == 0)
+//				&& ((int) varX.get(i) < 0 && size != 0)) {
+//		result += (int) varX.get(i) + "X^" + (varX.size() - 1 - i);
+//				} else if ((int) varX.get(i) > 1 && size != 0) {
+//	result += "+" + (int) varX.get(i) + "X^" + (varX.size() - 1 - i);
+//			} else if ((int) varX.get(i) == 1 && size != 0) {
+//					result += "+" + "X";
+//				} else if (size == 0) {
+//					if ((int) varX.get(i) > 0) {
+//					result += "+" + (int) varX.get(i);
+//					} else {
+//						result += (int) varX.get(i);
+//					}
+//				}
+//			}
+//			i++;
+//		}
+//		return result;
+//	}
 	@Override
 	public String print(final char poly) {
 		if (poly == 'A') {
@@ -104,18 +145,33 @@ public class Polynomial implements IPolynomialSolver {
 		while (size != 0) {
 			size--;
 			if ((int) varX.get(i) != 0) {
-				if (((int) varX.get(i) != 1 || size == 0)
-				&& ((int) varX.get(i) < 0 && size != 0)) {
-		result += (int) varX.get(i) + "X^" + (varX.size() - 1 - i);
-				} else if ((int) varX.get(i) > 1 && size != 0) {
+				if (((int) varX.get(i) < -1) && size > 1) {
+	result += (int) varX.get(i) + "X^" + (varX.size() - 1 - i);
+				} else if ((int) varX.get(i) > 1 && size > 1
+						&& size != varX.size() - 1) {
 	result += "+" + (int) varX.get(i) + "X^" + (varX.size() - 1 - i);
-			} else if ((int) varX.get(i) == 1 && size != 0) {
-					result += "+" + "X";
-				} else if (size == 0) {
-					if ((int) varX.get(i) > 0) {
-					result += "+" + (int) varX.get(i);
-					} else {
-						result += (int) varX.get(i);
+				} else if ((int) varX.get(i) > 1
+				&& size == varX.size() - 1 && size > 1) {
+	result += (int) varX.get(i) + "X^" + (varX.size() - 1 - i);
+				} else if ((int) varX.get(i) == 1
+			|| (size == 0 && (int) varX.get(i) > 0)) {
+					if (size > 1 && size != varX.size() - 1) {
+	result += "+" + "X^" + (varX.size() - 1 - i);
+					} else if (size == 1) {
+						result += "+" + "X";
+					} else if (size == 0) {
+		result += "+" + (int) varX.get(i);
+					} else if (size == varX.size() - 1) {
+		result += "X^" + (varX.size() - 1 - i);
+					}
+				} else if ((int) varX.get(i) == -1
+			|| (size == 0 && (int) varX.get(i) < 0)) {
+					if (size > 1) {
+		result += "X^" + (varX.size() - 1 - i);
+					} else if (size == 1) {
+		result += "X";
+					} else if (size == 0) {
+		result += (int) varX.get(i);
 					}
 				}
 			}
