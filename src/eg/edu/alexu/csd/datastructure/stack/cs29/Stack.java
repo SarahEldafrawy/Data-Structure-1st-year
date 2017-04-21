@@ -35,16 +35,19 @@ public class Stack implements IStack {
 	*/
 	@Override
 	public void add(final int index, final Object element) {
-//		Plate plateToAdd = new Plate();
-//		if (top == null) {
-//			plateToAdd.data = element;
-//			top = plateToAdd;
-//		} else {
-//			plateToAdd.data = element;
-//			plateToAdd.prev = top;
-//			top = plateToAdd;
-//			// loop for index and with temp stack
-//		}
+		Plate plateToAdd = new Plate();
+		if (index > size) {
+			throw new RuntimeException();
+		}
+		if (top == null || index == (size)) {
+			plateToAdd.data = element;
+			plateToAdd.prev = top;
+			top = plateToAdd;
+			size++;
+		} else {
+			plateToAdd.data = element;
+			addBtwStack(index, plateToAdd);
+		}
 	}
 	/**
 	* Removes the element at the top of stack and returns that element.
@@ -53,7 +56,7 @@ public class Stack implements IStack {
 	@Override
 	public Object pop() {
 		if (top == null) {
-			throw new RuntimeException(); // throw exception
+			throw new RuntimeException();
 		}
 		Object value = top.data;
 		Plate temp = top.prev;
@@ -110,5 +113,16 @@ public class Stack implements IStack {
 	@Override
 	public int size() {
 		return size;
+	}
+	public void addBtwStack (int index, Plate plateToAdd) {
+		Plate temp3 = new Plate();
+		Plate tempTop = top;
+		for (int i = size - 1; i != index; i--) {
+			tempTop = tempTop.prev;
+		}
+		temp3 = tempTop.prev;
+		plateToAdd.prev = temp3;
+		tempTop.prev = plateToAdd;
+		size++;
 	}
 }
