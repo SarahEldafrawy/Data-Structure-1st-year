@@ -37,7 +37,7 @@ public class Stack implements IStack {
 	public void add(final int index, final Object element) {
 		Plate plateToAdd = new Plate();
 		if (index > size) {
-			throw new RuntimeException();
+			throw null;
 		}
 		if (top == null || index == (size)) {
 			plateToAdd.data = element;
