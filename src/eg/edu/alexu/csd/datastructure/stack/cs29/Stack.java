@@ -36,7 +36,7 @@ public class Stack implements IStack {
 	@Override
 	public void add(final int index, final Object element) {
 		Plate plateToAdd = new Plate();
-		if (index > size) {
+		if (index >= size) {
 			throw null;
 		}
 		if (top == null || index == (size)) {
