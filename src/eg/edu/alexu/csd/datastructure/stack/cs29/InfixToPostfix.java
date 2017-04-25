@@ -22,16 +22,17 @@ public class InfixToPostfix implements IExpressionEvaluator {
 			throw new RuntimeException();
 		}
 		int i = 0;
-//		while (i < expresion.length()) {
-//			if (expression.charAt(i) == '+' || expression.charAt(i) == '-'
-//					|| expression.charAt(i) == '*' || expression.charAt(i) == '/') {
-//					i++;
-//					if (i < expression.length() && (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
-//						|| expression.charAt(i) == '*' || expression.charAt(i) == '/')) {
-//						throw new RuntimeException();
-//					}
-//			}
-//		}
+		while (i < expresion.length()) {
+			if (expression.charAt(i) == '+' || expression.charAt(i) == '-'
+					|| expression.charAt(i) == '*' || expression.charAt(i) == '/') {
+					i++;
+					if (i < expression.length() && (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
+						|| expression.charAt(i) == '*' || expression.charAt(i) == '/')) {
+						throw new RuntimeException();
+					}
+			}
+		i++;
+		}
 		i = expression.length() - 1;
 		if (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
 				|| expression.charAt(i) == '*' || expression.charAt(i) == '/') {
