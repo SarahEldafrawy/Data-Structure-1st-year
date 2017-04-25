@@ -23,8 +23,8 @@ public class InfixToPostfix implements IExpressionEvaluator {
 		}
 		int i = 0;
 		while (i < expresion.length()) {
-			if (expression.charAt(i) == '+' || expression.charAt(i) == '-'
-					|| expression.charAt(i) == '*' || expression.charAt(i) == '/') {
+			if (i < expression.length() && (expression.charAt(i) == '+' || expression.charAt(i) == '-'
+					|| expression.charAt(i) == '*' || expression.charAt(i) == '/')) {
 					i++;
 					if (i < expression.length() && (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
 						|| expression.charAt(i) == '*' || expression.charAt(i) == '/')) {
