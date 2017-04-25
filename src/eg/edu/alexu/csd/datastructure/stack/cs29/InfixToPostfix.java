@@ -21,7 +21,19 @@ public class InfixToPostfix implements IExpressionEvaluator {
 		if (expression == "") {
 			throw new RuntimeException();
 		}
-		int i = 0;
+		int i = 0, t = 0;
+		// check for brackets
+		while (i < expresion.length()) {
+			if (expression.charAt(i) == '(') {
+				t++;
+			} else if (expression.charAt(i) == ')') {
+				t--;
+			}
+		}
+		if (t != 0) {
+			throw new RuntimeException();
+		}
+		i = 0;
 		while (i < expresion.length()) {
 			if (i < expression.length() && (expression.charAt(i) == '+' || expression.charAt(i) == '-'
 					|| expression.charAt(i) == '*' || expression.charAt(i) == '/')) {
