@@ -11,7 +11,7 @@ public class InfixToPostfix implements IExpressionEvaluator {
 	/**
 	 */
 	@Override
-	public String infixToPostfix(final String expression) {
+	public String infixToPostfix(final String expresion) {
 		String expression = expresion.replaceAll("\\ ", "");
 		if (expression == "") {
 			throw new RuntimeException();
