@@ -29,6 +29,7 @@ public class InfixToPostfix implements IExpressionEvaluator {
 			} else if (expression.charAt(i) == ')') {
 				t--;
 			}
+			i++;
 		}
 		if (t != 0) {
 			throw new RuntimeException();
