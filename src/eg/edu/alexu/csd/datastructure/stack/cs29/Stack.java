@@ -1,7 +1,4 @@
 /**
- * 
- */
-/**
  * @author welcome
  *
  */
@@ -18,7 +15,11 @@ public class Stack implements IStack {
 	/**
 	 */
 	class Plate {
+		/**
+		 */
 		private Plate prev = null;
+		/**
+		 */
 		private Object data;
 	}
 	/**
@@ -114,7 +115,11 @@ public class Stack implements IStack {
 	public int size() {
 		return size;
 	}
-	public void addBtwStack (int index, Plate plateToAdd) {
+	/**
+	 * @param index for index comparison
+	 * @param plateToAdd to add new plate in the stack
+	 */
+	public void addBtwStack(final int index, final Plate plateToAdd) {
 		Plate temp3 = new Plate();
 		Plate tempTop = top;
 		for (int i = size - 1; i != index; i--) {
