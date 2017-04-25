@@ -123,12 +123,7 @@ public class InfixToPostfix implements IExpressionEvaluator {
 			if (i < expression.length() && (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
 					|| expression.charAt(i) == '*' || expression.charAt(i) == '/')) {
 				i++;
-				if (i < expression.length() && (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
-					|| expression.charAt(i) == '*' || expression.charAt(i) == '/')) {
-					throw null;
-				}
-			}
-			if (i < expression.length() && (expression.charAt(i) <= '0' || expression.charAt(i) >= '9')) {
+			} else if (i < expression.length() && (expression.charAt(i) <= '0' || expression.charAt(i) >= '9')) {
 				throw null;
 			}
 			i++;
