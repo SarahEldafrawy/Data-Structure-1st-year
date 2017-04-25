@@ -55,7 +55,7 @@ public class InfixToPostfix implements IExpressionEvaluator {
 			}
 			if (i < expression.length() && expression.charAt(i) == ')') {
 				i++;
-				while (operator.peek() != (Object) '(') {
+				while (operator.peek() != (Object) '(' && !operator.isEmpty()) {
 					str += operator.pop() + " ";
 				}
 				operator.pop();
