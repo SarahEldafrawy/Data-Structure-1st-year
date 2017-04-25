@@ -12,7 +12,7 @@ public class InfixToPostfix implements IExpressionEvaluator {
 	 */
 	@Override
 	public String infixToPostfix(final String expression) {
-		//String expression = expresion.replaceAll("\\ ", "");
+		String expression = expresion.replaceAll("\\ ", "");
 		if (expression == "") {
 			throw new RuntimeException();
 		}
@@ -28,7 +28,7 @@ public class InfixToPostfix implements IExpressionEvaluator {
 				operator.push(expression.charAt(i));
 				i++;
 				while (i < expression.length() && expression.charAt(i) != '+' && expression.charAt(i) != '-' && expression.charAt(i) != '*' && expression.charAt(i) != '/' && expression.charAt(i) !='(' && expression.charAt(i) !=')') {
-					str += expression.charAt(i);
+					str += expression.charAt(i) + " ";
 					i++;
 				}
 			}
@@ -36,7 +36,7 @@ public class InfixToPostfix implements IExpressionEvaluator {
 				operator.push(expression.charAt(i));
 				i++;
 				while (i < expression.length() && expression.charAt(i) != '+' && expression.charAt(i) != '-' && expression.charAt(i) != '*' && expression.charAt(i) != '/' && expression.charAt(i) !='(' && expression.charAt(i) !=')') {
-					str += expression.charAt(i);
+					str += expression.charAt(i) + " ";
 					i++;
 				}
 			}
@@ -44,21 +44,22 @@ public class InfixToPostfix implements IExpressionEvaluator {
 					operator.push(expression.charAt(i));
 					i++;
 					while (i < expression.length() && expression.charAt(i) != '+' && expression.charAt(i) != '-' && expression.charAt(i) != '*' && expression.charAt(i) != '/' && expression.charAt(i) !='(' && expression.charAt(i) !=')') {
-						str += expression.charAt(i);
+						str += expression.charAt(i) + " ";
 						i++;
 					}
 			}
 			if (i < expression.length() && expression.charAt(i) == ')') {
 				i++;
 				while (operator.peek() != (Object)'(') {
-					str += operator.pop();
+					str += operator.pop() + " ";
 				}
 				operator.pop();
 			}
 			while (!operator.isEmpty() && operator.peek() != (Object)'(') {
-				str += operator.pop();
+				str += operator.pop() + " ";
 			}
 		}
+		//str = str - " ";
 		return str;
 	}
 	/**
