@@ -49,7 +49,7 @@ public class InfixToPostfix implements IExpressionEvaluator {
 				str += expression.charAt(i) + " ";
 				i++;
 			}
-			if (i < expression.length() && expression.charAt(i) == '+' || expression.charAt(i) == '-') {
+			if (i < expression.length() && (expression.charAt(i) == '+' || expression.charAt(i) == '-')) {
 				operator.push(expression.charAt(i));
 				i++;
 				while (i < expression.length() && expression.charAt(i) != '+'
