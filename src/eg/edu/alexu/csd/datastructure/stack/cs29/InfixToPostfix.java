@@ -84,8 +84,8 @@ public class InfixToPostfix implements IExpressionEvaluator {
 			if (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
 				|| expression.charAt(i) == '*' || expression.charAt(i) == '/') {
 				i++;
-				if (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
-					|| expression.charAt(i) == '*' || expression.charAt(i) == '/') {
+				if (i < expression.length() && (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
+					|| expression.charAt(i) == '*' || expression.charAt(i) == '/')) {
 					throw new RuntimeException();
 				}
 			}
