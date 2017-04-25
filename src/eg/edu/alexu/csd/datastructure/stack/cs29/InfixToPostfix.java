@@ -101,11 +101,11 @@ public class InfixToPostfix implements IExpressionEvaluator {
 				i++;
 				if (i < expression.length() && (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
 					|| expression.charAt(i) == '*' || expression.charAt(i) == '/')) {
-					throw new RuntimeException();
+					throw null;
 				}
 			}
 			if (i < expression.length() && (expression.charAt(i) <= '0' || expression.charAt(i) >= '9')) {
-				throw new RuntimeException();
+				throw null;
 			}
 			i++;
 		}
