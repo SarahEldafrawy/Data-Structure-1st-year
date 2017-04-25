@@ -79,25 +79,25 @@ public class InfixToPostfix implements IExpressionEvaluator {
 		if (expression == "") {
 			throw new RuntimeException();
 		}
-		int i = 0;
-		while (i < expression.length()) {
-			if (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
-				|| expression.charAt(i) == '*' || expression.charAt(i) == '/') {
-				i++;
-				if (i < expression.length() && (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
-					|| expression.charAt(i) == '*' || expression.charAt(i) == '/')) {
-					throw new RuntimeException();
-				}
-			}
-			if ((expression.charAt(i) <= '0' || expression.charAt(i) >= '9') && expression.charAt(i) != ' ') {
-				throw new RuntimeException();
-			}
-			i++;
-		}
-		Float operator1, operator2;
-		float res = 0;
-		Stack operator = new Stack();
-		i = 0;
+//		int i = 0;
+//		while (i < expression.length()) {
+//			if (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
+//				|| expression.charAt(i) == '*' || expression.charAt(i) == '/') {
+//				i++;
+//				if (i < expression.length() && (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
+//					|| expression.charAt(i) == '*' || expression.charAt(i) == '/')) {
+//					throw new RuntimeException();
+//				}
+//			}
+//			if ((expression.charAt(i) <= '0' || expression.charAt(i) >= '9') && expression.charAt(i) != ' ') {
+//				throw new RuntimeException();
+//			}
+//			i++;
+//		}
+//		Float operator1, operator2;
+//		float res = 0;
+//		Stack operator = new Stack();
+//		i = 0;
 //		while (i < expression.length()) {
 //			if (expression.charAt(i) == '+') {
 //				operator1 = (float) operator.pop();
@@ -134,6 +134,7 @@ public class InfixToPostfix implements IExpressionEvaluator {
 //				}
 //			}
 //		}
-		return (int) res;
+//		return (int) res;
+		return 0;
 	}
 }
