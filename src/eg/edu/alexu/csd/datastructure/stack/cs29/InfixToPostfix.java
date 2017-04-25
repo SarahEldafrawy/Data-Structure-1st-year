@@ -21,9 +21,14 @@ public class InfixToPostfix implements IExpressionEvaluator {
 		if (expression == "") {
 			throw new RuntimeException();
 		}
+		int i = expression.length() - 1;
+		if (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
+				|| expression.charAt(i) == '*' || expression.charAt(i) == '/') {
+			throw new RuntimeException();
+		}
 		String str = "";
 		Stack operator = new Stack();
-		int i = 0;
+		i = 0;
 		while (i < expression.length()) {
 			while (i < expression.length() && expression.charAt(i) != '+'
 				&& expression.charAt(i) != '-' && expression.charAt(i) != '*'
@@ -84,7 +89,8 @@ public class InfixToPostfix implements IExpressionEvaluator {
 	* @return the expression evaluated value
 	*/
 	@Override
-	public int evaluate(final String expression) {
+	public int evaluate(final String expresion) {
+		String expression = expresion.replaceAll("\\ ", "");
 		if (expression == "") {
 			throw new RuntimeException();
 		}
@@ -98,42 +104,44 @@ public class InfixToPostfix implements IExpressionEvaluator {
 					throw new RuntimeException();
 				}
 			}
-			if (i < expression.length() && (expression.charAt(i) <= '0' || expression.charAt(i) >= '9') && expression.charAt(i) != ' ') {
+			if (i < expression.length() && (expression.charAt(i) <= '0' || expression.charAt(i) >= '9')) {
 				throw new RuntimeException();
 			}
 			i++;
 		}
-//		Float operator1, operator2;
-//		float res = 0;
-//		Stack operator = new Stack();
-//		i = 0;
+		int operator1, operator2;
+		int res = 0;
+		Stack operator = new Stack();
+		i = 0;
 //		while (i < expression.length()) {
 //			if (expression.charAt(i) == '+') {
 //				operator1 = (float) operator.pop();
 //				operator2 = (float) operator.pop();
-//				res = operator1 + operator2;
+//				//res = operator1 + operator2;
 //				operator.push(res);
 //				i++;
 //			} else if (expression.charAt(i) == '-') {
 //				operator1 = (float) operator.pop();
 //				operator2 = (float) operator.pop();
-//				res = operator2 - operator1;
+//				//res = operator2 - operator1;
 //				operator.push(res);
 //				i++;
 //			} else if (expression.charAt(i) == '*') {
 //				operator1 = (float) operator.pop();
 //				operator2 = (float) operator.pop();
-//				res = operator1 * operator2;
+//				//res = operator1 * operator2;
 //				operator.push(res);
 //				i++;
-//			} else if (expression.charAt(i) == '/') {
-//				operator1 = ((Float) operator.pop()).floatValue();
-//				operator2 = ((Double) operator.pop()).floatValue();
-//				res = operator2 / operator1;
+//			}
+//		if (expression.charAt(i) == '/') {
+//				operator1 = (Integer) operator.peek();
+//				operator.pop();
+//				operator2 = (Integer) operator.pop();
+//				res = operator2 + operator1;
 //				operator.push(res);
 //				i++;
 //			} else {
-//				while (i < expression.length() && expression.charAt(i) != '+' 
+//				while (i < expression.length() && expression.charAt(i) != '+'
 //					&& expression.charAt(i) != '-' && expression.charAt(i) != '*'
 //					&& expression.charAt(i) != '/') {
 //					if (expression.charAt(i) != ' ') {
@@ -143,7 +151,6 @@ public class InfixToPostfix implements IExpressionEvaluator {
 //				}
 //			}
 //		}
-//		return (int) res;
-		return 0;
+		return res;
 	}
 }
