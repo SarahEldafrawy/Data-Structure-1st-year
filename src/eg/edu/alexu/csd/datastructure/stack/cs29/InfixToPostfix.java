@@ -22,7 +22,6 @@ public class InfixToPostfix implements IExpressionEvaluator {
 			throw new RuntimeException();
 		}
 		int i = 0, t = 0;
-		// check for brackets
 		while (i < expresion.length()) {
 			if (i < expression.length() && expression.charAt(i) == '(') {
 				t++;
@@ -115,25 +114,25 @@ public class InfixToPostfix implements IExpressionEvaluator {
 	*/
 	@Override
 	public int evaluate(final String expresion) {
-//		String expression = expresion.replaceAll("\\ ", "");
+		String expression = expresion.replaceAll("\\ ", "");
 		if (expresion == "") {
 			throw new RuntimeException();
 		}
-//		int i = 0;
-//		while (i < expression.length()) {
-//			if (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
-//				|| expression.charAt(i) == '*' || expression.charAt(i) == '/') {
-//				i++;
-//				if (i < expression.length() && (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
-//					|| expression.charAt(i) == '*' || expression.charAt(i) == '/')) {
-//					throw null;
-//				}
-//			}
-//			if (i < expression.length() && (expression.charAt(i) <= '0' || expression.charAt(i) >= '9')) {
-//				throw null;
-//			}
-//			i++;
-//		}
+		int i = 0;
+		while (i < expression.length()) {
+			if (i < expression.length() && (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
+					|| expression.charAt(i) == '*' || expression.charAt(i) == '/')) {
+				i++;
+				if (i < expression.length() && (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
+					|| expression.charAt(i) == '*' || expression.charAt(i) == '/')) {
+					throw null;
+				}
+			}
+			if (i < expression.length() && (expression.charAt(i) <= '0' || expression.charAt(i) >= '9')) {
+				throw null;
+			}
+			i++;
+		}
 //		int operator1, operator2;
 //		int res = 0;
 //		Stack operator = new Stack();
