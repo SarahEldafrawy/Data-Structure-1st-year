@@ -16,8 +16,8 @@ public class InfixToPostfix implements IExpressionEvaluator {
 	* @return postfix expression
 	*/
 	@Override
-	public String infixToPostfix(final String expression) {
-		//String expression = expresion.replaceAll("\\ ", "");
+	public String infixToPostfix(final String expresion) {
+		String expression = expresion.replaceAll("\\ ", "");
 		if (expression == "") {
 			throw new RuntimeException();
 		}
@@ -26,14 +26,14 @@ public class InfixToPostfix implements IExpressionEvaluator {
 		int i = 0;
 		while (i < expression.length()) {
 			while (i < expression.length() && expression.charAt(i) != '+' && expression.charAt(i) != '-' && expression.charAt(i) != '*' && expression.charAt(i) != '/' && expression.charAt(i) !='(' && expression.charAt(i) !=')') {
-				str += expression.charAt(i);
+				str += expression.charAt(i) + " ";
 				i++;
 			}
 			if (i < expression.length() && expression.charAt(i) == '+' || expression.charAt(i) == '-') {
 				operator.push(expression.charAt(i));
 				i++;
 				while (i < expression.length() && expression.charAt(i) != '+' && expression.charAt(i) != '-' && expression.charAt(i) != '*' && expression.charAt(i) != '/' && expression.charAt(i) !='(' && expression.charAt(i) !=')') {
-					str += expression.charAt(i);
+					str += expression.charAt(i) + " ";
 					i++;
 				}
 			}
@@ -41,7 +41,7 @@ public class InfixToPostfix implements IExpressionEvaluator {
 				operator.push(expression.charAt(i));
 				i++;
 				while (i < expression.length() && expression.charAt(i) != '+' && expression.charAt(i) != '-' && expression.charAt(i) != '*' && expression.charAt(i) != '/' && expression.charAt(i) !='(' && expression.charAt(i) !=')') {
-					str += expression.charAt(i);
+					str += expression.charAt(i) + " ";
 					i++;
 				}
 			}
@@ -49,20 +49,23 @@ public class InfixToPostfix implements IExpressionEvaluator {
 					operator.push(expression.charAt(i));
 					i++;
 					while (i < expression.length() && expression.charAt(i) != '+' && expression.charAt(i) != '-' && expression.charAt(i) != '*' && expression.charAt(i) != '/' && expression.charAt(i) !='(' && expression.charAt(i) !=')') {
-						str += expression.charAt(i);
+						str += expression.charAt(i) + " ";
 						i++;
 					}
 			}
 			if (i < expression.length() && expression.charAt(i) == ')') {
 				i++;
 				while (operator.peek() != (Object) '(') {
-					str += operator.pop();
+					str += operator.pop() + " ";
 				}
 				operator.pop();
 			}
 			while (!operator.isEmpty() && operator.peek() != (Object)'(') {
-				str += operator.pop();
+				str += operator.pop() + " ";
 			}
+		}
+		if (str.length() > 0) {
+			str = str.trim();
 		}
 		return str;
 	}
@@ -73,11 +76,64 @@ public class InfixToPostfix implements IExpressionEvaluator {
 	*/
 	@Override
 	public int evaluate(final String expression) {
-		
 		if (expression == "") {
 			throw new RuntimeException();
 		}
-		return 0;
+		int i = 0;
+		while (i < expression.length()) {
+			if (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
+				|| expression.charAt(i) == '*' || expression.charAt(i) == '/') {
+				i++;
+				if (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
+					|| expression.charAt(i) == '*' || expression.charAt(i) == '/') {
+					throw new RuntimeException();
+				}
+			}
+			if ((expression.charAt(i) <= '0' || expression.charAt(i) >= '9') && expression.charAt(i) != ' ') {
+				throw new RuntimeException();
+			}
+			i++;
+		}
+		Float operator1, operator2;
+		float res = 0;
+		Stack operator = new Stack();
+		i = 0;
+//		while (i < expression.length()) {
+//			if (expression.charAt(i) == '+') {
+//				operator1 = (float) operator.pop();
+//				operator2 = (float) operator.pop();
+//				res = operator1 + operator2;
+//				operator.push(res);
+//				i++;
+//			} else if (expression.charAt(i) == '-') {
+//				operator1 = (float) operator.pop();
+//				operator2 = (float) operator.pop();
+//				res = operator2 - operator1;
+//				operator.push(res);
+//				i++;
+//			} else if (expression.charAt(i) == '*') {
+//				operator1 = (float) operator.pop();
+//				operator2 = (float) operator.pop();
+//				res = operator1 * operator2;
+//				operator.push(res);
+//				i++;
+//			} else if (expression.charAt(i) == '/') {
+//				operator1 = ((Float) operator.pop()).floatValue();
+//				operator2 = ((Double) operator.pop()).floatValue();
+//				res = operator2 / operator1;
+//				operator.push(res);
+//				i++;
+//			} else {
+//				while (i < expression.length() && expression.charAt(i) != '+' 
+//					&& expression.charAt(i) != '-' && expression.charAt(i) != '*'
+//					&& expression.charAt(i) != '/') {
+//					if (expression.charAt(i) != ' ') {
+//						operator.push(expression.charAt(i));
+//					}
+//					i++;
+//				}
+//			}
+//		}
+		return (int) res;
 	}
-
 }
