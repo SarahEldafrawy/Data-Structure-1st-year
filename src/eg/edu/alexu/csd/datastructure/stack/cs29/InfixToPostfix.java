@@ -16,7 +16,7 @@ public class InfixToPostfix implements IExpressionEvaluator {
 		if (expression == "") {
 			throw new RuntimeException();
 		}
-		String str = "";
+		String str = " ";
 		Stack operator = new Stack();
 		int i = 0;
 		while (i < expression.length()) {
@@ -59,7 +59,9 @@ public class InfixToPostfix implements IExpressionEvaluator {
 				str += operator.pop() + " ";
 			}
 		}
-		//str = str - " ";
+		if (str.length() > 1) {
+			str = str.trim();
+		}
 		return str;
 	}
 	/**
