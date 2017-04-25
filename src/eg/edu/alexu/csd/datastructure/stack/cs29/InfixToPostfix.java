@@ -25,19 +25,25 @@ public class InfixToPostfix implements IExpressionEvaluator {
 		Stack operator = new Stack();
 		int i = 0;
 		while (i < expression.length()) {
-			while (i < expression.length() && expression.charAt(i) != '+' && expression.charAt(i) != '-' && expression.charAt(i) != '*' && expression.charAt(i) != '/' && expression.charAt(i) !='(' && expression.charAt(i) !=')') {
+			while (i < expression.length() && expression.charAt(i) != '+'
+				&& expression.charAt(i) != '-' && expression.charAt(i) != '*'
+				&& expression.charAt(i) != '/' && expression.charAt(i) != '('
+				&& expression.charAt(i) != ')') {
 				str += expression.charAt(i) + " ";
 				i++;
 			}
 			if (i < expression.length() && expression.charAt(i) == '+' || expression.charAt(i) == '-') {
 				operator.push(expression.charAt(i));
 				i++;
-				while (i < expression.length() && expression.charAt(i) != '+' && expression.charAt(i) != '-' && expression.charAt(i) != '*' && expression.charAt(i) != '/' && expression.charAt(i) !='(' && expression.charAt(i) !=')') {
+				while (i < expression.length() && expression.charAt(i) != '+'
+					&& expression.charAt(i) != '-' && expression.charAt(i) != '*'
+					&& expression.charAt(i) != '/' && expression.charAt(i) != '('
+					&& expression.charAt(i) != ')') {
 					str += expression.charAt(i) + " ";
 					i++;
 				}
 			}
-			if (i < expression.length() && expression.charAt(i) == '*' || expression.charAt(i) == '/') {
+			if (i < expression.length() && (expression.charAt(i) == '*' || expression.charAt(i) == '/')) {
 				operator.push(expression.charAt(i));
 				i++;
 				while (i < expression.length() && expression.charAt(i) != '+' && expression.charAt(i) != '-' && expression.charAt(i) != '*' && expression.charAt(i) != '/' && expression.charAt(i) !='(' && expression.charAt(i) !=')') {
@@ -48,7 +54,10 @@ public class InfixToPostfix implements IExpressionEvaluator {
 			if (i < expression.length() && expression.charAt(i) == '(') {
 					operator.push(expression.charAt(i));
 					i++;
-					while (i < expression.length() && expression.charAt(i) != '+' && expression.charAt(i) != '-' && expression.charAt(i) != '*' && expression.charAt(i) != '/' && expression.charAt(i) !='(' && expression.charAt(i) !=')') {
+					while (i < expression.length() && expression.charAt(i) != '+'
+						&& expression.charAt(i) != '-' && expression.charAt(i) != '*' 
+						&& expression.charAt(i) != '/' && expression.charAt(i) != '(' 
+						&& expression.charAt(i) != ')') {
 						str += expression.charAt(i) + " ";
 						i++;
 					}
