@@ -11,8 +11,11 @@ public class InfixToPostfix implements IExpressionEvaluator {
 	/**
 	 */
 	@Override
-	public String infixToPostfix(final String expresion) {
-		String expression = expresion.replaceAll("\\ ", "");
+	public String infixToPostfix(final String expression) {
+		//String expression = expresion.replaceAll("\\ ", "");
+		if (expression == "") {
+			throw new RuntimeException();
+		}
 		String str = "";
 		Stack operator = new Stack();
 		int i = 0;
@@ -63,7 +66,9 @@ public class InfixToPostfix implements IExpressionEvaluator {
 	@Override
 	public int evaluate(final String expression) {
 		
-		// TODO Auto-generated method stub
+		if (expression == "") {
+			throw new RuntimeException();
+		}
 		return 0;
 	}
 
