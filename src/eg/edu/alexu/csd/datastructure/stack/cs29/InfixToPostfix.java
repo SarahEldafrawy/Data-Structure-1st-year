@@ -58,7 +58,8 @@ public class InfixToPostfix implements IExpressionEvaluator {
 			|| expression.charAt(i) == '/') {
 			throw new RuntimeException();
 		}
-		String str = "";
+		StringBuilder str = new StringBuilder();
+		//String str = "";
 		Stack operator = new Stack();
 		i = 0;
 		while (i < expression.length()) {
@@ -69,7 +70,9 @@ public class InfixToPostfix implements IExpressionEvaluator {
 				&& expression.charAt(i) != '/'
 				&& expression.charAt(i) != '('
 				&& expression.charAt(i) != ')') {
-				str += expression.charAt(i) + " ";
+				//str += expression.charAt(i) + " ";
+				str.append(expression.charAt(i));
+				str.append(" ");
 				i++;
 			}
 			if (i < expression.length()
@@ -84,7 +87,9 @@ public class InfixToPostfix implements IExpressionEvaluator {
 					&& expression.charAt(i) != '/'
 					&& expression.charAt(i) != '('
 					&& expression.charAt(i) != ')') {
-					str += expression.charAt(i) + " ";
+					//str += expression.charAt(i) + " ";
+					str.append(expression.charAt(i));
+					str.append(" ");
 					i++;
 				}
 			}
@@ -100,7 +105,9 @@ public class InfixToPostfix implements IExpressionEvaluator {
 						&& expression.charAt(i) != '/'
 						&& expression.charAt(i) != '('
 					&& expression.charAt(i) != ')') {
-					str += expression.charAt(i) + " ";
+					//str += expression.charAt(i) + " ";
+					str.append(expression.charAt(i));
+					str.append(" ");
 					i++;
 				}
 			}
@@ -114,8 +121,10 @@ public class InfixToPostfix implements IExpressionEvaluator {
 						&& expression.charAt(i) != '/'
 						&& expression.charAt(i) != '('
 					&& expression.charAt(i) != ')') {
-					str += expression.charAt(i) + " ";
-						i++;
+					//str += expression.charAt(i) + " ";
+					str.append(expression.charAt(i));
+					str.append(" ");
+					i++;
 					}
 			}
 			if (i < expression.length()
@@ -123,19 +132,24 @@ public class InfixToPostfix implements IExpressionEvaluator {
 				i++;
 				while (operator.peek() != (Object) '('
 						&& !operator.isEmpty()) {
-					str += operator.pop() + " ";
+					//str += operator.pop() + " ";
+					str.append(operator.pop());
+					str.append(" ");
 				}
 				operator.pop();
 			}
 			while (!operator.isEmpty()
 					&& operator.peek() != (Object) '(') {
-				str += operator.pop() + " ";
+				//str += operator.pop() + " ";
+				str.append(operator.pop());
+				str.append(" ");
 			}
 		}
+		String returnedString = str.toString();
 		if (str.length() > 0) {
-			str = str.trim();
+			returnedString = returnedString.trim();
 		}
-		return str;
+		return returnedString;
 	}
 	/**
 	* Evaluate a postfix numeric expression, with a single space separator
@@ -145,16 +159,21 @@ public class InfixToPostfix implements IExpressionEvaluator {
 	@Override
 	public int evaluate(final String expresion) {
 		String expression = expresion.replaceAll("\\ ", "");
-		if (expresion == "") {
+		if (expression == "") {
 			throw new RuntimeException();
 		}
 		int i = 0;
 		//suppose its working
 		while (i < expression.length()) {
-			if (i < expression.length() && (expression.charAt(i) == '+' || expression.charAt(i) == '-' 
-					|| expression.charAt(i) == '*' || expression.charAt(i) == '/')) {
+			if (i < expression.length()
+				&& (expression.charAt(i) == '+'
+				|| expression.charAt(i) == '-'
+				|| expression.charAt(i) == '*'
+			|| expression.charAt(i) == '/')) {
 				i++;
-			} else if (i < expression.length() && (expression.charAt(i) <= '0' || expression.charAt(i) >= '9')) {
+			} else if (i < expression.length()
+				&& (expression.charAt(i) < '0'
+				|| expression.charAt(i) > '9')) {
 				throw null;
 			}
 			i++;
@@ -189,8 +208,10 @@ public class InfixToPostfix implements IExpressionEvaluator {
 				operator.push(res);
 				i++;
 			} else {
-				while (i < expression.length() && expression.charAt(i) != '+'
-					&& expression.charAt(i) != '-' && expression.charAt(i) != '*'
+				while (i < expression.length()
+					&& expression.charAt(i) != '+'
+					&& expression.charAt(i) != '-'
+					&& expression.charAt(i) != '*'
 					&& expression.charAt(i) != '/') {
 					if (expression.charAt(i) != ' ') {
 						operator.push(Character.getNumericValue(expression.charAt(i)));
