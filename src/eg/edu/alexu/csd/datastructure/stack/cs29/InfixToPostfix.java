@@ -151,7 +151,7 @@ public class InfixToPostfix implements IExpressionEvaluator {
 		}
 		return returnedString;
 	}
-	/**
+	/**.
 	* Evaluate a postfix numeric expression, with a single space separator
 	* @param expression postfix expression
 	* @return the expression evaluated value
@@ -215,7 +215,7 @@ public class InfixToPostfix implements IExpressionEvaluator {
 					&& expression.charAt(i) != '*'
 					&& expression.charAt(i) != '/') {
 					if (expression.charAt(i) != ' ') {
-						operator.push(Character.getNumericValue(expression.charAt(i)));
+		operator.push(Character.getNumericValue(expression.charAt(i)));
 					}
 					i++;
 				}
