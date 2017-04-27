@@ -220,6 +220,6 @@ public class InfixToPostfix implements IExpressionEvaluator {
 				}
 			}
 		}
-		return res;
+		return 0;
 	}
 }
