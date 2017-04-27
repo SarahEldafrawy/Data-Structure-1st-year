@@ -155,14 +155,14 @@ public class Polynomial implements IPolynomialSolver {
 
 	result += "+" + (int) varX.get(i) + "X^" + (varX.size() - 1 - i);
 
-			} else if ((int) varX.get(i) > 1 && size == varX.size() - 1
+		} else if ((int) varX.get(i) > 1 && size == varX.size() - 1
 					&& size > 1) {
 	result += (int) varX.get(i) + "X^" + (varX.size() - 1 - i);
 
 			} else if ((int) varX.get(i) == 1
 			|| (size == 0 && (int) varX.get(i) > 0)) {
 				if (size > 1 && size != varX.size() - 1) {
-					result += "+" + "X^" + (varX.size() - 1 - i);
+				result += "+" + "X^" + (varX.size() - 1 - i);
 				} else if (size == 1) {
 					result += "+" + "X";
 				} else if (size == 0) {
