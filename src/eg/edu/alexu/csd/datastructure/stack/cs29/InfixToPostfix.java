@@ -173,8 +173,8 @@ public class InfixToPostfix implements IExpressionEvaluator {
 				i++;
 			} else if (i < expression.length()
 				&& (expression.charAt(i) < '0'
-				|| expression.charAt(i) > '9'
-				|| expression.charAt(i) != ' ')) {
+				|| expression.charAt(i) > '9')
+				&& expression.charAt(i) != ' ') {
 				throw null;
 			}
 			i++;
