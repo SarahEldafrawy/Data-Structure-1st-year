@@ -192,19 +192,19 @@ public class InfixToPostfix implements IExpressionEvaluator {
 			} else if (expression.charAt(i) == '-') {
 				operator1 = (Integer) operator.pop();
 				operator2 = (Integer) operator.pop();
-				res = operator1 - operator2;
+				res = operator2 - operator1;
 				operator.push(res);
 				i++;
 			} else if (expression.charAt(i) == '*') {
 				operator1 = (Integer) operator.pop();
 				operator2 = (Integer) operator.pop();
-				res = operator1 * operator2;
+				res = operator2 * operator1;
 				operator.push(res);
 				i++;
 			} else if (expression.charAt(i) == '/') {
 				operator1 = (Integer) operator.pop();
 				operator2 = (Integer) operator.pop();
-				res = operator1 / operator2;
+				res = operator2 / operator1;
 				operator.push(res);
 				i++;
 			} else {
