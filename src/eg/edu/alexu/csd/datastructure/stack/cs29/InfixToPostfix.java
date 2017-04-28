@@ -59,7 +59,6 @@ public class InfixToPostfix implements IExpressionEvaluator {
 			throw new RuntimeException();
 		}
 		StringBuilder str = new StringBuilder();
-		//String str = "";
 		Stack operator = new Stack();
 		i = 0;
 		while (i < expression.length()) {
@@ -70,7 +69,6 @@ public class InfixToPostfix implements IExpressionEvaluator {
 				&& expression.charAt(i) != '/'
 				&& expression.charAt(i) != '('
 				&& expression.charAt(i) != ')') {
-				//str += expression.charAt(i) + " ";
 				str.append(expression.charAt(i));
 				str.append(" ");
 				i++;
@@ -87,7 +85,6 @@ public class InfixToPostfix implements IExpressionEvaluator {
 					&& expression.charAt(i) != '/'
 					&& expression.charAt(i) != '('
 					&& expression.charAt(i) != ')') {
-					//str += expression.charAt(i) + " ";
 					str.append(expression.charAt(i));
 					str.append(" ");
 					i++;
@@ -105,7 +102,6 @@ public class InfixToPostfix implements IExpressionEvaluator {
 						&& expression.charAt(i) != '/'
 						&& expression.charAt(i) != '('
 					&& expression.charAt(i) != ')') {
-					//str += expression.charAt(i) + " ";
 					str.append(expression.charAt(i));
 					str.append(" ");
 					i++;
@@ -121,7 +117,6 @@ public class InfixToPostfix implements IExpressionEvaluator {
 						&& expression.charAt(i) != '/'
 						&& expression.charAt(i) != '('
 					&& expression.charAt(i) != ')') {
-					//str += expression.charAt(i) + " ";
 					str.append(expression.charAt(i));
 					str.append(" ");
 					i++;
@@ -132,7 +127,6 @@ public class InfixToPostfix implements IExpressionEvaluator {
 				i++;
 				while (operator.peek() != (Object) '('
 						&& !operator.isEmpty()) {
-					//str += operator.pop() + " ";
 					str.append(operator.pop());
 					str.append(" ");
 				}
@@ -140,7 +134,6 @@ public class InfixToPostfix implements IExpressionEvaluator {
 			}
 			while (!operator.isEmpty()
 					&& operator.peek() != (Object) '(') {
-				//str += operator.pop() + " ";
 				str.append(operator.pop());
 				str.append(" ");
 			}
@@ -158,27 +151,25 @@ public class InfixToPostfix implements IExpressionEvaluator {
 	*/
 	@Override
 	public int evaluate(final String expression) {
-		//String expression = expresion.replaceAll("\\ ", "");
 		if (expression == "") {
 			throw new RuntimeException();
 		}
 		int i = 0;
-		//suppose its working
-//		while (i < expression.length()) {
-//			if (i < expression.length()
-//				&& (expression.charAt(i) == '+'
-//				|| expression.charAt(i) == '-'
-//				|| expression.charAt(i) == '*'
-//			|| expression.charAt(i) == '/')) {
-//				i++;
-//			} else if (i < expression.length()
-//				&& (expression.charAt(i) < '0'
-//				|| expression.charAt(i) > '9')
-//				&& expression.charAt(i) != ' ') {
-//				throw null;
-//			}
-//			i++;
-//		}
+		while (i < expression.length()) {
+			if (i < expression.length()
+				&& (expression.charAt(i) == '+'
+				|| expression.charAt(i) == '-'
+				|| expression.charAt(i) == '*'
+			|| expression.charAt(i) == '/')) {
+				i++;
+			} else if (i < expression.length()
+				&& (expression.charAt(i) < '0'
+				|| expression.charAt(i) > '9')
+				&& expression.charAt(i) != ' ') {
+				throw null;
+			}
+			i++;
+		}
 		Integer operator1, operator2;
 		int res = 0;
 		String str = "";
@@ -235,8 +226,8 @@ public class InfixToPostfix implements IExpressionEvaluator {
 		}
 		if (operator.size() == 1) {
 			return (int) operator.pop();
-		} else if (operator.size() > 1) {
-			return 0;
+//		} else if (operator.size() > 1) {
+//			return 0;
 		} else {
 			return res;
 		}
