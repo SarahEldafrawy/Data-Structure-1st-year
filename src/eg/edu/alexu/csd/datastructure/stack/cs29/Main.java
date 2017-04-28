@@ -11,9 +11,9 @@ import java.util.Scanner;
 public class Main {
 /**.
  * main to test stack as UI
- * @param args
+ * @param args I don't know its use
  */
-	public static void main(final String[] args){
+	public static void main(final String[] args) {
 		Stack mystack = new Stack();
 		Scanner scan = new Scanner(System.in);
 		int x = 0;
