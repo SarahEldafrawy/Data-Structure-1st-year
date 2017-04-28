@@ -5,27 +5,27 @@
 package eg.edu.alexu.csd.datastructure.stack.cs29;
 
 import eg.edu.alexu.csd.datastructure.stack.IStack;
-/**
+/**.
  * this is the stack implementation
  * @author welcome
  *
  */
 public class Stack implements IStack {
 
-	/**
+	/**.
 	 * plate is the stack node
 	 */
 	class Plate {
-		/**
+		/**.
 		 * to link the nodes
 		 */
 		private Plate prev = null;
-		/**
+		/**.
 		 * to save the value of the node
 		 */
 		private Object data;
 	}
-	/**
+	/**.
 	 * to save the size instead of making a loop
 	 */
 	private int size = 0;
