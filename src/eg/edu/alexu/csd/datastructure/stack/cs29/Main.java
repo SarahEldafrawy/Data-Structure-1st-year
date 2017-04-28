@@ -3,13 +3,21 @@
 package eg.edu.alexu.csd.datastructure.stack.cs29;
 
 import java.util.Scanner;
-
+/**.
+ * main to test stack as UI
+ * @author welcome
+ *
+ */
 public class Main {
-
+/**.
+ * main to test stack as UI
+ * @param args
+ */
 	public static void main(final String[] args){
 		Stack mystack = new Stack();
 		Scanner scan = new Scanner(System.in);
 		int x = 0;
+		final int x1 = 1, x2 = 2, x3 = 3, x4 = 4, x5 = 5, x6 = 6;
 		Object element;
 		while (true) {
 			System.out.println("Enter the operation you want");
@@ -21,12 +29,12 @@ public class Main {
 			System.out.println("6-Exit");
 			x = scan.nextInt();
 			switch (x) {
-				case 1:
+				case x1:
 					System.out.println("enter the value:");
 					element = scan.next();
 					mystack.push(element);
 					break;
-				case 2:
+				case x2:
 					if (mystack.isEmpty()) {
 						System.out.println("Stack"
 								+ " is empty");
@@ -35,7 +43,7 @@ public class Main {
 						System.out.println(element);
 					}
 					break;
-				case 3:
+				case x3:
 					if (mystack.isEmpty()) {
 						System.out.println("Stack"
 								+ " is empty");
@@ -44,11 +52,11 @@ public class Main {
 						System.out.println(element);
 					}
 					break;
-				case 4:
+				case x4:
 					element = mystack.size();
 					System.out.println(element);
 					break;
-				case 5:
+				case x5:
 					if (mystack.isEmpty()) {
 						System.out.println("Stack"
 								+ " is empty");
@@ -57,7 +65,7 @@ public class Main {
 							+ " is not empty");
 					}
 					break;
-				case 6:
+				case x6:
 					return;
 				default: System.out.println("please "
 						+ "enter a valid number");
