@@ -164,26 +164,30 @@ public class InfixToPostfix implements IExpressionEvaluator {
 		}
 		int i = 0;
 		//suppose its working
-		while (i < expression.length()) {
-			if (i < expression.length()
-				&& (expression.charAt(i) == '+'
-				|| expression.charAt(i) == '-'
-				|| expression.charAt(i) == '*'
-			|| expression.charAt(i) == '/')) {
-				i++;
-			} else if (i < expression.length()
-				&& (expression.charAt(i) < '0'
-				|| expression.charAt(i) > '9')
-				&& expression.charAt(i) != ' ') {
-				throw null;
-			}
-			i++;
-		}
+//		while (i < expression.length()) {
+//			if (i < expression.length()
+//				&& (expression.charAt(i) == '+'
+//				|| expression.charAt(i) == '-'
+//				|| expression.charAt(i) == '*'
+//			|| expression.charAt(i) == '/')) {
+//				i++;
+//			} else if (i < expression.length()
+//				&& (expression.charAt(i) < '0'
+//				|| expression.charAt(i) > '9')
+//				&& expression.charAt(i) != ' ') {
+//				throw null;
+//			}
+//			i++;
+//		}
 		Integer operator1, operator2;
 		int res = 0;
+		String str = "";
 		Stack operator = new Stack();
 		i = 0;
 		while (i < expression.length()) {
+			while (expression.charAt(i) == ' ') {
+				i++;
+			}
 			if (expression.charAt(i) == '+') {
 				operator1 = (Integer) operator.pop();
 				operator2 = (Integer) operator.pop();
@@ -214,10 +218,18 @@ public class InfixToPostfix implements IExpressionEvaluator {
 					&& expression.charAt(i) != '-'
 					&& expression.charAt(i) != '*'
 					&& expression.charAt(i) != '/') {
-					if (expression.charAt(i) != ' ') {
-		operator.push(Character.getNumericValue(expression.charAt(i)));
+					while (expression.charAt(i) == ' ') {
+						i++;
 					}
-					i++;
+					while (expression.charAt(i) != ' ') {
+						str += expression.charAt(i);
+								i++;
+					}
+					while (expression.charAt(i) == ' ') {
+						i++;
+					}
+					operator.push(Integer.parseInt(str));
+					str = "";
 				}
 			}
 		}
@@ -229,4 +241,4 @@ public class InfixToPostfix implements IExpressionEvaluator {
 			return res;
 		}
 	}
-}
+};
