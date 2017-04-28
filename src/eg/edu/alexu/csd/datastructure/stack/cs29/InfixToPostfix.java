@@ -235,8 +235,8 @@ public class InfixToPostfix implements IExpressionEvaluator {
 		}
 		if (operator.size() == 1) {
 			return (int) operator.pop();
-//		} else if (operator.size() > 1) {
-//			return 0;
+		} else if (operator.size() > 1) {
+			return 0;
 		} else {
 			return res;
 		}
