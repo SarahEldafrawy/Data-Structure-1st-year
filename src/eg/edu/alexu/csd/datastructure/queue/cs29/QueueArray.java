@@ -7,8 +7,6 @@
  */
 package eg.edu.alexu.csd.datastructure.queue.cs29;
 
-import javax.management.RuntimeErrorException;
-
 import eg.edu.alexu.csd.datastructure.queue.IArrayBased;
 import eg.edu.alexu.csd.datastructure.queue.IQueue;
 
@@ -43,8 +41,8 @@ public class QueueArray implements IArrayBased, IQueue {
 		if (count == arrSize) {
 			throw new RuntimeException();
 		}
-		list[(r + 1) % arrSize] = item;
-		r++;
+		r = (r + 1) % arrSize;
+		list[r] = item;
 		count++;
 	}
 	/**
