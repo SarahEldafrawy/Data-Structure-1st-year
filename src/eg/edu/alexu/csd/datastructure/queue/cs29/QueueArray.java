@@ -38,11 +38,11 @@ public class QueueArray implements IArrayBased, IQueue {
 	*/
 	@Override
 	public void enqueue(final Object item) {
-		if (count == arrSize) {
+		if (count == (arrSize - 1)) {
 			throw new RuntimeException();
 		}
-		r = (r + 1) % arrSize;
 		list[r] = item;
+		r = (r + 1) % arrSize;
 		count++;
 	}
 	/**
@@ -54,6 +54,7 @@ public class QueueArray implements IArrayBased, IQueue {
 			throw new RuntimeException();
 		}
 		Object item = list[f];
+		list[f] = null;
 		count--;
 		f = (f + 1) % arrSize;
 		return item;
