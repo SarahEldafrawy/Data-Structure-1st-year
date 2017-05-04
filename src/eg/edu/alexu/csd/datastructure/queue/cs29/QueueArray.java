@@ -31,7 +31,7 @@ public class QueueArray implements IArrayBased, IQueue {
 		this.arrSize = n;
 		this.count = 0;
 		this.r = 0;
-		this.f = r + 1;
+		this.f = 0;
 	}
 	/**
 	*Inserts @param item at the queue front.
@@ -54,8 +54,8 @@ public class QueueArray implements IArrayBased, IQueue {
 			throw new RuntimeException();
 		}
 		Object item = list[f];
-		count--;
 		f = (f + 1) % arrSize;
+		count--;
 		return item;
 	}
 	/**
