@@ -41,8 +41,8 @@ public class QueueArray implements IArrayBased, IQueue {
 		if (count == arrSize) {
 			throw new RuntimeException();
 		}
-		list[(r + 1) % arrSize] = item;
-		r = (r+1) % arrSize;
+		list[r] = item;
+		r = (r + 1) % arrSize;
 		count++;
 	}
 	/**
@@ -75,5 +75,4 @@ public class QueueArray implements IArrayBased, IQueue {
 	public int size() {
 		return this.count;
 	}
-
 }
