@@ -77,6 +77,22 @@ public class QueueArrayTest {
 		Assert.assertNotEquals(true, list.isEmpty());
 	};
 	/**
+   *test to check the list is full.
+   */
+  @Test (expected = Exception.class)
+  public void fullArray() {
+    QueueArray list = new QueueArray(q4);
+    list.enqueue(q5);
+    list.enqueue(q7);
+    list.enqueue(q3);
+    list.enqueue(q6);
+    list.enqueue(q6);
+    list.dequeue();
+    list.dequeue();
+    list.dequeue();
+    Assert.assertNotEquals(true, list.isEmpty());
+  };
+	/**
 	 *test different operation of list.
 	 */
 	@Test
