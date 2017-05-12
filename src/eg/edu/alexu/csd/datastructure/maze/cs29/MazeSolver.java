@@ -56,7 +56,11 @@ public class MazeSolver implements IMazeSolver {
       throw null;
     }
     recursionBFS(k, l);
-    return this.locationsArray;
+    if (foundGoal) {
+      return this.locationsArray;
+    } else {
+      return null;
+    }
   }
   /**
   * Read the maze file, and solve it using Depth First Search.
@@ -72,7 +76,11 @@ public class MazeSolver implements IMazeSolver {
       throw null;
     }
     recursionDFS(k, l);
-    return this.locationsArray;
+    if (foundGoal) {
+      return this.locationsArray;
+    } else {
+      return null;
+    }
   }
 
   private void readFromFile(final File file) {
