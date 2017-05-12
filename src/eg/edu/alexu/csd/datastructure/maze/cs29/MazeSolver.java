@@ -23,6 +23,8 @@ public class MazeSolver implements IMazeSolver {
   private boolean[][] visitedArray;
   private String[] mazeArray;
   private boolean foundGoal;
+  private boolean foundS;
+
 
   /**
    *constructor
@@ -33,6 +35,8 @@ public class MazeSolver implements IMazeSolver {
     this.visitedArray = new boolean[this.n][this.m];
     this.mazeArray = new String[this.n];
     this.foundGoal = false;
+    this.foundS = false;
+
   }
   /**
   * Read the maze file, and solve it using Breadth First Search.
@@ -44,8 +48,15 @@ public class MazeSolver implements IMazeSolver {
   @Override
   public int[][] solveBFS(final File maze) {
     readFromFile(maze);
+    if (!foundS) {
+      throw null;
+    }
     recursionBFS(k, l);
-    return this.locationsArray;
+    if (foundGoal) {
+      return this.locationsArray;
+    } else {
+      return null;
+    }
   }
   /**
   * Read the maze file, and solve it using Depth First Search.
@@ -57,8 +68,16 @@ public class MazeSolver implements IMazeSolver {
   @Override
   public int[][] solveDFS(final File maze) {
     readFromFile(maze);
+    if (!foundS) {
+      throw null;
+    }
     recursionDFS(k, l);
-  return this.locationsArray;
+    
+    if (foundGoal) {
+        return this.locationsArray;
+      } else {
+        return null;
+      }
   }
 
   private void readFromFile(final File file) {
@@ -75,6 +94,7 @@ public class MazeSolver implements IMazeSolver {
       if (this.mazeArray[i].indexOf('S') >= 0) {
         this.k = i;
         this.l = this.mazeArray[i].indexOf('S');
+        foundS = true;
       }
     }
     br.close();
