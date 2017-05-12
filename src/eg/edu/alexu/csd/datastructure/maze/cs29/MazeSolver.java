@@ -115,8 +115,8 @@ public class MazeSolver implements IMazeSolver {
           }
         }
         if (this.foundGoal) {
-          this.locationsArray[this.s][0] = o + i;
-          this.locationsArray[this.s][1] = p + j;
+          this.locationsArray[this.s][1] = o + i;
+          this.locationsArray[this.s][0] = p + j;
           this.s++;
           break;
         }
