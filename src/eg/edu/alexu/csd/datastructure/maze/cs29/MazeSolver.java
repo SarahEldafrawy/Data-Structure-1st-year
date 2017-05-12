@@ -86,7 +86,7 @@ public class MazeSolver implements IMazeSolver {
     this.n = intArray[0];
     this.m = intArray[1];
     constructVariables();
-    for (int i = 0; br.readLine() != null; i++) {
+    for (int i = 0; i < this.n; i++) {
       z++;
       this.mazeArray[i] = br.readLine();
       if (this.mazeArray[i].indexOf('S') >= 0) {
