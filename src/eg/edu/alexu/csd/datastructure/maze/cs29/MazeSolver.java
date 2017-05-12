@@ -1,7 +1,4 @@
 /**
- * 
- */
-/**
  * @author welcome
  *
  */
@@ -9,15 +6,12 @@ package eg.edu.alexu.csd.datastructure.maze.cs29;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 
 import eg.edu.alexu.csd.datastructure.maze.IMazeSolver;
 
 public class MazeSolver implements IMazeSolver {
 
-  //declare 2D array 
   private int n,m,s,k,l;
   private int[][] locationsArray;
   private boolean[][] visitedArray;
@@ -26,10 +20,8 @@ public class MazeSolver implements IMazeSolver {
   private boolean foundS;
   private boolean foundE;
 
-
-
   /**
-   *constructor
+   *constructor.
    */
   private void constructVariables() {
     this.s = 0;
@@ -82,7 +74,9 @@ public class MazeSolver implements IMazeSolver {
       return null;
     }
   }
-
+  /**
+   * @param file to read the mazeArray
+   */
   private void readFromFile(final File file) {
     try {
     BufferedReader br = new BufferedReader(new FileReader(file));
@@ -107,13 +101,14 @@ public class MazeSolver implements IMazeSolver {
     } catch (Exception e) {
     }
   }
-
-  public static int[] stringArrayToIntArray(String intString) {
-    String[] intStringSplit = intString.split(" "); //Split by spaces
-    int[] result = new int[intStringSplit.length]; //Used to store our ints
-
+  /**
+   * @param intString to get dimensions
+   * @return array of dimensions
+   */
+  public static int[] stringArrayToIntArray(final String intString) {
+    String[] intStringSplit = intString.split(" ");
+    int[] result = new int[intStringSplit.length];
     for (int i = 0; i < intStringSplit.length; i++) {
-        //parse and store each value into int[] to be returned
         result[i] = Integer.parseInt(intStringSplit[i]);
     }
     return result;
@@ -150,7 +145,12 @@ public class MazeSolver implements IMazeSolver {
       }
     }
   }
-  
+
+  /**
+   * BFS recursion.
+   * @param o and
+   * @param p for start
+   */
   private void recursionBFS(final int o, final int p) {
     for (int j = -1; j <= 1; j++) {
       for (int i = -1; i <= 1; i++) {
