@@ -103,14 +103,15 @@ public class MazeSolver implements IMazeSolver {
     } catch (Exception e) {
       throw null;
     }
-    if (z != this.n) {
-      throw null;
-    }
-    for (int i = 0; i < mazeArray.length; i++) {
-      if (mazeArray[i].length() != this.m) {
-        throw null;
-      }
-    }
+    //not working
+//    if (z != this.n) {
+//      throw null;
+//    }
+//    for (int i = 0; i < mazeArray.length; i++) {
+//      if (mazeArray[i].length() != this.m) {
+//        throw null;
+//      }
+//    }
   }
   /**
    * @param intString to get dimensions
