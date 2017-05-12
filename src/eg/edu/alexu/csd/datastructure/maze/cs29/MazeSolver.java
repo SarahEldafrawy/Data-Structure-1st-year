@@ -78,6 +78,7 @@ public class MazeSolver implements IMazeSolver {
    * @param file to read the mazeArray
    */
   private void readFromFile(final File file) {
+    int z = 0;
     try {
     BufferedReader br = new BufferedReader(new FileReader(file));
     String str = br.readLine();
@@ -85,9 +86,9 @@ public class MazeSolver implements IMazeSolver {
     this.n = intArray[0];
     this.m = intArray[1];
     constructVariables();
-    for (int i = 0; i < this.n; i++) {
-      str = br.readLine();
-      this.mazeArray[i] = str;
+    for (int i = 0; br.readLine() != null; i++) {
+      z++;
+      this.mazeArray[i] = br.readLine();
       if (this.mazeArray[i].indexOf('S') >= 0) {
         this.k = i;
         this.l = this.mazeArray[i].indexOf('S');
@@ -100,6 +101,14 @@ public class MazeSolver implements IMazeSolver {
     br.close();
     } catch (Exception e) {
       throw null;
+    }
+    if (z != this.n) {
+      throw null;
+    }
+    for (int i = 0; i < mazeArray.length; i++) {
+      if (mazeArray[i].length() != this.m) {
+        throw null;
+      }
     }
   }
   /**
