@@ -99,6 +99,7 @@ public class MazeSolver implements IMazeSolver {
     }
     br.close();
     } catch (Exception e) {
+      throw null;
     }
   }
   /**
