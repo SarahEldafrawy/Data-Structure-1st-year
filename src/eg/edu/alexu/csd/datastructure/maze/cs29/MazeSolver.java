@@ -44,9 +44,7 @@ public class MazeSolver implements IMazeSolver {
   @Override
   public int[][] solveBFS(final File maze) {
     readFromFile(maze);
-
-
-
+    recursionBFS(k, l);
     return this.locationsArray;
   }
   /**
@@ -101,6 +99,33 @@ public class MazeSolver implements IMazeSolver {
    * @param p for start
    */
   private void recursionDFS(final int o, final int p) {
+    for (int j = -1; j <= 1; j++) {
+      for (int i = -1; i <= 1; i++) {
+        if ((o + i) < n && (o + i) >= 0 && (p + j) < m && (p + j) >= 0 && i != j && (i + j) != 0
+            && !this.visitedArray[o + i][p + j]) {
+          this.visitedArray[o + i][p + j] = true;
+          if (this.mazeArray[o + i].charAt(p + j) == '#') {
+            continue;
+          } else if (this.mazeArray[o + i].charAt(p + j) == '.') {
+            recursionDFS(o + i, p + j);
+          } else if (this.mazeArray[i + o].charAt(p + j) == 'E') {
+            this.foundGoal = true;
+          }
+        }
+        if (this.foundGoal) {
+          this.locationsArray[this.s][1] = o + i;
+          this.locationsArray[this.s][0] = p + j;
+          this.s++;
+          break;
+        }
+      }
+      if (this.foundGoal) {
+        break;
+      }
+    }
+  }
+  
+  private void recursionBFS(final int o, final int p) {
     for (int j = -1; j <= 1; j++) {
       for (int i = -1; i <= 1; i++) {
         if ((o + i) < n && (o + i) >= 0 && (p + j) < m && (p + j) >= 0 && i != j && (i + j) != 0
