@@ -98,6 +98,7 @@ public class MazeSolver implements IMazeSolver {
         foundE = true;
       }
     }
+    z++;
     br.close();
     } catch (Exception e) {
       throw null;
