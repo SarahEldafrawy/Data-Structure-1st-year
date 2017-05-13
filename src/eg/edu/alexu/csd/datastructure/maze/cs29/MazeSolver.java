@@ -193,8 +193,8 @@ public class MazeSolver implements IMazeSolver {
    * @param p for start
    */
   private void recursionBFS(final int o, final int p) {
-    for (int j = -1; j <= 1; j++) {
-      for (int i = -1; i <= 1; i++) {
+    for (int j = 1; j <= -1; j--) {
+      for (int i = 1; i <= -1; i--) {
         if ((o + i) < n && (o + i) >= 0 && (p + j) < m
             && (p + j) >= 0 && i != j && (i + j) != 0
             && !this.visitedArray[o + i][p + j]) {
