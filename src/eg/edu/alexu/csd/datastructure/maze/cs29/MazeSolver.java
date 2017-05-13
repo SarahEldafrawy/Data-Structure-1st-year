@@ -7,13 +7,14 @@ package eg.edu.alexu.csd.datastructure.maze.cs29;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
 
 import eg.edu.alexu.csd.datastructure.maze.IMazeSolver;
 
 public class MazeSolver implements IMazeSolver {
 
   private int n,m,s,k,l;
-  private int[][] locationsArray;
+  private ArrayList<int[][]> locationsArray;
   private boolean[][] visitedArray;
   private String[] mazeArray;
   private boolean foundGoal;
@@ -25,7 +26,7 @@ public class MazeSolver implements IMazeSolver {
    */
   private void constructVariables() {
     this.s = 0;
-    this.locationsArray = new int[this.n * 2 + this.m * 2][2];//list of point better
+    this.locationsArray = new ArrayList<int[][]>();
     this.visitedArray = new boolean[this.n][this.m];
     this.mazeArray = new String[this.n];
     this.foundGoal = false;
@@ -48,8 +49,15 @@ public class MazeSolver implements IMazeSolver {
       throw null;
     }
     recursionBFS(k, l);
+    int[][] locations = new int[locationsArray.size()][2];
+    int i = 0;
+    while (i < locationsArray.size()) {
+      locations[i][0] = locationsArray.get(i)[0][0];
+      locations[i][1] = locationsArray.get(i)[0][1];
+      i++;
+    }
     if (foundGoal) {
-      return this.locationsArray;
+      return locations;
     } else {
       return null;
     }
@@ -68,8 +76,15 @@ public class MazeSolver implements IMazeSolver {
       throw null;
     }
     recursionDFS(k, l);
+    int[][] locations = new int[locationsArray.size()][2];
+    int i = 0;
+    while (i < locationsArray.size()) {
+      locations[i][0] = locationsArray.get(i)[0][0];
+      locations[i][1] = locationsArray.get(i)[0][1];
+      i++;
+    }
     if (foundGoal) {
-      return this.locationsArray;
+      return locations;
     } else {
       return null;
     }
@@ -78,7 +93,7 @@ public class MazeSolver implements IMazeSolver {
    * @param file to read the mazeArray
    */
   private void readFromFile(final File file) {
-    int z = 0;
+    //int z = 0;
     try {
     BufferedReader br = new BufferedReader(new FileReader(file));
     String str = br.readLine();
@@ -87,7 +102,7 @@ public class MazeSolver implements IMazeSolver {
     this.m = intArray[1];
     constructVariables();
     for (int i = 0; i < this.n; i++) {
-      z++;
+      //z++;
       this.mazeArray[i] = br.readLine();
       if (this.mazeArray[i].indexOf('S') >= 0) {
         this.k = i;
@@ -98,12 +113,12 @@ public class MazeSolver implements IMazeSolver {
         foundE = true;
       }
     }
-    z++;
+    //z++;
     br.close();
     } catch (Exception e) {
       throw null;
     }
-    //not working
+    //not working // i think problem in condition for br.readLine() != null
 //    if (z != this.n) {
 //      throw null;
 //    }
@@ -146,9 +161,10 @@ public class MazeSolver implements IMazeSolver {
           }
         }
         if (this.foundGoal) {
-          this.locationsArray[this.s][1] = o + i;
-          this.locationsArray[this.s][0] = p + j;
-          this.s++;
+          int[][] tempArr = new int[1][2];
+          tempArr[0][0] = p + j;
+          tempArr[0][1] = o + i;
+          this.locationsArray.add(tempArr);
           break;
         }
       }
@@ -178,9 +194,10 @@ public class MazeSolver implements IMazeSolver {
           }
         }
         if (this.foundGoal) {
-          this.locationsArray[this.s][1] = o + i;
-          this.locationsArray[this.s][0] = p + j;
-          this.s++;
+          int[][] tempArr = new int[1][2];
+          tempArr[0][0] = p + j;
+          tempArr[0][1] = o + i;
+          this.locationsArray.add(tempArr);
           break;
         }
       }
@@ -188,7 +205,6 @@ public class MazeSolver implements IMazeSolver {
         break;
       }
     }
-    return;
   }
 
 }
