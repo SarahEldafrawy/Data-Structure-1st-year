@@ -13,7 +13,7 @@ import eg.edu.alexu.csd.datastructure.maze.IMazeSolver;
 
 public class MazeSolver implements IMazeSolver {
 
-  private int n,m,s,k,l;
+  private int n,m,k,l;
   private ArrayList<int[][]> locationsArray;
   private boolean[][] visitedArray;
   private String[] mazeArray;
@@ -25,7 +25,6 @@ public class MazeSolver implements IMazeSolver {
    *constructor.
    */
   private void constructVariables() {
-    this.s = 0;
     this.locationsArray = new ArrayList<int[][]>();
     this.visitedArray = new boolean[this.n][this.m];
     this.mazeArray = new String[this.n];
@@ -75,14 +74,20 @@ public class MazeSolver implements IMazeSolver {
     if (!foundS || !foundE) {
       throw null;
     }
+
     recursionDFS(k, l);
+    int[][]startCoor = new int[1][2];
+    startCoor[0][0] = k;
+    startCoor[0][1] = l;
+    locationsArray.add(startCoor);
     int[][] locations = new int[locationsArray.size()][2];
     int i = 0;
     while (i < locationsArray.size()) {
-      locations[i][0] = locationsArray.get(i)[0][0];
-      locations[i][1] = locationsArray.get(i)[0][1];
+      locations[i][0] = locationsArray.get(locationsArray.size() - 1 - i)[0][0];
+      locations[i][1] = locationsArray.get(locationsArray.size() - 1 - i)[0][1];
       i++;
     }
+    
     if (foundGoal) {
       return locations;
     } else {
@@ -162,8 +167,8 @@ public class MazeSolver implements IMazeSolver {
         }
         if (this.foundGoal) {
           int[][] tempArr = new int[1][2];
-          tempArr[0][0] = p + j;
-          tempArr[0][1] = o + i;
+          tempArr[0][0] = o + i;
+          tempArr[0][1] = p + j;
           this.locationsArray.add(tempArr);
           break;
         }
@@ -195,8 +200,8 @@ public class MazeSolver implements IMazeSolver {
         }
         if (this.foundGoal) {
           int[][] tempArr = new int[1][2];
-          tempArr[0][0] = p + j;
-          tempArr[0][1] = o + i;
+          tempArr[0][0] = o + i;
+          tempArr[0][1] = p + j;
           this.locationsArray.add(tempArr);
           break;
         }
