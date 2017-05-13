@@ -10,20 +10,28 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 import eg.edu.alexu.csd.datastructure.maze.IMazeSolver;
-
+/**
+ * MazeSolver Class.
+ */
 public class MazeSolver implements IMazeSolver {
-
-  private int n,m,k,l;
+   /** n & m maze array dimensions.*/
+  private int n, m;
+  /** k & l coordinates of start point.*/
+  private int k, l;
+  /** locationsArray is the path steps stored in a list.*/
   private ArrayList<int[][]> locationsArray;
+  /** visited array to mark visited cells.*/
   private boolean[][] visitedArray;
+  /** maze array is where the maze cells are stored.*/
   private String[] mazeArray;
+  /** foundGoal flag to stop the recursion when Exit is found.*/
   private boolean foundGoal;
+  /** foundS flag to check if the maze has no start.*/
   private boolean foundS;
+  /** foundE flag to check if the maze has no Exit.*/
   private boolean foundE;
 
-  /**
-   *constructor.
-   */
+  /**constructor to set variables.*/
   private void constructVariables() {
     this.locationsArray = new ArrayList<int[][]>();
     this.visitedArray = new boolean[this.n][this.m];
@@ -87,7 +95,6 @@ public class MazeSolver implements IMazeSolver {
       locations[i][1] = locationsArray.get(locationsArray.size() - 1 - i)[0][1];
       i++;
     }
-    
     if (foundGoal) {
       return locations;
     } else {
@@ -154,7 +161,8 @@ public class MazeSolver implements IMazeSolver {
   private void recursionDFS(final int o, final int p) {
     for (int j = -1; j <= 1; j++) {
       for (int i = -1; i <= 1; i++) {
-        if ((o + i) < n && (o + i) >= 0 && (p + j) < m && (p + j) >= 0 && i != j && (i + j) != 0
+        if ((o + i) < n && (o + i) >= 0 && (p + j) < m
+            && (p + j) >= 0 && i != j && (i + j) != 0
             && !this.visitedArray[o + i][p + j]) {
           this.visitedArray[o + i][p + j] = true;
           if (this.mazeArray[o + i].charAt(p + j) == '#') {
@@ -187,13 +195,14 @@ public class MazeSolver implements IMazeSolver {
   private void recursionBFS(final int o, final int p) {
     for (int j = -1; j <= 1; j++) {
       for (int i = -1; i <= 1; i++) {
-        if ((o + i) < n && (o + i) >= 0 && (p + j) < m && (p + j) >= 0 && i != j && (i + j) != 0
+        if ((o + i) < n && (o + i) >= 0 && (p + j) < m
+            && (p + j) >= 0 && i != j && (i + j) != 0
             && !this.visitedArray[o + i][p + j]) {
           this.visitedArray[o + i][p + j] = true;
           if (this.mazeArray[o + i].charAt(p + j) == '#') {
             continue;
           } else if (this.mazeArray[o + i].charAt(p + j) == '.') {
-            recursionDFS(o + i, p + j);
+            recursionDFS(o + i, p + j); //dequeue & enqueue
           } else if (this.mazeArray[i + o].charAt(p + j) == 'E') {
             this.foundGoal = true;
           }
