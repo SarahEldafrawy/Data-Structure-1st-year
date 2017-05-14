@@ -84,7 +84,7 @@ public class MazeSolver implements IMazeSolver {
     if (foundGoal) {
       return locations;
     } else {
-      return null;
+      throw null;
     }
   }
   /**
