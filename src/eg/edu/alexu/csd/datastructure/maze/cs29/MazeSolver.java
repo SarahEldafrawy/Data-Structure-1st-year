@@ -4,12 +4,15 @@
  */
 package eg.edu.alexu.csd.datastructure.maze.cs29;
 
+import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 
 import eg.edu.alexu.csd.datastructure.maze.IMazeSolver;
+import eg.edu.alexu.csd.datastructure.queue.cs29.QueueList;
+import eg.edu.alexu.csd.datastructure.stack.cs29.Stack;
 /**
  * MazeSolver Class.
  */
@@ -30,12 +33,19 @@ public class MazeSolver implements IMazeSolver {
   private boolean foundS;
   /** foundE flag to check if the maze has no Exit.*/
   private boolean foundE;
+  private QueueList queue;
+  private Stack stack;
+  private Point[][] parents;
 
   /**constructor to set variables.*/
   private void constructVariables() {
     this.locationsArray = new ArrayList<int[][]>();
     this.visitedArray = new boolean[this.n][this.m];
+    this.parents = new Point[n][m];
     this.mazeArray = new String[this.n];
+    this.parents = new Point[n][m];
+    this.stack = new Stack();
+    this.queue = new QueueList();
     this.foundGoal = false;
     this.foundS = false;
     this.foundE = false;
@@ -55,7 +65,13 @@ public class MazeSolver implements IMazeSolver {
     if (!foundS || !foundE) {
       throw null;
     }
-    recursionBFS(k, l);
+    parents[k][l] = new Point(-1, -1);
+    queue.enqueue(new Point(k, l));
+    pathBFS(k, l);
+    int[][]startCoor = new int[1][2];
+    startCoor[0][0] = k;
+    startCoor[0][1] = l;
+    locationsArray.add(startCoor);
     int[][] locations = new int[locationsArray.size()][2];
     int i = 0;
     while (i < locationsArray.size()) {
@@ -82,8 +98,9 @@ public class MazeSolver implements IMazeSolver {
     if (!foundS || !foundE) {
       throw null;
     }
-
-    recursionDFS(k, l);
+    parents[k][l] = new Point(-1, -1);
+    stack.push(new Point(k, l));
+    pathDFS(k, l);
     int[][]startCoor = new int[1][2];
     startCoor[0][0] = k;
     startCoor[0][1] = l;
@@ -105,7 +122,6 @@ public class MazeSolver implements IMazeSolver {
    * @param file to read the mazeArray
    */
   private void readFromFile(final File file) {
-    //int z = 0;
     try {
     BufferedReader br = new BufferedReader(new FileReader(file));
     String str = br.readLine();
@@ -114,7 +130,6 @@ public class MazeSolver implements IMazeSolver {
     this.m = intArray[1];
     constructVariables();
     for (int i = 0; i < this.n; i++) {
-      //z++;
       this.mazeArray[i] = br.readLine();
       if (this.mazeArray[i].indexOf('S') >= 0) {
         this.k = i;
@@ -125,20 +140,10 @@ public class MazeSolver implements IMazeSolver {
         foundE = true;
       }
     }
-    //z++;
     br.close();
     } catch (Exception e) {
       throw null;
     }
-    //not working // i think problem in condition for br.readLine() != null
-//    if (z != this.n) {
-//      throw null;
-//    }
-//    for (int i = 0; i < mazeArray.length; i++) {
-//      if (mazeArray[i].length() != this.m) {
-//        throw null;
-//      }
-//    }
   }
   /**
    * @param intString to get dimensions
@@ -202,7 +207,10 @@ public class MazeSolver implements IMazeSolver {
           if (this.mazeArray[o + i].charAt(p + j) == '#') {
             continue;
           } else if (this.mazeArray[o + i].charAt(p + j) == '.') {
-            recursionDFS(o + i, p + j); //dequeue & enqueue
+            Point tempArr = new Point(o + i, p + j);
+            queue.enqueue(tempArr);
+            Point temprecu = (Point) queue.dequeue();
+            recursionBFS(temprecu.x, temprecu.y);
           } else if (this.mazeArray[i + o].charAt(p + j) == 'E') {
             this.foundGoal = true;
           }
@@ -218,6 +226,88 @@ public class MazeSolver implements IMazeSolver {
       if (this.foundGoal) {
         break;
       }
+    }
+  }
+
+  private void pathBFS (int o, int p) {
+    this.visitedArray[o][p] = true;
+   while (!queue.isEmpty() && !foundGoal) {
+     for (int j = 1; j >= -1; j--) {
+       for (int i = 1; i >= -1; i--) {
+         if ((o + i) < n && (o + i) >= 0 && (p + j) < m
+             && (p + j) >= 0 && i != j && (i + j) != 0
+             && !this.visitedArray[o + i][p + j]
+             && this.mazeArray[o + i].charAt(p + j) != '#') {
+             this.parents[o + i][p + j] = new Point(o, p);
+             this.visitedArray[o + i][p + j] = true;
+             if (this.mazeArray[o + i].charAt(p + j) != '.') {
+               queue.enqueue(new Point(o + i, p + j));
+             }
+             if (this.mazeArray[o + i].charAt(p + j) != 'E') {
+               foundGoal = true;
+               o += i;
+               p += j;
+               break;
+             }
+         }
+       }
+       if (foundGoal) {
+         break;
+       }
+     }
+     if (!foundGoal) {
+       Point newNode = (Point) queue.dequeue();
+       o = newNode.x;
+       p = newNode.y;
+     }
+   }
+   findingPath(o, p);
+  }
+
+  private void pathDFS (int o, int p) {
+    this.visitedArray[o][p] = true;
+    while (!stack.isEmpty() && !foundGoal) {
+      for (int j = 1; j >= -1; j--) {
+        for (int i = 1; i >= -1; i--) {
+          if ((o + i) < n && (o + i) >= 0 && (p + j) < m
+              && (p + j) >= 0 && i != j && (i + j) != 0
+              && !this.visitedArray[o + i][p + j]
+              && this.mazeArray[o + i].charAt(p + j) != '#') {
+              this.parents[o + i][p + j] = new Point(o, p);
+              this.visitedArray[o + i][p + j] = true;
+              if (this.mazeArray[o + i].charAt(p + j) == '.') {
+                stack.push(new Point(o + i, p + j));
+              }
+              if (this.mazeArray[o + i].charAt(p + j) == 'E') {
+                foundGoal = true;
+                o += i;
+                p += j;
+                break;
+              }
+          }
+        }
+        if (foundGoal) {
+          break;
+        }
+      }
+      if (!foundGoal) {
+        Point newNode = (Point) stack.pop();
+        o = newNode.x;
+        p = newNode.y;
+      }
+    }
+    findingPath(o, p);
+   }
+
+  public void findingPath(int o, int p) {
+    while (o != k || p != l) {
+      int[][] arr = new int[1][2];
+      arr[0][0] = o;
+      arr[0][1] = p;
+      this.locationsArray.add(arr);
+      Point pt = this.parents[o][p];
+      o = pt.x;
+      p = pt.y;
     }
   }
 
