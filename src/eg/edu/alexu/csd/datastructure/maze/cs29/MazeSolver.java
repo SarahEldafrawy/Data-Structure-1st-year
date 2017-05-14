@@ -27,15 +27,18 @@ public class MazeSolver implements IMazeSolver {
   private boolean[][] visitedArray;
   /** maze array is where the maze cells are stored.*/
   private String[] mazeArray;
+  /** parents array is where the maze cells'parents are stored.*/
+  private Point[][] parents;
   /** foundGoal flag to stop the recursion when Exit is found.*/
   private boolean foundGoal;
   /** foundS flag to check if the maze has no start.*/
   private boolean foundS;
   /** foundE flag to check if the maze has no Exit.*/
   private boolean foundE;
+  /** used in the BFS.*/
   private QueueList queue;
+  /** used in the DFS.*/
   private Stack stack;
-  private Point[][] parents;
 
   /**constructor to set variables.*/
   private void constructVariables() {
@@ -196,44 +199,11 @@ public class MazeSolver implements IMazeSolver {
     }
   }
 
-  /**
-   * BFS recursion.
-   * @param o and
-   * @param p for start
-   */
-  private void recursionBFS(final int o, final int p) {
-    for (int j = 1; j >= -1; j--) {
-      for (int i = 1; i >= -1; i--) {
-        if ((o + i) < n && (o + i) >= 0 && (p + j) < m
-            && (p + j) >= 0 && i != j && (i + j) != 0
-            && !this.visitedArray[o + i][p + j]) {
-          this.visitedArray[o + i][p + j] = true;
-          if (this.mazeArray[o + i].charAt(p + j) == '#') {
-            continue;
-          } else if (this.mazeArray[o + i].charAt(p + j) == '.') {
-            Point tempArr = new Point(o + i, p + j);
-            queue.enqueue(tempArr);
-            Point temprecu = (Point) queue.dequeue();
-            recursionBFS(temprecu.x, temprecu.y);
-          } else if (this.mazeArray[i + o].charAt(p + j) == 'E') {
-            this.foundGoal = true;
-          }
-        }
-        if (this.foundGoal) {
-          int[][] tempArr = new int[1][2];
-          tempArr[0][0] = o + i;
-          tempArr[0][1] = p + j;
-          this.locationsArray.add(tempArr);
-          break;
-        }
-      }
-      if (this.foundGoal) {
-        break;
-      }
-    }
-  }
-
-  private void pathBFS (int o, int p) {
+  /**BFS recursion iterated.
+   * @param x &
+   * @param y is the Coordinates of the start point  */
+  private void pathBFS(final int x, final int y) {
+    int o = x, p = y;
     this.visitedArray[o][p] = true;
     while (!queue.isEmpty() && !foundGoal) {
       Point newNode = (Point) queue.dequeue();
@@ -265,8 +235,11 @@ public class MazeSolver implements IMazeSolver {
     }
     findingPath(o, p);
   }
-
-  private void pathDFS (int o, int p) {
+  /**DFS recursion iterated.
+   * @param x &
+   * @param y is the Coordinates of the start point  */
+  private void pathDFS(final int x, final int y) {
+    int o = x, p = y;
     this.visitedArray[o][p] = true;
     while (!stack.isEmpty() && !foundGoal) {
       for (int j = 1; j >= -1; j--) {
@@ -300,8 +273,11 @@ public class MazeSolver implements IMazeSolver {
     }
     findingPath(o, p);
    }
-
-  public void findingPath(int o, int p) {
+  /** to trace the path.
+   * by passing @param x &
+   * @param y as the exit point*/
+  public void findingPath(final int x, final int y) {
+    int o = x, p = y;
     while (o != k || p != l) {
       int[][] arr = new int[1][2];
       arr[0][0] = o;
