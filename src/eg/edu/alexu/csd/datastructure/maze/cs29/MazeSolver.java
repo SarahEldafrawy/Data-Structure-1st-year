@@ -66,7 +66,7 @@ public class MazeSolver implements IMazeSolver {
   public int[][] solveBFS(final File maze) {
     readFromFile(maze);
     if (!foundS || !foundE) {
-      throw null;
+      return null;
     }
     parents[k][l] = new Point(-1, -1);
     queue.enqueue(new Point(k, l));
@@ -87,7 +87,7 @@ public class MazeSolver implements IMazeSolver {
     if (foundGoal) {
       return locations;
     } else {
-      throw null;
+      return null;
     }
   }
   /**
