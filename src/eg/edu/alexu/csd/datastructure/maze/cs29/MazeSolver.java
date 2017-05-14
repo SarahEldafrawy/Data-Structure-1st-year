@@ -77,8 +77,8 @@ public class MazeSolver implements IMazeSolver {
     int[][] locations = new int[locationsArray.size()][2];
     int i = 0;
     while (i < locationsArray.size()) {
-      locations[i][0] = locationsArray.get(i)[0][0];
-      locations[i][1] = locationsArray.get(i)[0][1];
+      locations[i][0] = locationsArray.get(locationsArray.size() - 1 - i)[0][0];
+      locations[i][1] = locationsArray.get(locationsArray.size() - 1 - i)[0][1];
       i++;
     }
     if (foundGoal) {
@@ -235,37 +235,35 @@ public class MazeSolver implements IMazeSolver {
 
   private void pathBFS (int o, int p) {
     this.visitedArray[o][p] = true;
-   while (!queue.isEmpty() && !foundGoal) {
-     for (int j = 1; j >= -1; j--) {
-       for (int i = 1; i >= -1; i--) {
-         if ((o + i) < n && (o + i) >= 0 && (p + j) < m
-             && (p + j) >= 0 && i != j && (i + j) != 0
-             && !this.visitedArray[o + i][p + j]
-             && this.mazeArray[o + i].charAt(p + j) != '#') {
-             this.parents[o + i][p + j] = new Point(o, p);
-             this.visitedArray[o + i][p + j] = true;
-             if (this.mazeArray[o + i].charAt(p + j) != '.') {
-               queue.enqueue(new Point(o + i, p + j));
-             }
-             if (this.mazeArray[o + i].charAt(p + j) != 'E') {
-               foundGoal = true;
-               o += i;
-               p += j;
-               break;
-             }
-         }
-       }
-       if (foundGoal) {
-         break;
-       }
-     }
-     if (!foundGoal) {
-       Point newNode = (Point) queue.dequeue();
-       o = newNode.x;
-       p = newNode.y;
-     }
-   }
-   findingPath(o, p);
+    while (!queue.isEmpty() && !foundGoal) {
+      Point newNode = (Point) queue.dequeue();
+      o = newNode.x;
+      p = newNode.y;
+      for (int j = 1; j >= -1; j--) {
+        for (int i = 1; i >= -1; i--) {
+          if ((o + i) < n && (o + i) >= 0 && (p + j) < m
+              && (p + j) >= 0 && i != j && (i + j) != 0
+              && !this.visitedArray[o + i][p + j]
+              && this.mazeArray[o + i].charAt(p + j) != '#') {
+              this.parents[o + i][p + j] = new Point(o, p);
+              this.visitedArray[o + i][p + j] = true;
+              if (this.mazeArray[o + i].charAt(p + j) == '.') {
+                queue.enqueue(new Point(o + i, p + j));
+              }
+              if (this.mazeArray[o + i].charAt(p + j) == 'E') {
+                foundGoal = true;
+                o += i;
+                p += j;
+                break;
+              }
+          }
+        }
+        if (foundGoal) {
+          break;
+        }
+      }
+    }
+    findingPath(o, p);
   }
 
   private void pathDFS (int o, int p) {
