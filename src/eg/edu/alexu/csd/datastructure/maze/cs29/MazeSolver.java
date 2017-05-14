@@ -71,7 +71,9 @@ public class MazeSolver implements IMazeSolver {
     int[][]startCoor = new int[1][2];
     startCoor[0][0] = k;
     startCoor[0][1] = l;
-    locationsArray.add(startCoor);
+    if (foundGoal) {
+      locationsArray.add(startCoor);
+    }
     int[][] locations = new int[locationsArray.size()][2];
     int i = 0;
     while (i < locationsArray.size()) {
@@ -104,7 +106,9 @@ public class MazeSolver implements IMazeSolver {
     int[][]startCoor = new int[1][2];
     startCoor[0][0] = k;
     startCoor[0][1] = l;
-    locationsArray.add(startCoor);
+    if (foundGoal) {
+      locationsArray.add(startCoor);
+    }
     int[][] locations = new int[locationsArray.size()][2];
     int i = 0;
     while (i < locationsArray.size()) {

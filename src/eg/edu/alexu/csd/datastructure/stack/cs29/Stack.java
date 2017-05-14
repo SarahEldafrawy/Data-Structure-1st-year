@@ -12,8 +12,8 @@ import eg.edu.alexu.csd.datastructure.stack.IStack;
  */
 public class Stack implements IStack {
 
-	/**.
-	 * plate is the stack node
+	/**
+	 * plate is the stack node.
 	 */
 	class Plate {
 		/**.
