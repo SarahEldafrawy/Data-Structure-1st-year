@@ -248,7 +248,7 @@ public class MazeSolver implements IMazeSolver {
               && (p + j) >= 0 && i != j && (i + j) != 0
               && !this.visitedArray[o + i][p + j]
               && this.mazeArray[o + i].charAt(p + j) != '#')
-              || this.mazeArray[o].charAt(p) == 'E') {
+              /**|| this.mazeArray[o].charAt(p) == 'E'*/) {
               this.parents[o + i][p + j] = new Point(o, p);
               this.visitedArray[o + i][p + j] = true;
               if (this.mazeArray[o].charAt(p) == 'E') {
