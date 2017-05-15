@@ -260,6 +260,8 @@ public class MazeSolver implements IMazeSolver {
               }
               if (this.mazeArray[o + i].charAt(p + j) == 'E') {
                 this.visitedArray[o + i][p + j] = false;
+//                foundGoal = true;
+//                break;
               }
           }
         }
