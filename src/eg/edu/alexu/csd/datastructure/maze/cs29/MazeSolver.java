@@ -244,10 +244,11 @@ public class MazeSolver implements IMazeSolver {
     while (!stack.isEmpty() && !foundGoal) {
       for (int j = -1; j <= 1; j++) {
         for (int i = -1; i <= 1; i++) {
-          if ((o + i) < n && (o + i) >= 0 && (p + j) < m
+          if (((o + i) < n && (o + i) >= 0 && (p + j) < m
               && (p + j) >= 0 && i != j && (i + j) != 0
               && !this.visitedArray[o + i][p + j]
-              && this.mazeArray[o + i].charAt(p + j) != '#') {
+              && this.mazeArray[o + i].charAt(p + j) != '#')
+              || this.mazeArray[o].charAt(p) == 'E') {
               this.parents[o + i][p + j] = new Point(o, p);
               this.visitedArray[o + i][p + j] = true;
               if (this.mazeArray[o].charAt(p) == 'E') {
