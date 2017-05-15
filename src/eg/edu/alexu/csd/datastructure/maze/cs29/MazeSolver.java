@@ -242,8 +242,8 @@ public class MazeSolver implements IMazeSolver {
     int o = x, p = y;
     this.visitedArray[o][p] = true;
     while (!stack.isEmpty() && !foundGoal) {
-      for (int i = -1; i <= 1; i++) {
-        for (int j = -1; j <= 1; j++) {
+      for (int j = -1; j <= 1; j++) {
+        for (int i = -1; i <= 1; i++) {
           if ((o + i) < n && (o + i) >= 0 && (p + j) < m
               && (p + j) >= 0 && i != j && (i + j) != 0
               && !this.visitedArray[o + i][p + j]
