@@ -209,8 +209,8 @@ public class MazeSolver implements IMazeSolver {
       Point newNode = (Point) queue.dequeue();
       o = newNode.x;
       p = newNode.y;
-      for (int j = 1; j >= -1; j--) {
-        for (int i = 1; i >= -1; i--) {
+      for (int i = 1; i >= -1; i--) {
+        for (int j = 1; j >= -1; j--) {
           if ((o + i) < n && (o + i) >= 0 && (p + j) < m
               && (p + j) >= 0 && i != j && (i + j) != 0
               && !this.visitedArray[o + i][p + j]
@@ -242,22 +242,24 @@ public class MazeSolver implements IMazeSolver {
     int o = x, p = y;
     this.visitedArray[o][p] = true;
     while (!stack.isEmpty() && !foundGoal) {
-      for (int j = 1; j >= -1; j--) {
-        for (int i = 1; i >= -1; i--) {
+      for (int i = -1; i <= 1; i++) {
+        for (int j = -1; j <= 1; j++) {
           if ((o + i) < n && (o + i) >= 0 && (p + j) < m
               && (p + j) >= 0 && i != j && (i + j) != 0
               && !this.visitedArray[o + i][p + j]
               && this.mazeArray[o + i].charAt(p + j) != '#') {
               this.parents[o + i][p + j] = new Point(o, p);
               this.visitedArray[o + i][p + j] = true;
-              if (this.mazeArray[o + i].charAt(p + j) == '.') {
+              if (this.mazeArray[o].charAt(p) == 'E') {
+                foundGoal = true;
+                break;
+              }
+              if (this.mazeArray[o + i].charAt(p + j) == '.'
+                  || this.mazeArray[o + i].charAt(p + j) == 'E') {
                 stack.push(new Point(o + i, p + j));
               }
               if (this.mazeArray[o + i].charAt(p + j) == 'E') {
-                foundGoal = true;
-                o += i;
-                p += j;
-                break;
+                this.visitedArray[o + i][p + j] = false;
               }
           }
         }
